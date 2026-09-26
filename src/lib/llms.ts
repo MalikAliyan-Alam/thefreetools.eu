@@ -3,6 +3,7 @@ import { UI } from '../i18n/ui';
 import { TOOLS } from '../tools/registry';
 import { SITE } from '../site';
 import { htmlToMarkdown } from './markdown';
+import { GUIDES, guidePath } from '../guides/registry';
 
 const abs = (p: string) => new URL(p, SITE.url).href;
 
@@ -25,6 +26,10 @@ export function llmsIndex(): string {
       if (!c) continue;
       lines.push(`- [${c.h1}](${abs(localePath(l, c.slug))}) (${LOCALE_META[l].name}): ${c.metaDescription}`);
     }
+  }
+  lines.push('', '## Guides');
+  for (const l of LOCALES) {
+    for (const g of GUIDES[l]) lines.push(`- [${g.h1}](${abs(guidePath(l, g))}) (${LOCALE_META[l].name}): ${g.answer}`);
   }
   lines.push('', '## About', `- [About](${abs('/about/')})`, `- [Privacy](${abs('/privacy/')})`, `- [Contact](${abs('/contact/')})`);
   return lines.join('\n') + '\n';

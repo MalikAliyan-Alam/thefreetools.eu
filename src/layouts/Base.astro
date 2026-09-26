@@ -10,6 +10,7 @@ import Logo from '../components/Logo.astro';
 import { LOCALES, LOCALE_META, DEFAULT_LOCALE, localePath, type Locale } from '../i18n/locales';
 import { UI } from '../i18n/ui';
 import { PAGES } from '../pages-content/pages';
+import { GUIDES, guidesHubPath } from '../guides/registry';
 import { SITE } from '../site';
 
 type Props = {
@@ -74,6 +75,7 @@ const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
         </a>
         <nav class="nav" aria-label={t.home}>
           <a class="hide-sm" href={localePath(locale)}>{t.allTools}</a>
+          {GUIDES[locale].length > 0 && <a href={guidesHubPath(locale)}>{t.guides}</a>}
           <button type="button" class="theme-btn" id="theme-btn" aria-label={t.theme} title={t.theme}>
             <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
             <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>

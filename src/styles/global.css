@@ -157,6 +157,7 @@ select {
 .brand svg {
   width: 40px;
   height: 40px;
+  flex: none; /* don't let the mark shrink away on narrow screens */
 }
 .wordmark {
   font-size: 22px;
@@ -616,6 +617,27 @@ label > span {
   .nav .hide-sm {
     display: none;
   }
+  .site-header .wrap {
+    gap: 8px;
+  }
+  .nav {
+    gap: 8px;
+    font-size: 14px;
+  }
+  .brand svg {
+    width: 32px;
+    height: 32px;
+  }
+  .wordmark {
+    font-size: 18px;
+  }
+  .theme-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .lang a {
+    padding: 4px 6px;
+  }
   .tool-card {
     padding: 14px;
     border-radius: 10px;
@@ -629,4 +651,95 @@ label > span {
   * {
     transition: none !important;
   }
+}
+
+/* ---------- Guides ---------- */
+.content.guide {
+  margin-top: 8px;
+}
+.guide-hero {
+  padding-bottom: 8px;
+}
+.guide-hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+}
+.guide-meta {
+  font-size: 14px;
+  margin-top: 6px;
+}
+.answer {
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface);
+  padding: 14px 16px;
+}
+[dir='rtl'] .answer {
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.answer p {
+  margin: 0;
+}
+.answer .answer-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 6px;
+}
+:lang(ar) .answer .answer-label {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.cta-card {
+  display: block;
+  margin: 8px 0;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+}
+.cta-card > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cta-card:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.guide-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+}
+.guide-list a {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-decoration: none;
+}
+.guide-list a:hover {
+  border-color: var(--accent);
+}
+.guide-list strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+:lang(ar) .guide-list strong {
+  font-family: var(--font-ar);
+}
+.guide-list span {
+  color: var(--muted);
+  font-size: 15px;
 }

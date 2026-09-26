@@ -3,7 +3,7 @@
 ## Workers flow (current Cloudflare default)
 Settings when connecting the repo under Workers & Pages → Create → Import a repository:
 - Build command: `pnpm build`
-- Deploy command: `npx wrangler deploy`
+- Deploy command: `npx wrangler deploy && node scripts/indexnow.mjs` (the second part pings IndexNow with pages changed in the last 3 days; it never fails the deploy)
 - Non-production branch deploy command: `npx wrangler versions upload`
 - Worker name is `thefreetools-eu` and must match `name` in `wrangler.jsonc`.
 

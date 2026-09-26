@@ -10,3 +10,9 @@
 5. **Content** — `src/tools/<id>/content/<locale>.ts` for each language. Slug = the local search phrase. Sections: how it works (formula), worked example, local rules/table, FAQ (4–6 real questions). Set `updated`.
 6. **Register** — add to `TOOLS` in `src/tools/registry.ts`, add a line to `src/components/ToolIsland.astro`, add an icon case in `src/components/ToolIcon.astro`.
 7. **Check** — `pnpm build`, `npx astro check`, then run the `tool-tester`, `mobile-checker`, `seo-auditor` and `perf-auditor` agents.
+
+## Adding a guide
+1. Pick a sub-intent the tool page doesn't cover (country rules, retakes, "what do I need"). Check it in autocomplete / People Also Ask.
+2. Write `src/guides/<tool>/<locale>-<topic>.ts` (`GuideContent`): direct answer first, sourced rules table, worked example, link to the tool.
+3. Give translations of the same article the same `key`; different articles get different keys.
+4. Add it to `GUIDES` in `src/guides/registry.ts` and add every number it prints to `tests/guides.test.ts`.

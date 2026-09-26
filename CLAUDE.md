@@ -15,6 +15,8 @@ Free, multilingual browser tools monetized only by Google AdSense. Speed, accura
 - `src/lib/routes.ts`: single list of every page (path, alternates, lastmod). `src/pages/[...path].astro` renders them; `src/pages/sitemap-*.xml.ts` build the sitemap (lastmod + hreflang) from the same list.
 - `src/pages-content/pages.ts`: About, Privacy, Contact per locale.
 - `src/pages/llms.txt.ts`, `llms-full.txt.ts` (via `src/lib/llms.ts`): clean Markdown summaries for AI crawlers, generated from the registry. JSON-LD (Organization, WebSite, ItemList, WebApplication, BreadcrumbList, FAQPage) is built in `[...path].astro`.
+- `src/guides/`: blog-style guides per language (`GUIDES` in `registry.ts`; folders `/guides/`, `/ar/guides/`, `/es/guias/`). Guides with the same `key` are language versions of each other (hreflang). Every number in a guide must be covered by `tests/guides.test.ts`.
+- `scripts/indexnow.mjs`: run after deploy; pings IndexNow for recently changed URLs. Key file lives in `public/`.
 - `src/i18n/`: locales (`en` at the root, others under `/ar/`, `/es/`) and site-wide UI strings.
 - `docs/`: research and plans. `docs/research/keyword-research-master.csv` is the source of truth for which tools and keywords we target.
 
@@ -31,4 +33,5 @@ See `docs/adding-a-tool.md`. Short version: engine + tests, component, one conte
 - Every color comes from the tokens in `src/styles/global.css`; check contrast (4.5:1 for text) when adding one.
 - Mobile first: 16px inputs, 44px touch targets, test at 375px wide and in RTL.
 - Arabic pages show Latin digits (`ar-u-nu-latn`); Spanish shows a decimal comma.
-- Don't commit or push unless asked.
+- Dates (`updated`, `published`) are real edit dates: never future-dated and never bumped without a real content change.
+- Don't commit or push unless asked; batch small changes, push finished features.

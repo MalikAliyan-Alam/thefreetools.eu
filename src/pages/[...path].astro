@@ -8,7 +8,8 @@ import ToolIsland from '../components/ToolIsland.astro';
 import ToolIcon from '../components/ToolIcon.astro';
 import { localePath } from '../i18n/locales';
 import { UI } from '../i18n/ui';
-import { toolsFor } from '../tools/registry';
+import { TOOLS, toolsFor } from '../tools/registry';
+import { GUIDES, guidePath, guidesHubPath, guidesForTool } from '../guides/registry';
 import { PAGES } from '../pages-content/pages';
 import { SITE } from '../site';
 import { allRoutes, type RouteEntry } from '../lib/routes';
@@ -99,6 +100,55 @@ if (props.kind === 'page' && page) {
   description = page.description;
 }
 
+const guidesHub = props.kind === 'guides';
+if (guidesHub) {
+  title = `${t.guidesTitle} · ${SITE.name}`;
+  description = t.guidesIntro;
+  jsonLd = [
+    organization,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: GUIDES[locale].map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.h1, url: abs(guidePath(locale, g)) })),
+    },
+  ];
+}
+
+const guide = props.kind === 'guide' ? props.guide : null;
+const guideTool = guide ? TOOLS.find((x) => x.id === guide.tool)?.content[locale] : undefined;
+if (guide) {
+  title = guide.metaTitle;
+  description = guide.metaDescription;
+  const url = abs(guidePath(locale, guide));
+  jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: guide.h1,
+      description: guide.metaDescription,
+      url,
+      inLanguage: locale,
+      datePublished: guide.published,
+      dateModified: guide.updated,
+      author: { '@id': ORG_ID },
+      publisher: { '@id': ORG_ID },
+      mainEntityOfPage: url,
+    },
+    organization,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t.home, item: abs(localePath(locale)) },
+        { '@type': 'ListItem', position: 2, name: t.guides, item: abs(guidesHubPath(locale)) },
+        { '@type': 'ListItem', position: 3, name: guide.h1, item: url },
+      ],
+    },
+  ];
+}
+const moreGuides = guide ? GUIDES[locale].filter((g) => g !== guide).slice(0, 4) : [];
+const toolGuides = tool ? guidesForTool(locale, tool.id) : [];
+
 const related = tool ? toolsFor(locale).filter((x) => x.tool.id !== tool.id).slice(0, 3) : [];
 const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 ---
@@ -165,6 +215,22 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
         </p>
       </article>
 
+      {toolGuides.length > 0 && (
+        <section class="content">
+          <h2>{t.guidesFor}</h2>
+          <ul class="guide-list">
+            {toolGuides.map((g) => (
+              <li>
+                <a href={guidePath(locale, g)}>
+                  <strong>{g.h1}</strong>
+                  <span>{g.answer}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {related.length > 0 && (
         <section class="content">
           <h2>{t.related}</h2>
@@ -176,6 +242,90 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
               </a>
             ))}
           </div>
+        </section>
+      )}
+    </>
+  )}
+
+  {guidesHub && (
+    <>
+      <section class="hero">
+        <nav class="crumbs" aria-label="breadcrumb">
+          <a href={localePath(locale)}>{t.home}</a> / <span>{t.guides}</span>
+        </nav>
+        <h1>{t.guidesTitle}</h1>
+        <p>{t.guidesIntro}</p>
+      </section>
+      <ul class="guide-list">
+        {GUIDES[locale].map((g) => (
+          <li>
+            <a href={guidePath(locale, g)}>
+              <strong>{g.h1}</strong>
+              <span>{g.metaDescription}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {guide && (
+    <>
+      <section class="hero guide-hero">
+        <nav class="crumbs" aria-label="breadcrumb">
+          <a href={localePath(locale)}>{t.home}</a> / <a href={guidesHubPath(locale)}>{t.guides}</a> / <span>{guide.h1}</span>
+        </nav>
+        <h1>{guide.h1}</h1>
+        <p class="guide-meta">
+          {t.published}: <time datetime={guide.published}>{dateFmt.format(new Date(guide.published))}</time>
+          {guide.updated !== guide.published && (
+            <> · {t.updated}: <time datetime={guide.updated}>{dateFmt.format(new Date(guide.updated))}</time></>
+          )}
+        </p>
+      </section>
+      <article class="content guide">
+        <div class="answer">
+          <p class="answer-label">{t.shortAnswer}</p>
+          <p>{guide.answer}</p>
+        </div>
+        {guideTool && (
+          <a class="cta-card" href={localePath(locale, guideTool.slug)}>
+            <span>
+              <strong>{guideTool.h1}</strong>
+              <span>{t.useTool} →</span>
+            </span>
+          </a>
+        )}
+        {guide.sections.map((s) => (
+          <section>
+            <h2>{s.heading}</h2>
+            <Fragment set:html={s.html} />
+          </section>
+        ))}
+        {guide.faq && guide.faq.length > 0 && (
+          <section class="faq">
+            <h2>{t.faq}</h2>
+            {guide.faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </section>
+        )}
+      </article>
+      {moreGuides.length > 0 && (
+        <section class="content">
+          <h2>{t.guides}</h2>
+          <ul class="guide-list">
+            {moreGuides.map((g) => (
+              <li>
+                <a href={guidePath(locale, g)}>
+                  <strong>{g.h1}</strong>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
     </>
