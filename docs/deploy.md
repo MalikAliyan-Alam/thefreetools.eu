@@ -1,4 +1,15 @@
-# Deploying to Cloudflare Pages
+# Deploying to Cloudflare
+
+## Workers flow (current Cloudflare default)
+Settings when connecting the repo under Workers & Pages → Create → Import a repository:
+- Build command: `pnpm build`
+- Deploy command: `npx wrangler deploy`
+- Non-production branch deploy command: `npx wrangler versions upload`
+- Project/Worker name must be `thefreetools` (matches `name` in `wrangler.jsonc`).
+
+`wrangler.jsonc` serves `dist/` as static assets with trailing-slash handling and `404.html`.
+
+## Pages flow (older)
 
 ## One-time setup
 1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick `MalikAliyan-Alam/thefreetools.eu`.
