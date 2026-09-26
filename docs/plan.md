@@ -1,11 +1,11 @@
 # Build plan
 
-## Decisions (2026-09-27)
+## Decisions (2026-09-26)
 - **Framework:** Astro static site + Preact islands. Chosen for minimal JavaScript (Core Web Vitals) and full control over per-language URLs.
 - **Hosting:** Cloudflare Pages (free, global CDN). Connect the GitHub repo; build command `pnpm build`, output `dist`.
 - **URLs:** English at the root (`/gpa-calculator/`), other languages prefixed with localized slugs (`/es/calcular-promedio/`, `/ar/gpa-calculator/`). hreflang + x-default on every page.
-- **Design:** warm cream background, dark brown ink, terracotta accent (see tokens in `src/styles/global.css`). Ruler logo mark + "the**free**tools" wordmark. Fonts: Bricolage Grotesque (headings), Instrument Sans (body), Readex Pro (Arabic), all self-hosted. Tight 6–12px corners. Light and dark mode follow the device.
-- **Quality bar (2026-09-27, GPA tool):** Lighthouse mobile 100/100/100/100 (EN), 99/100/100/100 (AR); results cross-checked against calculator.net, laamea.com and mipromedio.cl (see tests/gpa.test.ts).
+- **Design:** warm cream background, dark brown ink, terracotta accent (see tokens in `src/styles/global.css`). Gear-and-wrench logo with an "ft" monogram (ink/terracotta) + "the**free**tools" wordmark. Fonts: Bricolage Grotesque (headings), Instrument Sans (body), Readex Pro (Arabic), all self-hosted. Tight 6–12px corners. Light and dark mode follow the device.
+- **Quality bar (2026-09-26, GPA tool):** Lighthouse mobile 100/100/100/100 (EN), 99/100/100/100 (AR); results cross-checked against calculator.net, laamea.com and mipromedio.cl (see tests/gpa.test.ts).
 - **Privacy:** all tools run in the browser; only per-tool localStorage.
 
 ## Top 10 tools (build order)

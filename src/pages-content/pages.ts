@@ -5,7 +5,7 @@ export type StaticPage = { slug: string; title: string; description: string; htm
 export type StaticPageId = 'about' | 'privacy' | 'contact';
 
 /** Bump when About/Privacy/Contact text changes (used for sitemap lastmod). */
-export const PAGES_UPDATED = '2026-09-27';
+export const PAGES_UPDATED = '2026-09-26';
 
 const mail = `<a href="mailto:${SITE.email}">${SITE.email}</a>`;
 

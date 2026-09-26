@@ -98,7 +98,7 @@ const content: ToolContent<GpaLabels> = {
       a: 'Your last entries are kept in this browser so you can come back to them. Nothing is sent to a server. Use Clear to remove them.',
     },
   ],
-  updated: '2026-09-27',
+  updated: '2026-09-26',
 };
 
 export default content;

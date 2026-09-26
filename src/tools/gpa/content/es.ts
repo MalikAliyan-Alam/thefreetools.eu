@@ -97,7 +97,7 @@ const content: ToolContent<GpaLabels> = {
       a: 'Solo en tu navegador, para que no las pierdas si vuelves. No se envían a ningún servidor. Usa "Borrar" para eliminarlas.',
     },
   ],
-  updated: '2026-09-27',
+  updated: '2026-09-26',
 };
 
 export default content;

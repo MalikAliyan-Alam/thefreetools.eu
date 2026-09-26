@@ -103,7 +103,7 @@ const content: ToolContent<GpaLabels> = {
       a: 'تُحفظ آخر مدخلاتك في متصفحك فقط لتعود إليها لاحقاً، ولا تُرسل إلى أي خادم. اضغط "مسح" لحذفها.',
     },
   ],
-  updated: '2026-09-27',
+  updated: '2026-09-26',
 };
 
 export default content;
