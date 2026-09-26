@@ -1,0 +1,12 @@
+---
+/**
+ * Maps a tool id to its interactive component. Astro needs static imports
+ * to hydrate islands, so every new tool adds one line here.
+ */
+import GpaTool from '../tools/gpa/GpaTool';
+import type { ToolId } from '../tools/registry';
+
+type Props = { id: ToolId; labels: any; locale: string };
+const { id, labels, locale } = Astro.props;
+---
+{id === 'gpa' && <GpaTool client:load labels={labels} locale={locale} />}

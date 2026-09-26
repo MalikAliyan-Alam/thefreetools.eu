@@ -1,0 +1,84 @@
+﻿Tool #,Tool,Language,Country,Keyword,Country volume (Semrush),Global volume (Semrush),KD Semrush %,KD Ahrefs,Top competitor (DR / ref domains / traffic),SERP weakness,Verdict,Phase,Tool launch languages,Tool Phase 2 languages,Tool Phase 3 / to verify
+1,Numbers to words,ES,Colombia,números a letras,49500,181700,n/a,0-2,todala.info (DR27 / 19 / 16-27K),"YouTube, Play Store app, articles in top 10",Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,ES,Mexico,cantidad con letra,8100,10600,23,3,todala.info (DR27 / 19 / 16K),Same SERP as números a letras; admin page ranks #8,Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,FR,Morocco,chiffres en lettres,40500,90900,n/a,5,chiffre-en-lettre.fr (DR10 / 9 / 40K),"Play Store, Pinterest, YouTube, old .ma pages (icemaroc dirhams)",Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,AR,Saudi Arabia,تفقيط,22200,57800,20,26,tafqit.com (DR11 / 1.1K / 30K); numbers.un-web.com (DR54 / 265 / 10K),"From #3: tafqeet.com 0 domains, apps, YouTube, Wikipedia; currency pages rank (tafqit.net/ccy/sar)",Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,PL,Poland,kwota słownie,27100,27500,17,28,slownie.pl (DR4 / 617 / 42K); kwota-slownie.pl (DR0 / 474 / 2.7K),From #3 weak: smart-money 2 domains then articles,Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,IT,Italy,numeri in lettere,1600,1800,14,,,,Green,Launch,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,PT,Brazil,valor por extenso,12100,12600,41,,invertexto; 4devs,Articles after top 2,Yellow,Phase 2,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,PT,Brazil,número por extenso,5400,7800,41,,invertexto; 4devs,"Articles, Facebook video, AI Overview",Yellow,Phase 2,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,ID,Indonesia,terbilang,8100,8300,34,,,,Yellow,Phase 2,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,DE,Germany,betrag in worten,320,440,16,,,,Yellow (small),Phase 3,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,TR,Turkey,rakamı yazıya çevirme,320,360,8,,,,Yellow (small),Phase 3,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+1,Numbers to words,EN,India,amount in words,14800,55500,52,,,72 referring domains needed,Red,Later (EN page exists as default),"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL"
+2,Hijri converter,AR,Saudi Arabia,تحويل التاريخ من هجري الى ميلادي,165000,169200,27,17,hijri-calendar.com (DR32 / 48 / 149K); ihijri.com (DR11 / 42 / 55K),#3 awjcooperative DR2 / 0 domains / 27K; rest small Saudi sites,Green,Launch,"AR, EN",,"UR, ID, MS, TR, FR (not yet researched)"
+2,Hijri converter,AR,Saudi Arabia,تحويل التاريخ من ميلادي الى هجري,74000,76100,26,,,,Green,Launch,"AR, EN",,"UR, ID, MS, TR, FR (not yet researched)"
+2,Hijri converter,AR,Saudi Arabia,التاريخ الهجري اليوم,90500,582700,50,,,Egypt 246K; navigational; harder,Yellow (widget on page),Launch,"AR, EN",,"UR, ID, MS, TR, FR (not yet researched)"
+2,Hijri converter,EN,United States,hijri date converter,480,8100,21,,,,Green,Launch,"AR, EN",,"UR, ID, MS, TR, FR (not yet researched)"
+3,VAT calculator,AR,Saudi Arabia,حساب الضريبة,12100,13900,20,1,aliphia.com (DR30 / 2 / 15K),"Small sites, CPC $0.86",Green,Launch,"AR (SA 15%), ES (CL 19%, MX 16%), EN","ES-Spain (21/10/4%), PT (Portugal 23%)","PL, DE, IT, FR (crowded per earlier research)"
+3,VAT calculator,ES,Chile,calcular iva,33100,104800,,9,lacontadora.cl (DR9 / 136 / 36K),Small sites and articles,Green,Launch,"AR (SA 15%), ES (CL 19%, MX 16%), EN","ES-Spain (21/10/4%), PT (Portugal 23%)","PL, DE, IT, FR (crowded per earlier research)"
+3,VAT calculator,ES,Mexico,calcular iva,22200,104800,30,0,economistajosegarcia.com (DR47 / 0),"Articles, App Store apps, no strong tool",Green,Launch,"AR (SA 15%), ES (CL 19%, MX 16%), EN","ES-Spain (21/10/4%), PT (Portugal 23%)","PL, DE, IT, FR (crowded per earlier research)"
+3,VAT calculator,ES,Spain,calcular iva,27100,104800,,12,calculariva.es (DR27 / 640 / 36K); Santander (DR76),Banks and accounting software,Yellow,Phase 2,"AR (SA 15%), ES (CL 19%, MX 16%), EN","ES-Spain (21/10/4%), PT (Portugal 23%)","PL, DE, IT, FR (crowded per earlier research)"
+4,Text compare,ES,Mexico,comparar textos,1900,15700,30,0,diffchecker.com/es (DR74 / 4 / 2.1K),"Play Store apps twice, badly translated US page",Green,Launch,"ES, EN","PT, FR","DE, IT, PL, AR (not yet researched / no data)"
+4,Text compare,PT,Brazil,comparar textos,4400,15700,30,20,diffchecker.com/pt (DR74 / 32 / 16K); invertexto (DR48),,Yellow,Phase 2,"ES, EN","PT, FR","DE, IT, PL, AR (not yet researched / no data)"
+4,Text compare,FR,France,comparer deux textes,320,550,19,,,,Green (small),Phase 2,"ES, EN","PT, FR","DE, IT, PL, AR (not yet researched / no data)"
+5,Working days,ES,Peru,calcular días hábiles,5400,13800,n/a,0,gob.pe (DR87 official / 47 / 20K),"omnicalculator 0 domains, Facebook, YouTube, small sites",Green,Launch,"ES (PE, AR, CO, MX, CL holidays), EN",FR (jours ouvrés),"IT, PL, DE (crowded per earlier research)"
+5,Working days,ES,Mexico,calcular días entre fechas,320,3400,n/a,,,,Yellow,Launch (same tool),"ES (PE, AR, CO, MX, CL holidays), EN",FR (jours ouvrés),"IT, PL, DE (crowded per earlier research)"
+6,DNI letter,ES,Spain,calcular letra dni,12100,12700,23,1,notariosyregistradores.com (DR68 / 0 / 11K); letranif.com (DR11 / 661 / 7.1K),tenso.es DR4 old ASP page 2.3K traffic,Green,Launch,ES,EN (NIE for expats - to verify),
+7,Belgian OGM,NL,Belgium,gestructureerde mededeling,590,820,13,,,,Green (small),Launch,"NL, FR",EN,
+7,Belgian OGM,FR,Belgium,communication structurée,<100,,,,,,Green (small),Launch,"NL, FR",EN,
+8,Age calculator,AR,Saudi Arabia,حساب العمر,673000,836200,37,31 (~38 domains),hijridates.com (DR37 / 22 / 115K); un-web.com (DR54 / 53 / 91K),"#3 tafany.net DR8 / 0 domains / 29K; rest small tool sites (hesabalomr, mortb, saudup, laimuna, ee3.us)",Green (target top 3-8),Launch,"AR, ES, EN","FR, PT",
+8,Age calculator,AR,Saudi Arabia,حساب العمر بالهجري,110000,113300,20,26,Google Play app (#1 and #4),"Very weak: forum post, articles, small tools, a vercel.app hobby page at #10",Green,Launch,"AR, ES, EN","FR, PT",
+8,Age calculator,ES,Mexico,calcular edad,5400,29400,33,1 (~2 domains),calkoo.com (DR44 / 6 / 18K); diainternacionalde.com (DR67 / 18 / 20K),"Play Store app, omnicalculator, irrelevant pearsonclinical page",Green,Launch,"AR, ES, EN","FR, PT",
+9,Percentage calculator,ES,Mexico,calculadora de porcentajes,18100,59700,31,32 Hard (~40 domains),calcularporcentajeonline.com (DR37 / 733 / 47K); calcular-porcentaje.es (DR13 / 575 / 9.2K),"moovago 4 domains 20K; otherwise established sites, omnicalculator",Yellow (harder),Phase 2,,"ES, EN","AR, FR, PT, PL, IT"
+10,Zakat calculator,AR,Saudi Arabia,حساب الزكاة,6600,12100,19,,,"Seasonal (Ramadan spike); religious-finance topic, needs careful accurate content",Yellow,Phase 2,,AR,
+11,GPA / grade calculator,AR,Saudi Arabia,حساب المعدل التراكمي,14800,76600,10,0 (Jordan),elcom-team.com (DR3 / 4 / 2K); mutah-it.com (DR2),"Very weak: university portals, github.io page, http site",Green (very easy),Launch,"AR, ES, EN",,
+11,GPA / grade calculator,AR,Saudi Arabia,حساب النسبة الموزونة,9900,10100,11,,,Saudi university admission (seasonal spike),Green,Launch,"AR, ES, EN",,
+11,GPA / grade calculator,ES,Chile,calcular promedio,1600 (MX),40100,36,"22 (~24 domains, Chile)",mipromedio.cl (DR14 / 510 / 120K); calculatodo.com (DR29 / 6 / 28K),Crowded with local .cl sites,Yellow,Launch,"AR, ES, EN",,
+12,End of service / gratuity,EN,UAE,gratuity calculator uae,49500,51700,36,41 Hard (~58 domains),"dda.gov.ae (gov, DR62); gratuitycalculatordubaiuae.ae (DR31 / 65 / 18K)",Many exact-match .ae sites + Gulf News + Khaleej Times,Yellow (hard; build last + links),Launch,"EN, AR",,"Qatar, Kuwait, Oman, Bahrain variants"
+12,End of service / gratuity,AR,Saudi Arabia,حساب مكافأة نهاية الخدمة,6600,7200,38,,,Saudi labour law formula,Yellow,Launch,"EN, AR",,"Qatar, Kuwait, Oman, Bahrain variants"
+13,Passport / ID photo maker,ES,Mexico,foto tamaño infantil,22200,22900,31,0,passportphotosnap.com (DR6 / 0 / 5.2K); visafoto (DR49 / 0); photoaid (DR68 / 0),"Paid photo services, PDFs, Play Store, AI Overview",Green,Launch,"ES, AR, EN","PL, FR, IT, DE",
+13,Passport / ID photo maker,ES,Mexico,foto tamaño pasaporte,5400,14600,26,,,"Global: Peru 5.4K, Costa Rica 1K, US 880",Green,Launch,"ES, AR, EN","PL, FR, IT, DE",
+13,Passport / ID photo maker,AR,Saudi Arabia,حذف خلفية الصورة,1300,5100,28,,,"Global: Algeria 1.3K, Egypt 1K, Morocco 480",Yellow,Launch,"ES, AR, EN","PL, FR, IT, DE",
+13,Passport / ID photo maker,AR,Saudi Arabia,إزالة خلفية الصورة,480,700,23,,,,Yellow (small),Launch,"ES, AR, EN","PL, FR, IT, DE",
+13,Passport / ID photo maker,ES,Mexico,quitar fondo de imagen,165000,1200000,77,,remove.bg / Canva / Adobe,94 high-authority domains needed,Red (head term),Skip head term,"ES, AR, EN","PL, FR, IT, DE",
+14,Invoice generator,AR,Saudi Arabia,فاتورة ضريبية,2400,4100,11,,,CPC $5.11 (highest found); Egypt 1K,Green (small but high value),Launch,AR,EN,
+14,Invoice generator,ES,Mexico,generador de facturas,170,1100,27,,,Mexico uses official SAT CFDI; low demand for generic generator,Red,Skip,AR,EN,
+15,Schengen calculator,EN,United Kingdom,schengen calculator,3600,18100,50,,,69 referring domains needed; CPC $1.42,Yellow (hard in EN),Phase 2,,"ES, IT, PL, EN",
+15,Schengen calculator,ES,Spain,calculadora schengen,480,1000,9,,,,Green (small),Phase 2,,"ES, IT, PL, EN",
+16,Finance / loan calculator,AR,Saudi Arabia,حاسبة التمويل الشخصي,9900,10400,46,,,Banks; YMYL,Yellow,Phase 3,,,AR
+16,Finance / loan calculator,ES,Mexico,calculadora de prestamos,1000,27800,60,,,132 referring domains needed; Dominican Rep. 14.8K,Red,Skip,,,
+-,CV builder,AR,Saudi Arabia,سيرة ذاتية,18100,39200,48,48 Hard (~77 domains),canva.com (DR93 / 28 / 72K); seirah.com (DR29 / 885 / 12K),"cvwizard, cvmaker, 3 top ads + AI Overview",Red,Phase 3,,,AR
+-,CV builder,ES,Mexico,hacer curriculum gratis,720,8500,66,,,174 referring domains needed,Red,Skip,,,
+-,Swiss QR bill,DE,Switzerland,qr rechnung erstellen,2900,3100,44,,,CPC $3.05 (highest),Yellow,Phase 2,,"DE, FR, IT (Switzerland)",
+-,E-invoice viewer,DE,Germany,xrechnung viewer,390,510,26,,,"CPC $1.50, growing 2027-28",Yellow,Phase 2,,DE,
+-,Chile RUT,ES,Chile,validar rut,1600,5500,44,,,,Yellow,Phase 3,,,ES
+-,Mexico RFC,ES,Mexico,calcular rfc con homoclave,8100,8200,51,,,Homoclave may not match official SAT,Red,Skip,,,
+-,German numbers,DE,Germany,zahlen in worten,<100,,,,,School worksheet intent,Red,Skip,,,
+
+TOOL LANGUAGE PLAN (summary),,,,,,,,,,,,,,,
+Tool #,Tool,Launch languages,Phase 2 languages,Phase 3 / to verify,Launch pages count,Notes,,,,,,,,,
+1,Numbers to words,"EN, ES, FR, AR, PL, IT","PT, ID","DE, TR, NL",6,"Currency presets per country (pesos M.N./M/CTE, dirham, dinar, riyal, złote/grosze, euro); currency subpages only with unique content",,,,,,,,,
+2,Hijri converter,"AR, EN",,"UR, ID, MS, TR, FR",2,Umm al-Qura default + other calculation options; hijri->miladi and miladi->hijri; today's hijri date widget,,,,,,,,,
+3,VAT calculator,"AR, ES, EN","ES-Spain, PT","PL, DE, IT, FR",3,"Country rate presets: SA 15%, CL 19%, MX 16%; add/remove VAT",,,,,,,,,
+4,Text compare,"ES, EN","PT, FR","DE, IT, PL, AR",2,Runs fully in browser; no upload,,,,,,,,,
+5,Working days,"ES, EN",FR,"IT, PL, DE",2,"Public holidays for PE, AR, CO, MX, CL; business days between dates / from a date",,,,,,,,,
+6,DNI letter,ES,EN,,1,DNI + NIE letter calculator and validator,,,,,,,,,
+7,Belgian OGM,"NL, FR",EN,,2,Structured communication generator/validator (+++123/4567/89012+++); verify BTW/voorafbetaling format with FOD Financiën,,,,,,,,,
+8,Age calculator,"AR, ES, EN","FR, PT",,3,Gregorian + Hijri age; same date engine as Hijri converter,,,,,,,,,
+9,Percentage calculator,,"ES, EN","AR, FR, PT, PL, IT",0,"Phase 2: Ahrefs KD 32 Hard, established competitors",,,,,,,,,
+10,Zakat calculator,,AR,,0,Phase 2 only; seasonal (Ramadan),,,,,,,,,
+,TOTAL LAUNCH PAGES (first 8 tools),,,,21,,,,,,,,,,
+
+FINAL TOP 10 (research complete 2026-09-27),,,,,,,,,,,,,,,
+Rank,Tool,Main markets,Est. monthly volume,KD range,Build order (easiest first),Why,,,,,,,,,
+1,Age calculator,"SA, Gulf, LatAm",~785K,1-37,3,Biggest volume; Hijri-age SERP very weak,,,,,,,,,
+2,Numbers to words,"LatAm, Maghreb, SA, PL, IT",~400K,0-28,4,Weak SERPs in ES/FR,,,,,,,,,
+3,Hijri converter,"SA, Gulf",~240K,17-27,2,Small competitor sites; shares date engine,,,,,,,,,
+4,GPA / grade calculator,"Jordan, SA, Kuwait, Chile",~125K,0-36,1,"Jordan SERP KD 0 (tiny sites, uni portals); students return every semester",,,,,,,,,
+5,VAT calculator,"SA, CL, MX",~70K,0-20,5,KD 0-9 in SA/CL/MX,,,,,,,,,
+6,Passport / ID photo maker,"MX, PE, Arab",~40K,0-31,6,foto tamaño infantil KD 0; competitors are paid services,,,,,,,,,
+7,Working days,"PE, AR, CO, MX",~14K,0,7,Weak SERP after gob.pe,,,,,,,,,
+8,DNI letter,Spain,~12K,1,8,EU RPM; very easy,,,,,,,,,
+9,Invoice generator (ZATCA),SA,~4K,11,9,CPC $5.11; loyal business users; reuses VAT + tafqeet,,,,,,,,,
+10,End of service / gratuity,"UAE, SA",~57K,36-41,10,CPC $2.72 but Ahrefs KD 41 (~58 domains); build last and support with backlinks,,,,,,,,,

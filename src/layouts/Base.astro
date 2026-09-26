@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, localePath, type Locale } from '../i18n/locales';
+import { UI } from '../i18n/ui';
+import { PAGES } from '../pages-content/pages';
+import { SITE } from '../site';
+
+type Props = {
+  locale: Locale;
+  title: string;
+  description: string;
+  /** Path of this page in every locale it exists in (used for hreflang and the switcher). */
+  alternates: Partial<Record<Locale, string>>;
+  jsonLd?: object[];
+};
+
+const { locale, title, description, alternates, jsonLd = [] } = Astro.props;
+const t = UI[locale];
+const meta = LOCALE_META[locale];
+const canonical = new URL(alternates[locale] ?? Astro.url.pathname, SITE.url).href;
+const xDefault = alternates[DEFAULT_LOCALE] ?? alternates[locale];
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang={locale} dir={meta.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {LOCALES.filter((l) => alternates[l]).map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(alternates[l]!, SITE.url).href} />
+    ))}
+    {xDefault && <link rel="alternate" hreflang="x-default" href={new URL(xDefault, SITE.url).href} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#faeedd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1511" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={meta.ogLocale} />
+    <meta name="twitter:card" content="summary" />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.skip}</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={localePath(locale)}>
+          <Logo />
+          <span>{t.siteName}</span>
+        </a>
+        <nav class="nav" aria-label={t.home}>
+          <a class="hide-sm" href={localePath(locale)}>{t.allTools}</a>
+          <div class="lang" role="group" aria-label={t.languages}>
+            {LOCALES.map((l) => (
+              <a
+                href={alternates[l] ?? localePath(l)}
+                hreflang={l}
+                lang={l}
+                aria-current={l === locale ? 'true' : undefined}
+                title={LOCALE_META[l].name}
+              >
+                {LOCALE_META[l].short}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {year} {SITE.name} · {t.footerNote}</span>
+        <nav aria-label={t.about}>
+          <a href={localePath(locale, PAGES.about[locale].slug)}>{t.about}</a>
+          <a href={localePath(locale, PAGES.privacy[locale].slug)}>{t.privacy}</a>
+          <a href={localePath(locale, PAGES.contact[locale].slug)}>{t.contact}</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

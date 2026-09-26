@@ -1,0 +1,31 @@
+# Build plan
+
+## Decisions (2026-09-27)
+- **Framework:** Astro static site + Preact islands. Chosen for minimal JavaScript (Core Web Vitals) and full control over per-language URLs.
+- **Hosting:** Cloudflare Pages (free, global CDN). Connect the GitHub repo; build command `pnpm build`, output `dist`.
+- **URLs:** English at the root (`/gpa-calculator/`), other languages prefixed with localized slugs (`/es/calcular-promedio/`, `/ar/gpa-calculator/`). hreflang + x-default on every page.
+- **Design:** warm cream background, dark brown ink, terracotta accent (see tokens in `src/styles/global.css`). System fonts. Light and dark mode follow the device.
+- **Privacy:** all tools run in the browser; only per-tool localStorage.
+
+## Top 10 tools (build order)
+From `docs/research/keyword-research-master.csv`:
+
+| # | Tool | Launch languages | Status |
+|---|---|---|---|
+| 1 | GPA / grade calculator | en, ar, es | **Built** |
+| 2 | Hijri converter | ar, en | |
+| 3 | Age calculator (Gregorian + Hijri) | ar, es, en | |
+| 4 | Numbers to words | es, fr, ar, pl, it, en | |
+| 5 | VAT calculator | ar, es, en | |
+| 6 | Passport / ID photo maker | es, ar, en | |
+| 7 | Working days | es, en | |
+| 8 | DNI / NIE letter | es | |
+| 9 | Invoice generator (ZATCA QR) | ar, en | |
+| 10 | End of service / gratuity (UAE, SA) | en, ar | |
+
+## Before launch
+- [ ] Set up the contact mailbox in `src/site.ts` (Cloudflare Email Routing).
+- [ ] Native-speaker review of Arabic and Spanish text.
+- [ ] Google Search Console for each language, submit `sitemap-index.xml`.
+- [ ] At least 5–6 tools live before applying for AdSense.
+- [ ] Before AdSense: Google-certified CMP (Privacy & messaging) for EEA/UK/CH, update Privacy page, add `ads.txt`, reserve ad slots with fixed heights (no layout shift), keep ads away from tool buttons.

@@ -1,0 +1,64 @@
+import type { Locale } from './locales';
+
+/** Site-wide interface strings. Tool-specific text lives next to each tool. */
+export const UI = {
+  en: {
+    siteName: 'thefreetools',
+    tagline: 'Free tools that work in your browser',
+    allTools: 'All tools',
+    about: 'About',
+    privacy: 'Privacy',
+    contact: 'Contact',
+    languages: 'Language',
+    skip: 'Skip to content',
+    home: 'Home',
+    privacyNote: 'Everything runs in your browser. Nothing you type is sent to our servers.',
+    updated: 'Last updated',
+    faq: 'Questions people ask',
+    related: 'Other tools',
+    homeTitle: 'Free online tools, no sign-up',
+    homeIntro:
+      'Calculators and converters for everyday paperwork. They run in your browser, so they are fast and your data stays on your device.',
+    footerNote: 'Built and maintained by a small independent team.',
+  },
+  ar: {
+    siteName: 'thefreetools',
+    tagline: 'أدوات مجانية تعمل في متصفحك',
+    allTools: 'كل الأدوات',
+    about: 'من نحن',
+    privacy: 'الخصوصية',
+    contact: 'تواصل معنا',
+    languages: 'اللغة',
+    skip: 'انتقل إلى المحتوى',
+    home: 'الرئيسية',
+    privacyNote: 'كل الحسابات تتم داخل متصفحك، ولا نرسل أي بيانات تكتبها إلى خوادمنا.',
+    updated: 'آخر تحديث',
+    faq: 'أسئلة شائعة',
+    related: 'أدوات أخرى',
+    homeTitle: 'أدوات مجانية بدون تسجيل',
+    homeIntro:
+      'حاسبات ومحولات للمعاملات اليومية. تعمل داخل المتصفح، لذلك هي سريعة وبياناتك تبقى على جهازك.',
+    footerNote: 'يطوّره ويديره فريق صغير مستقل.',
+  },
+  es: {
+    siteName: 'thefreetools',
+    tagline: 'Herramientas gratis que funcionan en tu navegador',
+    allTools: 'Todas las herramientas',
+    about: 'Quiénes somos',
+    privacy: 'Privacidad',
+    contact: 'Contacto',
+    languages: 'Idioma',
+    skip: 'Ir al contenido',
+    home: 'Inicio',
+    privacyNote: 'Todo se calcula en tu navegador. Nada de lo que escribes se envía a nuestros servidores.',
+    updated: 'Última actualización',
+    faq: 'Preguntas frecuentes',
+    related: 'Otras herramientas',
+    homeTitle: 'Herramientas online gratis, sin registro',
+    homeIntro:
+      'Calculadoras y conversores para el papeleo de todos los días. Funcionan en tu navegador: son rápidas y tus datos no salen de tu dispositivo.',
+    footerNote: 'Hecho y mantenido por un pequeño equipo independiente.',
+  },
+} satisfies Record<Locale, Record<string, string>>;
+
+export type UIStrings = (typeof UI)['en'];
