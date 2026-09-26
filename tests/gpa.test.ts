@@ -104,3 +104,14 @@ test('formatAverage rounds half up without float noise', () => {
   assert.equal(formatAverage(1.005), '1.01');
   assert.equal(formatAverage(3), '3.00');
 });
+
+test('Jordan and Kuwait 4.0 scales', () => {
+  assert.equal(gradeValue(SCALES.jo4, 'A'), 3.75);
+  assert.equal(gradeValue(SCALES.jo4, 'D'), 1.5);
+  assert.equal(gradeValue(SCALES.kw4, 'A-'), 3.67);
+  const jo = summarize(SCALES.jo4, [
+    { name: '', grade: 'A+', weight: 3 },
+    { name: '', grade: 'B', weight: 3 },
+  ]);
+  assert.equal(jo.average, 3.5);
+});
