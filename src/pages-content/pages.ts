@@ -4,6 +4,9 @@ import { SITE } from '../site';
 export type StaticPage = { slug: string; title: string; description: string; html: string };
 export type StaticPageId = 'about' | 'privacy' | 'contact';
 
+/** Bump when About/Privacy/Contact text changes (used for sitemap lastmod). */
+export const PAGES_UPDATED = '2026-09-27';
+
 const mail = `<a href="mailto:${SITE.email}">${SITE.email}</a>`;
 
 export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {

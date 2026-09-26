@@ -6,35 +6,17 @@
 import Base from '../layouts/Base.astro';
 import ToolIsland from '../components/ToolIsland.astro';
 import ToolIcon from '../components/ToolIcon.astro';
-import { LOCALES, localePath, type Locale } from '../i18n/locales';
+import { localePath } from '../i18n/locales';
 import { UI } from '../i18n/ui';
-import { TOOLS, toolsFor, type ToolEntry } from '../tools/registry';
-import { PAGES, type StaticPageId } from '../pages-content/pages';
+import { toolsFor } from '../tools/registry';
+import { PAGES } from '../pages-content/pages';
 import { SITE } from '../site';
+import { allRoutes, type RouteEntry } from '../lib/routes';
 
-type PageProps =
-  | { kind: 'home'; locale: Locale }
-  | { kind: 'tool'; locale: Locale; tool: ToolEntry }
-  | { kind: 'page'; locale: Locale; page: StaticPageId };
+type PageProps = RouteEntry;
 
 export function getStaticPaths() {
-  // getStaticPaths runs in isolation, so helpers must live inside it.
-  const strip = (p: string) => p.replace(/^\/|\/$/g, '') || undefined;
-  const paths: { params: { path: string | undefined }; props: PageProps }[] = [];
-  for (const locale of LOCALES) {
-    paths.push({ params: { path: strip(localePath(locale)) }, props: { kind: 'home', locale } });
-    for (const tool of TOOLS) {
-      const c = tool.content[locale];
-      if (c) paths.push({ params: { path: strip(localePath(locale, c.slug)) }, props: { kind: 'tool', locale, tool } });
-    }
-    for (const page of Object.keys(PAGES) as StaticPageId[]) {
-      paths.push({
-        params: { path: strip(localePath(locale, PAGES[page][locale].slug)) },
-        props: { kind: 'page', locale, page },
-      });
-    }
-  }
-  return paths;
+  return allRoutes().map((r) => ({ params: { path: r.path.replace(/^\/|\/$/g, '') || undefined }, props: r }));
 }
 
 const props = Astro.props as PageProps;
@@ -42,12 +24,9 @@ const { locale } = props;
 const t = UI[locale];
 const abs = (p: string) => new URL(p, SITE.url).href;
 
-const alternatesFor = (make: (l: Locale) => string | undefined) =>
-  Object.fromEntries(LOCALES.map((l) => [l, make(l)]).filter(([, p]) => p)) as Partial<Record<Locale, string>>;
-
 let title = '';
 let description = '';
-let alternates: Partial<Record<Locale, string>> = {};
+const alternates = props.alternates;
 let jsonLd: object[] = [];
 
 const ORG_ID = `${SITE.url}/#org`;
@@ -64,7 +43,6 @@ const organization = {
 if (props.kind === 'home') {
   title = `${t.homeTitle} · ${SITE.name}`;
   description = t.homeIntro;
-  alternates = alternatesFor((l) => localePath(l));
   jsonLd = [
     organization,
     { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE.url}/#website`, name: SITE.name, url: abs(localePath(locale)), inLanguage: locale, publisher: { '@id': ORG_ID } },
@@ -81,7 +59,6 @@ const c = tool ? tool.content[locale]! : null;
 if (tool && c) {
   title = c.metaTitle;
   description = c.metaDescription;
-  alternates = alternatesFor((l) => (tool.content[l] ? localePath(l, tool.content[l]!.slug) : undefined));
   const url = abs(localePath(locale, c.slug));
   jsonLd = [
     {
@@ -120,7 +97,6 @@ const page = props.kind === 'page' ? PAGES[props.page][locale] : null;
 if (props.kind === 'page' && page) {
   title = `${page.title} · ${SITE.name}`;
   description = page.description;
-  alternates = alternatesFor((l) => localePath(l, PAGES[props.page][l].slug));
 }
 
 const related = tool ? toolsFor(locale).filter((x) => x.tool.id !== tool.id).slice(0, 3) : [];
