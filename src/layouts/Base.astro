@@ -111,7 +111,17 @@ const arabicFontFace =
 
     <footer class="site-footer">
       <div class="wrap">
-        <span>© {year} {SITE.name} · {t.footerNote} <a href={SITE.author.url} rel="me noopener" dir="ltr">{SITE.author.name}</a></span>
+        <span>© {year} {SITE.name} · {t.footerNote} <span class="author" id="author">
+            <button type="button" class="author-name" aria-expanded="false" aria-controls="author-pop" dir="ltr">{SITE.author.name}</button>
+            <span class="author-pop" id="author-pop" role="dialog" aria-label={SITE.author.name}>
+              <strong dir="ltr">{SITE.author.name}</strong>
+              <span>{t.authorRole}</span>
+              <a class="author-li" href={SITE.author.url} rel="me noopener" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"></path></svg>
+                {t.viewLinkedIn}
+              </a>
+            </span>
+          </span></span>
         <nav aria-label={t.about}>
           <a href={localePath(locale, PAGES.about[locale].slug)}>{t.about}</a>
           <a href={localePath(locale, PAGES.privacy[locale].slug)}>{t.privacy}</a>
@@ -127,6 +137,16 @@ const arabicFontFace =
         root.dataset.theme = next;
         try { localStorage.setItem('tft:theme', next); } catch (e) {}
       });
+    </script>
+    <script is:inline>
+      (function () {
+        var box = document.getElementById('author');
+        var btn = box.querySelector('.author-name');
+        function set(open) { box.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); }
+        btn.addEventListener('click', function (e) { e.stopPropagation(); set(!box.classList.contains('is-open')); });
+        document.addEventListener('click', function (e) { if (!box.contains(e.target)) set(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+      })();
     </script>
   </body>
 </html>

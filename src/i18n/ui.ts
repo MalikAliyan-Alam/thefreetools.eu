@@ -28,6 +28,8 @@ export const UI = {
     homeIntro:
       'Calculators and converters for everyday paperwork. They run in your browser, so they are fast and your data stays on your device.',
     footerNote: 'Built by',
+    authorRole: 'AI automation engineer',
+    viewLinkedIn: 'View LinkedIn profile',
   },
   ar: {
     siteName: 'thefreetools',
@@ -55,6 +57,8 @@ export const UI = {
     homeIntro:
       'حاسبات ومحولات للمعاملات اليومية. تعمل داخل المتصفح، لذلك هي سريعة وبياناتك تبقى على جهازك.',
     footerNote: 'تطوير',
+    authorRole: 'مهندس أتمتة بالذكاء الاصطناعي',
+    viewLinkedIn: 'عرض الملف على LinkedIn',
   },
   es: {
     siteName: 'thefreetools',
@@ -82,6 +86,8 @@ export const UI = {
     homeIntro:
       'Calculadoras y conversores para el papeleo de todos los días. Funcionan en tu navegador: son rápidas y tus datos no salen de tu dispositivo.',
     footerNote: 'Hecho por',
+    authorRole: 'Ingeniero de automatización con IA',
+    viewLinkedIn: 'Ver perfil de LinkedIn',
   },
 } satisfies Record<Locale, Record<string, string>>;
 

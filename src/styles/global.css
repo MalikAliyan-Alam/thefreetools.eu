@@ -743,3 +743,83 @@ label > span {
   color: var(--muted);
   font-size: 15px;
 }
+
+/* ---------- Author card in footer ---------- */
+.author {
+  position: relative;
+  display: inline-block;
+}
+.author-name {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.author-pop {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 260px;
+  margin-bottom: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+  text-align: center;
+  z-index: 20;
+  flex-direction: column;
+  gap: 4px;
+}
+[dir='rtl'] .author-pop {
+  transform: translateX(50%);
+}
+/* Invisible bridge so the card doesn't close while the pointer moves up to it. */
+.author-pop::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  height: 10px;
+}
+.author:hover .author-pop,
+.author:focus-within .author-pop,
+.author.is-open .author-pop {
+  display: flex;
+}
+.author-pop strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+.author-pop > span {
+  font-size: 13px;
+}
+.author-li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: var(--pill);
+  background: #0a66c2;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.author-li:hover {
+  background: #004182;
+}
+.author-li svg {
+  width: 16px;
+  height: 16px;
+}
