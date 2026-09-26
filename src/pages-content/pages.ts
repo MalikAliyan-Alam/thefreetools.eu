@@ -8,6 +8,7 @@ export type StaticPageId = 'about' | 'privacy' | 'contact';
 export const PAGES_UPDATED = '2026-09-26';
 
 const mail = `<a href="mailto:${SITE.email}">${SITE.email}</a>`;
+const author = `<a href="${SITE.author.url}" rel="me noopener">${SITE.author.name}</a>`;
 
 export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
   about: {
@@ -17,6 +18,7 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'Who builds thefreetools and how we keep the calculators accurate.',
       html: `<p>thefreetools is a small, independent collection of calculators and converters for everyday paperwork: grades, dates, invoices and forms.</p>
 <p>Every tool runs in your browser. We don't ask you to sign up, and what you type stays on your device.</p>
+<p>thefreetools is built and maintained by ${author}, an AI automation engineer.</p>
 <h2>How we check the results</h2>
 <p>Each tool is built from the official rule or formula it applies, and the page explains that formula so you can check it yourself. Where rules differ between countries or institutions, the tool lets you pick or edit them.</p>
 <p>Found a mistake or a missing option? Write to ${mail}. We read every message.</p>`,
@@ -27,6 +29,7 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'من يطوّر thefreetools وكيف نتأكد من دقة الحاسبات.',
       html: `<p>thefreetools مجموعة صغيرة ومستقلة من الحاسبات والمحولات للمعاملات اليومية: الدرجات والتواريخ والفواتير والنماذج.</p>
 <p>كل أداة تعمل داخل متصفحك. لا نطلب منك التسجيل، وما تكتبه يبقى على جهازك.</p>
+<p>يطوّر الموقع ويديره <span dir="ltr">${author}</span>، مهندس أتمتة بالذكاء الاصطناعي.</p>
 <h2>كيف نتحقق من النتائج</h2>
 <p>نبني كل أداة على القاعدة أو المعادلة الرسمية التي تطبقها، ونشرح المعادلة في الصفحة لتتمكن من التحقق بنفسك. وعندما تختلف القواعد بين الدول أو الجهات، تتيح لك الأداة اختيارها أو تعديلها.</p>
 <p>وجدت خطأً أو خياراً ناقصاً؟ راسلنا على ${mail}.</p>`,
@@ -37,6 +40,7 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'Quién hace thefreetools y cómo revisamos que las calculadoras sean exactas.',
       html: `<p>thefreetools es una colección pequeña e independiente de calculadoras y conversores para el papeleo de todos los días: notas, fechas, facturas y formularios.</p>
 <p>Todas las herramientas funcionan en tu navegador. No pedimos registro y lo que escribes se queda en tu dispositivo.</p>
+<p>thefreetools lo crea y mantiene ${author}, ingeniero de automatización con IA.</p>
 <h2>Cómo revisamos los resultados</h2>
 <p>Cada herramienta se basa en la regla o fórmula oficial que aplica, y la página la explica para que puedas comprobarla. Cuando las reglas cambian según el país o la institución, puedes elegirlas o editarlas.</p>
 <p>¿Encontraste un error o falta una opción? Escríbenos a ${mail}.</p>`,
