@@ -1,0 +1,105 @@
+.age-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.age-bar-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+.age-inputs {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) 110px;
+  gap: 10px;
+}
+.age-result {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  text-align: center;
+}
+.age-result.is-empty {
+  border-style: dashed;
+}
+.age-hint {
+  margin: 0;
+  color: var(--muted);
+}
+.age-label {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.age-big {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  animation: age-pop 0.25s ease-out;
+}
+:lang(ar) .age-big {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+}
+.age-second {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+.age-second strong {
+  color: var(--ink);
+}
+.age-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.age-stats div {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.age-stats dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+.age-stats dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.age-born {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.age-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+@keyframes age-pop {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+}
+@media (min-width: 720px) {
+  .age-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .age-inputs {
+    grid-template-columns: 76px minmax(0, 1fr) 90px;
+    gap: 6px;
+  }
+}
