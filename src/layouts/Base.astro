@@ -36,6 +36,13 @@ const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Apply a saved theme before first paint so there's no flash.
+      try {
+        var t = localStorage.getItem('tft:theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
     {preloads.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -67,6 +74,10 @@ const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
         </a>
         <nav class="nav" aria-label={t.home}>
           <a class="hide-sm" href={localePath(locale)}>{t.allTools}</a>
+          <button type="button" class="theme-btn" id="theme-btn" aria-label={t.theme} title={t.theme}>
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+          </button>
           <div class="lang" role="group" aria-label={t.languages}>
             {LOCALES.map((l) => (
               <a
@@ -98,5 +109,14 @@ const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
         </nav>
       </div>
     </footer>
+    <script is:inline>
+      document.getElementById('theme-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        var next = dark ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('tft:theme', next); } catch (e) {}
+      });
+    </script>
   </body>
 </html>

@@ -28,8 +28,9 @@
   color-scheme: light dark;
 }
 
+/* Dark tokens: follow the device unless the visitor picked a theme (data-theme on <html>). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #1c1511;
     --surface: #271e18;
     --ink: #f6eadb;
@@ -46,7 +47,30 @@
     --logo-a: #f6eadb;
     --logo-b: #f07a4e;
     --logo-wrench: #9c7556;
+    color-scheme: dark;
   }
+}
+:root[data-theme='dark'] {
+  --bg: #1c1511;
+  --surface: #271e18;
+  --ink: #f6eadb;
+  --muted: #bfa893;
+  --line: #3a2d24;
+  --line-strong: #4e3d31;
+  --accent: #f07a4e;
+  --accent-hover: #f4926c;
+  --accent-text: #f07a4e;
+  --on-accent: #1c1511;
+  --bad: #ff8a80;
+  --bad-bg: #3b1f1a;
+  --ring-track: #33271f;
+  --logo-a: #f6eadb;
+  --logo-b: #f07a4e;
+  --logo-wrench: #9c7556;
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
 }
 
 /* ---------- Base ---------- */
@@ -170,6 +194,39 @@ select {
   border-radius: 5px;
   text-decoration: none;
   color: var(--muted);
+}
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-btn:hover {
+  border-color: var(--muted);
+}
+.theme-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.theme-btn .i-sun,
+:root[data-theme='dark'] .theme-btn .i-moon {
+  display: none;
+}
+:root[data-theme='dark'] .theme-btn .i-sun {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-btn .i-moon {
+    display: none;
+  }
+  :root:not([data-theme='light']) .theme-btn .i-sun {
+    display: block;
+  }
 }
 .lang a[aria-current='true'] {
   background: var(--ink);
@@ -304,9 +361,12 @@ select.input {
   background-position: left 12px center;
 }
 @media (prefers-color-scheme: dark) {
-  select.input {
+  :root:not([data-theme='light']) select.input {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23bfa893' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
   }
+}
+:root[data-theme='dark'] select.input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23bfa893' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 .btn {
   display: inline-flex;

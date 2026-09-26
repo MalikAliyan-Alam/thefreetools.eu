@@ -2,7 +2,7 @@
   // Cloudflare Workers static-assets deploy. The Worker name must match the
   // project name in the Cloudflare dashboard.
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "thefreetools",
+  "name": "thefreetools-eu",
   "compatibility_date": "2026-09-01",
   "assets": {
     "directory": "./dist",
