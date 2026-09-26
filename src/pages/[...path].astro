@@ -50,11 +50,30 @@ let description = '';
 let alternates: Partial<Record<Locale, string>> = {};
 let jsonLd: object[] = [];
 
+const ORG_ID = `${SITE.url}/#org`;
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': ORG_ID,
+  name: SITE.name,
+  url: `${SITE.url}/`,
+  logo: `${SITE.url}/logo.svg`,
+  email: SITE.email,
+};
+
 if (props.kind === 'home') {
   title = `${t.homeTitle} · ${SITE.name}`;
   description = t.homeIntro;
   alternates = alternatesFor((l) => localePath(l));
-  jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: abs(localePath(locale)), inLanguage: locale }];
+  jsonLd = [
+    organization,
+    { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE.url}/#website`, name: SITE.name, url: abs(localePath(locale)), inLanguage: locale, publisher: { '@id': ORG_ID } },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: toolsFor(locale).map(({ content: xc }, i) => ({ '@type': 'ListItem', position: i + 1, name: xc.h1, url: abs(localePath(locale, xc.slug)) })),
+    },
+  ];
 }
 
 const tool = props.kind === 'tool' ? props.tool : null;
@@ -73,9 +92,14 @@ if (tool && c) {
       description: c.metaDescription,
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
       inLanguage: locale,
+      isAccessibleForFree: true,
+      dateModified: c.updated,
+      publisher: { '@id': ORG_ID },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    organization,
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

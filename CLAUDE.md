@@ -14,6 +14,7 @@ Free, multilingual browser tools monetized only by Google AdSense. Speed, accura
 - `src/tools/registry.ts`: lists tools and which locales exist. `src/components/ToolIsland.astro` maps a tool id to its component.
 - `src/pages/[...path].astro`: generates every page (home, tools, static pages) for every locale.
 - `src/pages-content/pages.ts`: About, Privacy, Contact per locale.
+- `src/pages/llms.txt.ts`, `llms-full.txt.ts` (via `src/lib/llms.ts`): clean Markdown summaries for AI crawlers, generated from the registry. JSON-LD (Organization, WebSite, ItemList, WebApplication, BreadcrumbList, FAQPage) is built in `[...path].astro`.
 - `src/i18n/`: locales (`en` at the root, others under `/ar/`, `/es/`) and site-wide UI strings.
 - `docs/`: research and plans. `docs/research/keyword-research-master.csv` is the source of truth for which tools and keywords we target.
 
