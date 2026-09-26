@@ -1,8 +1,8 @@
 ---
 /**
- * Brand mark: a gear split navy/gold with a wrench behind it and a "tf"
- * monogram inside. Colors come from --logo-* tokens so it adapts to dark mode.
- * Standalone copy: public/logo.svg.
+ * Brand mark: a gear split ink/terracotta with a wrench behind it and a "tf"
+ * monogram inside (the letters share one crossbar). Colors come from the
+ * --logo-* tokens so it follows dark mode. Standalone copy: public/logo.svg.
  */
 ---
 <svg viewBox="-2 -2 68 68" aria-hidden="true" class="logo-mark">
@@ -32,11 +32,10 @@
     <circle cx="1" cy="32" r="7.2"></circle>
   </g>
   <circle cx="32" cy="32" r="17" fill="var(--bg)"></circle>
-  <use href="#logo-gear" clip-path="url(#logo-l)" fill="var(--logo-navy)" stroke="var(--logo-navy)"></use>
-  <use href="#logo-gear" clip-path="url(#logo-r)" fill="var(--logo-gold)" stroke="var(--logo-gold)"></use>
-  <g fill="none" stroke-width="4.4" stroke-linecap="butt" stroke-linejoin="round">
-    <path d="M27 21.5v15.2c0 2.6 1.3 3.8 3.8 3.8" stroke="var(--logo-gold)"></path>
-    <path d="M36.5 42.5V28c0-3.4 1.8-5.2 5.2-5.2" stroke="var(--logo-navy)"></path>
-    <path d="M22.5 27.5h19" stroke="var(--logo-navy)"></path>
-  </g>
+  <use href="#logo-gear" clip-path="url(#logo-l)" fill="var(--logo-a)" stroke="var(--logo-a)"></use>
+  <use href="#logo-gear" clip-path="url(#logo-r)" fill="var(--logo-b)" stroke="var(--logo-b)"></use>
+  <path d="M24.6 23.2l4.2-1.9v15.2c0 1.9.9 2.9 2.8 2.9h1.2v3.8h-1.7c-4.1 0-6.5-2.3-6.5-6.4z" fill="var(--logo-b)"></path>
+  <path d="M34.6 43.2V27.4c0-5.1 2.9-7.9 7.6-7.9v3.8c-2.3 0-3.7 1.4-3.7 4.1v15.8z" fill="var(--logo-a)"></path>
+  <circle cx="42.7" cy="21.9" r="2.3" fill="var(--logo-a)"></circle>
+  <rect x="21.2" y="27.4" width="21.2" height="3.8" rx="0.6" fill="var(--logo-a)"></rect>
 </svg>

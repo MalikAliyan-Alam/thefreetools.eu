@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 68 68">
   <defs>
-    <clipPath id="left"><rect x="0" y="0" width="32" height="64"/></clipPath>
-    <clipPath id="right"><rect x="32" y="0" width="32" height="64"/></clipPath>
+    <clipPath id="left"><rect x="-2" y="-2" width="34" height="68"/></clipPath>
+    <clipPath id="right"><rect x="32" y="-2" width="34" height="68"/></clipPath>
     <mask id="jaws">
       <rect x="-10" y="-10" width="84" height="84" fill="#fff"/>
       <rect x="61" y="29.4" width="12" height="5.2" fill="#000"/>
@@ -9,37 +9,32 @@
     </mask>
     <g id="gear">
       <circle cx="32" cy="32" r="20" fill="none" stroke-width="6.5"/>
-      <g>
-        <rect x="28.5" y="5" width="7" height="8" rx="1"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(45 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(90 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(135 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(180 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(225 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(270 32 32)"/>
-        <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(315 32 32)"/>
-      </g>
+      <rect x="28.5" y="5" width="7" height="8" rx="1"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(45 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(90 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(135 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(180 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(225 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(270 32 32)"/>
+      <rect x="28.5" y="5" width="7" height="8" rx="1" transform="rotate(315 32 32)"/>
     </g>
   </defs>
 
-  <!-- wrench, running behind the gear -->
-  <g transform="rotate(-45 32 32)" fill="#2F6DB5" mask="url(#jaws)">
+  <g transform="rotate(-45 32 32)" fill="#D9A273" mask="url(#jaws)">
     <rect x="2" y="29" width="60" height="6" rx="1.5"/>
     <circle cx="63" cy="32" r="7.2"/>
     <circle cx="1" cy="32" r="7.2"/>
   </g>
 
-  <!-- clear the centre so the bar doesn't show through -->
-  <circle cx="32" cy="32" r="17" fill="var(--logo-bg, #ffffff)"/>
+  <circle cx="32" cy="32" r="17" fill="#FAEEDD"/>
+  <use href="#gear" clip-path="url(#left)" fill="#2B1D14" stroke="#2B1D14"/>
+  <use href="#gear" clip-path="url(#right)" fill="#C8471F" stroke="#C8471F"/>
 
-  <!-- gear: navy on the left, gold on the right -->
-  <use href="#gear" clip-path="url(#left)" fill="#173F78" stroke="#173F78"/>
-  <use href="#gear" clip-path="url(#right)" fill="#C9A24A" stroke="#C9A24A"/>
-
-  <!-- tf monogram -->
-  <g fill="none" stroke-width="4.4" stroke-linecap="butt" stroke-linejoin="round">
-    <path d="M27 21.5v15.2c0 2.6 1.3 3.8 3.8 3.8" stroke="#C9A24A"/>
-    <path d="M36.5 42.5V28c0-3.4 1.8-5.2 5.2-5.2" stroke="#173F78"/>
-    <path d="M22.5 27.5h19" stroke="#173F78"/>
-  </g>
+  <!-- t: slanted top cut, curls out at the foot -->
+  <path d="M24.6 23.2l4.2-1.9v15.2c0 1.9.9 2.9 2.8 2.9h1.2v3.8h-1.7c-4.1 0-6.5-2.3-6.5-6.4z" fill="#C8471F"/>
+  <!-- f: full-height stem, generous hook ending in a ball terminal -->
+  <path d="M34.6 43.2V27.4c0-5.1 2.9-7.9 7.6-7.9v3.8c-2.3 0-3.7 1.4-3.7 4.1v15.8z" fill="#2B1D14"/>
+  <circle cx="42.7" cy="21.9" r="2.3" fill="#2B1D14"/>
+  <!-- shared crossbar -->
+  <rect x="21.2" y="27.4" width="21.2" height="3.8" rx="0.6" fill="#2B1D14"/>
 </svg>

@@ -13,10 +13,9 @@
   --bad: #b3261e;
   --bad-bg: #fbe3dc;
   --ring-track: #efdfc9;
-  --logo-navy: #173f78;
-  --logo-gold: #c9a24a;
-  --logo-wrench: #2f6db5;
-  --logo-free: #2f6db5;
+  --logo-a: #2b1d14;
+  --logo-b: #c8471f;
+  --logo-wrench: #d9a273;
 
   --font: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-display: 'Bricolage Grotesque Variable', 'Instrument Sans Variable', system-ui, sans-serif;
@@ -44,10 +43,9 @@
     --bad: #ff8a80;
     --bad-bg: #3b1f1a;
     --ring-track: #33271f;
-    --logo-navy: #8fb4ea;
-    --logo-gold: #d9b560;
-    --logo-wrench: #5b95d6;
-    --logo-free: #8fb4ea;
+    --logo-a: #f6eadb;
+    --logo-b: #f07a4e;
+    --logo-wrench: #9c7556;
   }
 }
 
@@ -140,7 +138,7 @@ select {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.035em;
-  color: var(--logo-navy);
+  color: var(--ink);
 }
 .wordmark .w-the {
   font-weight: 400;
@@ -225,7 +223,7 @@ select {
 }
 .wordmark b {
   font-weight: inherit;
-  color: var(--logo-free);
+  color: var(--accent-text);
 }
 .hero h1 {
   font-size: clamp(34px, 6vw, 58px);
