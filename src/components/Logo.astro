@@ -1,16 +1,11 @@
 ---
-/** Brand mark: a ruler laid across a tile — measuring, calculating, getting paperwork right. */
+/**
+ * Brand mark: an "ft" ligature — the f and the t share one crossbar,
+ * drawn in the accent color. Strokes use currentColor so it follows the theme.
+ */
 ---
-<svg viewBox="0 0 32 32" aria-hidden="true" class="logo-mark">
-  <rect width="32" height="32" rx="7" fill="var(--accent)"></rect>
-  <g transform="rotate(-45 16 16)">
-    <rect x="3.5" y="12" width="25" height="8" rx="1.2" fill="var(--bg)"></rect>
-    <g fill="var(--accent)">
-      <rect x="7" y="12" width="1.4" height="4.2"></rect>
-      <rect x="11" y="12" width="1.4" height="2.6"></rect>
-      <rect x="15" y="12" width="1.4" height="4.2"></rect>
-      <rect x="19" y="12" width="1.4" height="2.6"></rect>
-      <rect x="23" y="12" width="1.4" height="4.2"></rect>
-    </g>
-  </g>
+<svg viewBox="0 0 32 32" aria-hidden="true" class="logo-mark" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10.5 27.5V11.5c0-4 2.3-6.2 6.2-6.2" stroke="currentColor" stroke-width="3.4"></path>
+  <path d="M21 7.5v15c0 3.2 1.6 4.8 4.8 4.8" stroke="currentColor" stroke-width="3.4"></path>
+  <path d="M5.5 14.5h21" stroke="var(--accent)" stroke-width="3.4"></path>
 </svg>
