@@ -27,3 +27,7 @@ test('totals and next birthday', () => {
   assert.deepEqual(nextBirthday({ y: 1990, m: 9, d: 26 }, { y: 2026, m: 9, d: 26 }), { date: { y: 2026, m: 9, d: 26 }, inDays: 0 });
   assert.deepEqual(nextBirthday({ y: 2000, m: 2, d: 29 }, { y: 2026, m: 3, d: 2 }), { date: { y: 2027, m: 3, d: 1 }, inDays: 364 });
 });
+
+test('guide example: born 10 June 2000, on 5 September 2026', () => {
+  assert.deepEqual(gregorianAge({ y: 2000, m: 6, d: 10 }, { y: 2026, m: 9, d: 5 }), { years: 26, months: 2, days: 26 });
+});

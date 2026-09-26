@@ -10,14 +10,15 @@ import promedioChileEs from './gpa/es-chile';
 import notaNecesariaEs from './gpa/es-nota-necesaria';
 import { hijri1448En, hijri1448Ar } from './hijri/calendar-1448';
 import { ummAlQuraEn, ummAlQuraAr } from './hijri/ummalqura-vs-sighting';
+import { ageManualEn, ageHijriEn, ageHijriAr, ageExcelEn, ageExcelEs } from './age/guides';
 
 /** Folder name for guides in each language (the phrase readers recognise). */
 export const GUIDES_DIR: Record<Locale, string> = { en: 'guides', ar: 'guides', es: 'guias' };
 
 export const GUIDES: Record<Locale, GuideContent[]> = {
-  en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn],
-  ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr],
-  es: [promedioChileEs, notaNecesariaEs],
+  en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn, ageManualEn, ageHijriEn, ageExcelEn],
+  ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr, ageHijriAr],
+  es: [promedioChileEs, notaNecesariaEs, ageExcelEs],
 };
 
 export const guidesHubPath = (locale: Locale) => localePath(locale, GUIDES_DIR[locale]);
