@@ -13,7 +13,7 @@ export const ummAlQuraEn: GuideContent = {
   slug: 'umm-al-qura-vs-moon-sighting',
   metaTitle: 'Umm al-Qura vs Moon Sighting: Why Hijri Dates Differ',
   metaDescription:
-    'Why Hijri converters and countries sometimes disagree by a day: the Umm al-Qura calendar, moon sighting and the arithmetic (civil) calendar explained with an example.',
+    'Why Hijri dates can differ by a day: the Umm al-Qura calendar, moon sighting and the arithmetic (civil) calendar explained with a real example.',
   h1: 'Umm al-Qura vs moon sighting: why Hijri dates differ',
   answer:
     'Umm al-Qura is a calculated calendar used for official dates in Saudi Arabia; religious dates like Ramadan and Eid are confirmed by sighting the new crescent; and the arithmetic (civil) calendar follows a fixed cycle. They usually agree, but can differ by a day or two.',

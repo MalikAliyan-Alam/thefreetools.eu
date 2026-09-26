@@ -5,7 +5,7 @@ const content: ToolContent<HijriLabels> = {
   slug: 'hijri-converter',
   metaTitle: 'Hijri Date Converter: Hijri to Gregorian and Back (Umm al-Qura)',
   metaDescription:
-    'Convert Hijri dates to Gregorian and Gregorian to Hijri with the official Saudi Umm al-Qura calendar. See today’s Hijri date, the weekday and month length. Free.',
+    'Convert Hijri to Gregorian and back with the official Saudi Umm al-Qura calendar. See today’s Hijri date, the weekday and month length. Free.',
   eyebrow: 'Dates',
   h1: 'Hijri date converter',
   intro:

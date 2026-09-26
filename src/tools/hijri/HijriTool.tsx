@@ -137,7 +137,11 @@ export default function HijriTool({ labels: t, locale }: { labels: HijriLabels; 
             </span>
           </>
         ) : (
-          <strong>&nbsp;</strong>
+          <>
+            {/* Same two lines as the filled state so nothing shifts after hydration. */}
+            <strong>&nbsp;</strong>
+            <span>&nbsp;</span>
+          </>
         )}
       </div>
 
