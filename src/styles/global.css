@@ -347,7 +347,7 @@ select {
 }
 .input[aria-invalid='true'] {
   border-color: var(--bad);
-  background: var(--bad-bg);
+  background-color: var(--bad-bg); /* keep the select chevron image intact */
 }
 select.input {
   appearance: none;

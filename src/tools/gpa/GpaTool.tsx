@@ -263,7 +263,7 @@ export default function GpaTool({ labels: t, locale }: { labels: GpaLabels; loca
                     class="input"
                     inputMode="decimal"
                     value={c.weight || ''}
-                    placeholder="3"
+                    placeholder="–"
                     aria-label={`${t.weight} ${i + 1}`}
                     aria-invalid={bad}
                     onInput={(e) => updateCourse(i, { weight: parseNumber(e.currentTarget.value) ?? 0 })}
