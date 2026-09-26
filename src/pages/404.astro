@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { localePath } from '../i18n/locales';
+import { toolsFor } from '../tools/registry';
+---
+<Base locale="en" title="Page not found · thefreetools" description="This page doesn't exist. Try one of our free tools." alternates={{}} noindex>
+  <section class="hero">
+    <p class="eyebrow">/ 404</p>
+    <h1>Page not found</h1>
+    <p>The link may be old or mistyped. Here are the tools that are live right now.</p>
+  </section>
+  <div class="tool-grid">
+    {toolsFor('en').map(({ content }) => (
+      <a class="tool-tile" href={localePath('en', content.slug)}>
+        <strong>{content.h1}</strong>
+      </a>
+    ))}
+  </div>
+</Base>

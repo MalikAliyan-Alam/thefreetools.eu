@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://thefreetools.eu',
   trailingSlash: 'always',
-  integrations: [preact(), sitemap()],
+  integrations: [preact(), sitemap({ filter: (page) => !page.includes('/404') })],
   build: {
     // Inline CSS (~4 KB gzip) so the first paint needs no extra request.
     inlineStylesheets: 'always',

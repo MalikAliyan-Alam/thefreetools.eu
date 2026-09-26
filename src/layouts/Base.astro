@@ -19,9 +19,10 @@ type Props = {
   /** Path of this page in every locale it exists in (used for hreflang and the switcher). */
   alternates: Partial<Record<Locale, string>>;
   jsonLd?: object[];
+  noindex?: boolean;
 };
 
-const { locale, title, description, alternates, jsonLd = [] } = Astro.props;
+const { locale, title, description, alternates, jsonLd = [], noindex = false } = Astro.props;
 const t = UI[locale];
 const meta = LOCALE_META[locale];
 const canonical = new URL(alternates[locale] ?? Astro.url.pathname, SITE.url).href;
@@ -38,6 +39,7 @@ const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
     {preloads.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     {LOCALES.filter((l) => alternates[l]).map((l) => (
       <link rel="alternate" hreflang={l} href={new URL(alternates[l]!, SITE.url).href} />
