@@ -30,11 +30,11 @@
   <use href="#gear" clip-path="url(#left)" fill="#2B1D14" stroke="#2B1D14"/>
   <use href="#gear" clip-path="url(#right)" fill="#C8471F" stroke="#C8471F"/>
 
-  <!-- t: slanted top cut, curls out at the foot -->
-  <path d="M24.6 23.2l4.2-1.9v15.2c0 1.9.9 2.9 2.8 2.9h1.2v3.8h-1.7c-4.1 0-6.5-2.3-6.5-6.4z" fill="#C8471F"/>
-  <!-- f: full-height stem, generous hook ending in a ball terminal -->
-  <path d="M34.6 43.2V27.4c0-5.1 2.9-7.9 7.6-7.9v3.8c-2.3 0-3.7 1.4-3.7 4.1v15.8z" fill="#2B1D14"/>
-  <circle cx="42.7" cy="21.9" r="2.3" fill="#2B1D14"/>
-  <!-- shared crossbar -->
-  <rect x="21.2" y="27.4" width="21.2" height="3.8" rx="0.6" fill="#2B1D14"/>
+  <!-- ft monogram: f and t share one crossbar -->
+  <g transform="translate(-1.3 0)">
+    <path d="M24.4 43.2V27.4c0-5.1 2.9-7.9 7.6-7.9v3.8c-2.3 0-3.7 1.4-3.7 4.1v15.8z" fill="#2B1D14"/>
+    <circle cx="32.3" cy="21.9" r="2.3" fill="#2B1D14"/>
+    <path d="M36.6 23.2l4.2-1.9v15.2c0 1.9.9 2.9 2.8 2.9h1.2v3.8h-1.7c-4.1 0-6.5-2.3-6.5-6.4z" fill="#C8471F"/>
+    <rect x="20.8" y="27.4" width="24.2" height="3.8" rx="0.6" fill="#2B1D14"/>
+  </g>
 </svg>
