@@ -111,7 +111,7 @@ const arabicFontFace =
 
     <footer class="site-footer">
       <div class="wrap">
-        <span>© {year} {SITE.name} · {t.footerNote}</span>
+        <span>© {year} {SITE.name} · {t.footerNote} <a href={SITE.author.url} rel="me noopener" dir="ltr">{SITE.author.name}</a></span>
         <nav aria-label={t.about}>
           <a href={localePath(locale, PAGES.about[locale].slug)}>{t.about}</a>
           <a href={localePath(locale, PAGES.privacy[locale].slug)}>{t.privacy}</a>

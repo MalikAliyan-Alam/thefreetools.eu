@@ -27,7 +27,7 @@ export const UI = {
     homeTitle: 'Free online tools, no sign-up',
     homeIntro:
       'Calculators and converters for everyday paperwork. They run in your browser, so they are fast and your data stays on your device.',
-    footerNote: 'Built and maintained by a small independent team.',
+    footerNote: 'Built by',
   },
   ar: {
     siteName: 'thefreetools',
@@ -54,7 +54,7 @@ export const UI = {
     homeTitle: 'أدوات مجانية بدون تسجيل',
     homeIntro:
       'حاسبات ومحولات للمعاملات اليومية. تعمل داخل المتصفح، لذلك هي سريعة وبياناتك تبقى على جهازك.',
-    footerNote: 'يطوّره ويديره فريق صغير مستقل.',
+    footerNote: 'تطوير',
   },
   es: {
     siteName: 'thefreetools',
@@ -81,7 +81,7 @@ export const UI = {
     homeTitle: 'Herramientas online gratis, sin registro',
     homeIntro:
       'Calculadoras y conversores para el papeleo de todos los días. Funcionan en tu navegador: son rápidas y tus datos no salen de tu dispositivo.',
-    footerNote: 'Hecho y mantenido por un pequeño equipo independiente.',
+    footerNote: 'Hecho por',
   },
 } satisfies Record<Locale, Record<string, string>>;
 
