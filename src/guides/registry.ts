@@ -8,13 +8,15 @@ import gpaSaudiAr from './gpa/ar-saudi-5';
 import gpaTargetAr from './gpa/ar-target';
 import promedioChileEs from './gpa/es-chile';
 import notaNecesariaEs from './gpa/es-nota-necesaria';
+import { hijri1448En, hijri1448Ar } from './hijri/calendar-1448';
+import { ummAlQuraEn, ummAlQuraAr } from './hijri/ummalqura-vs-sighting';
 
 /** Folder name for guides in each language (the phrase readers recognise). */
 export const GUIDES_DIR: Record<Locale, string> = { en: 'guides', ar: 'guides', es: 'guias' };
 
 export const GUIDES: Record<Locale, GuideContent[]> = {
-  en: [gpaCumulativeEn, gpaTargetEn],
-  ar: [gpaSaudiAr, gpaTargetAr],
+  en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn],
+  ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr],
   es: [promedioChileEs, notaNecesariaEs],
 };
 
