@@ -24,7 +24,9 @@ See `docs/adding-a-tool.md`. Short version: engine + tests, component, one conte
 - Per-language slugs use the phrase people actually search (e.g. `calcular-promedio`), not a translation of the English slug.
 - Only list a locale in the registry when its content is written and reviewed; hreflang is generated from it.
 - Content must be specific and checkable: explain the formula, show a worked example with correct numbers, link or name the official rule. No filler, no emoji, no "unlock/seamless/powerful".
-- Keep JS small: no UI libraries, no icon fonts, no web fonts except a subset Arabic font if ever needed. System fonts only.
+- Keep JS small: no UI libraries, no icon fonts.
+- Fonts are self-hosted via Fontsource (no Google Fonts requests): Bricolage Grotesque for headings, Instrument Sans for body, Readex Pro for Arabic pages. Base.astro preloads only the files the first screen needs. Don't add more families.
+- Corners stay tight (6–12px, no pill shapes); rounded-everything looks template-made.
 - Every color comes from the tokens in `src/styles/global.css`; check contrast (4.5:1 for text) when adding one.
 - Mobile first: 16px inputs, 44px touch targets, test at 375px wide and in RTL.
 - Arabic pages show Latin digits (`ar-u-nu-latn`); Spanish shows a decimal comma.

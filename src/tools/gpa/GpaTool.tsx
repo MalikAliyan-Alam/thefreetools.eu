@@ -213,11 +213,11 @@ export default function GpaTool({ labels: t, locale }: { labels: GpaLabels; loca
 
       <div class="gpa-grid">
         <div class="gpa-main">
-          <div class="rows" role="table" aria-label={t.course}>
-            <div class="row row-head" role="row">
-              <span role="columnheader">{t.course}</span>
-              <span role="columnheader">{t.grade}</span>
-              <span role="columnheader" title={t.weightHint}>
+          <div class="rows">
+            <div class="row row-head">
+              <span>{t.course}</span>
+              <span>{t.grade}</span>
+              <span title={t.weightHint}>
                 {t.weight}
               </span>
               <span />
@@ -225,7 +225,7 @@ export default function GpaTool({ labels: t, locale }: { labels: GpaLabels; loca
             {state.courses.map((c, i) => {
               const bad = term.invalid.includes(i);
               return (
-                <div class={`row${bad ? ' is-bad' : ''}`} role="row" key={i}>
+                <div class={`row${bad ? ' is-bad' : ''}`} key={i}>
                   <input
                     class="input"
                     value={c.name}

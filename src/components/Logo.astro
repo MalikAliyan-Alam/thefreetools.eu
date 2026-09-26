@@ -1,10 +1,16 @@
 ---
-/** Brand mark: three tool "sliders" in a rounded tile. Works at favicon size. */
+/** Brand mark: a ruler laid across a tile — measuring, calculating, getting paperwork right. */
 ---
-<svg viewBox="0 0 32 32" aria-hidden="true">
-  <rect width="32" height="32" rx="9" fill="var(--accent)"></rect>
-  <rect x="7" y="8.5" width="18" height="3" rx="1.5" fill="var(--bg)"></rect>
-  <rect x="7" y="14.5" width="12" height="3" rx="1.5" fill="var(--bg)"></rect>
-  <rect x="7" y="20.5" width="15" height="3" rx="1.5" fill="var(--bg)"></rect>
-  <circle cx="21.5" cy="16" r="3.2" fill="var(--bg)"></circle>
+<svg viewBox="0 0 32 32" aria-hidden="true" class="logo-mark">
+  <rect width="32" height="32" rx="7" fill="var(--accent)"></rect>
+  <g transform="rotate(-45 16 16)">
+    <rect x="3.5" y="12" width="25" height="8" rx="1.2" fill="var(--bg)"></rect>
+    <g fill="var(--accent)">
+      <rect x="7" y="12" width="1.4" height="4.2"></rect>
+      <rect x="11" y="12" width="1.4" height="2.6"></rect>
+      <rect x="15" y="12" width="1.4" height="4.2"></rect>
+      <rect x="19" y="12" width="1.4" height="2.6"></rect>
+      <rect x="23" y="12" width="1.4" height="4.2"></rect>
+    </g>
+  </g>
 </svg>

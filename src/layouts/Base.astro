@@ -1,5 +1,11 @@
 ---
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource-variable/instrument-sans/wght.css';
+import '@fontsource-variable/readex-pro/wght.css';
 import '../styles/global.css';
+import headingFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import bodyFont from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
+import arabicFont from '@fontsource-variable/readex-pro/files/readex-pro-arabic-wght-normal.woff2?url';
 import Logo from '../components/Logo.astro';
 import { LOCALES, LOCALE_META, DEFAULT_LOCALE, localePath, type Locale } from '../i18n/locales';
 import { UI } from '../i18n/ui';
@@ -21,12 +27,15 @@ const meta = LOCALE_META[locale];
 const canonical = new URL(alternates[locale] ?? Astro.url.pathname, SITE.url).href;
 const xDefault = alternates[DEFAULT_LOCALE] ?? alternates[locale];
 const year = new Date().getFullYear();
+// Preload only the font files the first screen needs in this language.
+const preloads = meta.dir === 'rtl' ? [arabicFont] : [headingFont, bodyFont];
 ---
 <!doctype html>
 <html lang={locale} dir={meta.dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {preloads.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -52,7 +61,7 @@ const year = new Date().getFullYear();
       <div class="wrap">
         <a class="brand" href={localePath(locale)}>
           <Logo />
-          <span>{t.siteName}</span>
+          <span class="wordmark" dir="ltr">the<b>free</b>tools</span>
         </a>
         <nav class="nav" aria-label={t.home}>
           <a class="hide-sm" href={localePath(locale)}>{t.allTools}</a>

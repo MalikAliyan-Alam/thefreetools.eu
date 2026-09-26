@@ -8,8 +8,8 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [preact(), sitemap()],
   build: {
-    // Inline small stylesheets so the first paint needs no extra request.
-    inlineStylesheets: 'auto',
+    // Inline CSS (~4 KB gzip) so the first paint needs no extra request.
+    inlineStylesheets: 'always',
   },
   prefetch: {
     prefetchAll: false,

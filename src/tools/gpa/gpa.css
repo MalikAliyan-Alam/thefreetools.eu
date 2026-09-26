@@ -25,7 +25,6 @@
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) 88px 36px;
   gap: 8px;
   align-items: center;
-  border-radius: 12px;
 }
 .row-head {
   font-size: 13px;
@@ -37,7 +36,7 @@
   width: 100%;
   min-height: 44px;
   border: 1px dashed var(--line-strong);
-  border-radius: 10px;
+  border-radius: 6px;
   background: transparent;
   color: var(--accent-text);
   cursor: pointer;
@@ -58,7 +57,7 @@
   top: 16px;
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 18px;
   text-align: center;
 }
@@ -91,8 +90,9 @@
   line-height: 1.1;
 }
 .ring-value {
+  font-family: var(--font-display);
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
@@ -146,7 +146,7 @@
 .target-out {
   margin: 12px 0 0;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--surface);
   font-size: 15px;
 }
@@ -164,7 +164,7 @@
     z-index: 5;
     min-height: 48px;
     border: 0;
-    border-radius: var(--pill);
+    border-radius: 10px;
     background: var(--ink);
     color: var(--bg);
     font-size: 15px;
@@ -202,4 +202,9 @@
   .row-head {
     display: none;
   }
+}
+
+:lang(ar) .ring-value {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
 }
