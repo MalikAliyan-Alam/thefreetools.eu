@@ -59,7 +59,7 @@ const content: ToolContent<HijriLabels> = {
   faq: [
     {
       q: 'Why does my converter show a different day?',
-      a: 'Converters use different methods. Umm al-Qura (used here and by Saudi government services) and the arithmetic calendar can differ by a day or two, and dates set by moon sighting can differ from both.',
+      a: 'Converters use different methods. Umm al-Qura (used here and by Saudi government services) and the arithmetic calendar can differ by a day or two, and dates set by moon sighting can differ from both. For years before about 1420 AH (2000) or far in the future, converters also use different Umm al-Qura tables, so a one-day difference is normal.',
     },
     {
       q: 'How many days are in a Hijri month?',
