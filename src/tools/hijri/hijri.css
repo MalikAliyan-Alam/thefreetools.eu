@@ -1,0 +1,109 @@
+.hijri-today {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--bg);
+}
+.hijri-today-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+:lang(ar) .hijri-today-label {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.hijri-today strong {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+:lang(ar) .hijri-today strong {
+  font-family: var(--font-ar);
+}
+.hijri-today span:last-child {
+  font-size: 14px;
+  opacity: 0.85;
+}
+.hijri-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.hijri-inputs {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) 110px;
+  gap: 10px;
+}
+.hijri-result {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  text-align: center;
+}
+.hijri-result.is-bad {
+  border-color: var(--bad);
+  background: var(--bad-bg);
+}
+.hijri-big {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  animation: hijri-pop 0.25s ease-out;
+}
+:lang(ar) .hijri-big {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+}
+.hijri-sub {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+.hijri-info {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--accent-text);
+}
+.hijri-error {
+  margin: 0;
+  color: var(--bad);
+  font-weight: 600;
+}
+.hijri-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.hijri-note {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+@keyframes hijri-pop {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+}
+@media (max-width: 520px) {
+  .hijri-inputs {
+    grid-template-columns: 76px minmax(0, 1fr) 90px;
+    gap: 6px;
+  }
+}
+.hijri-sub span[dir="ltr"] {
+  white-space: nowrap;
+}
