@@ -7,6 +7,7 @@ import GpaTool from '../tools/gpa/GpaTool';
 import HijriTool from '../tools/hijri/HijriTool';
 import AgeTool from '../tools/age/AgeTool';
 import WordsTool from '../tools/words/WordsTool';
+import VatTool from '../tools/vat/VatTool';
 import type { ToolId } from '../tools/registry';
 
 type Props = { id: ToolId; labels: any; locale: string };
@@ -16,3 +17,4 @@ const { id, labels, locale } = Astro.props;
 {id === 'hijri' && <HijriTool client:load labels={labels} locale={locale as 'en' | 'ar'} />}
 {(id === 'age' || id === 'hijri-age') && <AgeTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}
 {id === 'words' && <WordsTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}
+{id === 'vat' && <VatTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}

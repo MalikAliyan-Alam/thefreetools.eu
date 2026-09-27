@@ -13,13 +13,16 @@ import ageEs from './age/content/es';
 import wordsEn from './words/content/en';
 import wordsAr from './words/content/ar';
 import wordsEs from './words/content/es';
+import vatEn from './vat/content/en';
+import vatAr from './vat/content/ar';
+import vatEs from './vat/content/es';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat';
 
 export type ToolEntry = {
   id: ToolId;
   /** Tabler-style inline icon name, see components/ToolIcon.astro. */
-  icon: 'school' | 'moon' | 'cake' | 'letters';
+  icon: 'school' | 'moon' | 'cake' | 'letters' | 'receipt';
   /** Only the locales listed here get a page (and a hreflang entry). */
   content: Partial<Record<Locale, ToolContent<any>>>;
 };
@@ -50,6 +53,11 @@ export const TOOLS: ToolEntry[] = [
     id: 'words',
     icon: 'letters',
     content: { en: wordsEn, ar: wordsAr, es: wordsEs },
+  },
+  {
+    id: 'vat',
+    icon: 'receipt',
+    content: { en: vatEn, ar: vatAr, es: vatEs },
   },
 ];
 
