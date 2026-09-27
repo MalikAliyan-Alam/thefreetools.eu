@@ -46,3 +46,11 @@ test('ES guides (1 to 7)', () => {
   assert.equal(formatAverage((5.0 - done) / 0.3), '6.33');
   assert.equal(formatAverage((6.5 - done) / 0.3, 1), '11.3');
 });
+
+test('numbers-to-words cheque guides: hand-written answers match the engine', async () => {
+  const { parseAmount, toWords } = await import('../src/tools/words/engine.ts');
+  const a = parseAmount('1250.75') as { negative: boolean; int: string; frac: string };
+  assert.equal(toWords('en', a, { currency: 'USD', cheque: true }), 'One thousand two hundred fifty and 75/100 dollars');
+  assert.equal(toWords('es', a, { currency: 'MXN', letterCase: 'lower' }), 'mil doscientos cincuenta pesos 75/100 M.N.');
+  assert.equal(toWords('ar', a, { currency: 'SAR', only: true }), 'فقط ألف ومائتان وخمسون ريالاً سعودياً وخمس وسبعون هللة لا غير');
+});

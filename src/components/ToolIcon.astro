@@ -17,4 +17,10 @@ const { name } = Astro.props;
     </>
   )}
   {name === 'moon' && <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path>}
+  {name === 'letters' && (
+    <>
+      <path d="M3 18 7 6l4 12M4.3 14h5.4"></path>
+      <path d="M14 6h4a3 3 0 0 1 0 6h-4zM14 12h4.5a3 3 0 0 1 0 6H14z"></path>
+    </>
+  )}
 </svg>

@@ -10,13 +10,16 @@ import ageEn from './age/content/en';
 import ageAr from './age/content/ar';
 import ageArHijri from './age/content/ar-hijri';
 import ageEs from './age/content/es';
+import wordsEn from './words/content/en';
+import wordsAr from './words/content/ar';
+import wordsEs from './words/content/es';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words';
 
 export type ToolEntry = {
   id: ToolId;
   /** Tabler-style inline icon name, see components/ToolIcon.astro. */
-  icon: 'school' | 'moon' | 'cake';
+  icon: 'school' | 'moon' | 'cake' | 'letters';
   /** Only the locales listed here get a page (and a hreflang entry). */
   content: Partial<Record<Locale, ToolContent<any>>>;
 };
@@ -42,6 +45,11 @@ export const TOOLS: ToolEntry[] = [
     id: 'hijri-age',
     icon: 'moon',
     content: { ar: ageArHijri },
+  },
+  {
+    id: 'words',
+    icon: 'letters',
+    content: { en: wordsEn, ar: wordsAr, es: wordsEs },
   },
 ];
 
