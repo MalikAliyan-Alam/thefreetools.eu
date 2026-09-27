@@ -5,9 +5,10 @@ export type StaticPage = { slug: string; title: string; description: string; htm
 export type StaticPageId = 'about' | 'privacy' | 'contact';
 
 /** Bump when About/Privacy/Contact text changes (used for sitemap lastmod). */
-export const PAGES_UPDATED = '2026-09-26';
+export const PAGES_UPDATED = '2026-09-27';
 
 const mail = `<a href="mailto:${SITE.email}">${SITE.email}</a>`;
+const suggest = `<a href="mailto:${SITE.suggestEmail}">${SITE.suggestEmail}</a>`;
 const author = `<a href="${SITE.author.url}" rel="me noopener">${SITE.author.name}</a>`;
 
 export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
@@ -92,19 +93,22 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       slug: 'contact',
       title: 'Contact',
       description: 'Get in touch with the thefreetools team.',
-      html: `<p>Questions, a wrong result, or a tool you'd like us to build: email ${mail}. We usually reply within a few days.</p>`,
+      html: `<p>Questions or a wrong result: email ${mail}. We usually reply within a few days.</p>
+<p>A tool you'd like us to build: ${suggest}.</p>`,
     },
     ar: {
       slug: 'contact',
       title: 'تواصل معنا',
       description: 'تواصل مع فريق thefreetools.',
-      html: `<p>لديك سؤال، أو وجدت نتيجة خاطئة، أو تريد أداة جديدة؟ راسلنا على ${mail}، ونرد عادة خلال أيام قليلة.</p>`,
+      html: `<p>لديك سؤال أو وجدت نتيجة خاطئة؟ راسلنا على ${mail}، ونرد عادة خلال أيام قليلة.</p>
+<p>تريد أداة جديدة؟ اقترحها على ${suggest}.</p>`,
     },
     es: {
       slug: 'contacto',
       title: 'Contacto',
       description: 'Escribe al equipo de thefreetools.',
-      html: `<p>¿Tienes una pregunta, encontraste un resultado incorrecto o quieres que hagamos una herramienta? Escríbenos a ${mail}. Solemos responder en pocos días.</p>`,
+      html: `<p>¿Tienes una pregunta o encontraste un resultado incorrecto? Escríbenos a ${mail}. Solemos responder en pocos días.</p>
+<p>¿Quieres que hagamos una herramienta? Proponla en ${suggest}.</p>`,
     },
   },
 };
