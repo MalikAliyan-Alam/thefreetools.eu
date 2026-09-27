@@ -12,14 +12,15 @@ import { hijri1448En, hijri1448Ar } from './hijri/calendar-1448';
 import { ummAlQuraEn, ummAlQuraAr } from './hijri/ummalqura-vs-sighting';
 import { ageManualEn, ageHijriEn, ageHijriAr, ageExcelEn, ageExcelEs } from './age/guides';
 import { wordsChequeEn, wordsChequeEs, wordsChequeAr } from './words/guides';
+import { vatRemoveEn, vatRemoveAr, vatRemoveEs, mxRetencionesEs } from './vat/guides';
 
 /** Folder name for guides in each language (the phrase readers recognise). */
 export const GUIDES_DIR: Record<Locale, string> = { en: 'guides', ar: 'guides', es: 'guias' };
 
 export const GUIDES: Record<Locale, GuideContent[]> = {
-  en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn, ageManualEn, ageHijriEn, ageExcelEn, wordsChequeEn],
-  ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr, ageHijriAr, wordsChequeAr],
-  es: [promedioChileEs, notaNecesariaEs, ageExcelEs, wordsChequeEs],
+  en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn, ageManualEn, ageHijriEn, ageExcelEn, wordsChequeEn, vatRemoveEn],
+  ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr, ageHijriAr, wordsChequeAr, vatRemoveAr],
+  es: [promedioChileEs, notaNecesariaEs, ageExcelEs, wordsChequeEs, vatRemoveEs, mxRetencionesEs],
 };
 
 export const guidesHubPath = (locale: Locale) => localePath(locale, GUIDES_DIR[locale]);

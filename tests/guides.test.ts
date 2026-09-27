@@ -54,3 +54,17 @@ test('numbers-to-words cheque guides: hand-written answers match the engine', as
   assert.equal(toWords('es', a, { currency: 'MXN', letterCase: 'lower' }), 'mil doscientos cincuenta pesos 75/100 M.N.');
   assert.equal(toWords('ar', a, { currency: 'SAR', only: true }), 'فقط ألف ومائتان وخمسون ريالاً سعودياً وخمس وسبعون هللة لا غير');
 });
+
+test('VAT guides: hand-written numbers match the engine', async () => {
+  const { solve, mxWithholding, round } = await import('../src/tools/vat/engine.ts');
+  assert.deepEqual(solve('gross', 1000, 15), { net: 869.57, vat: 130.43, gross: 1000 });
+  assert.deepEqual(solve('gross', 100, 15), { net: 86.96, vat: 13.04, gross: 100 });
+  assert.deepEqual(solve('gross', 1000, 16), { net: 862.07, vat: 137.93, gross: 1000 });
+  assert.deepEqual(solve('gross', 100, 16), { net: 86.21, vat: 13.79, gross: 100 });
+  assert.equal(round(1150 * 0.85), 977.5);
+  assert.equal(round(1160 * 0.84), 974.4);
+  assert.equal(round(1000 * 3 / 23), solve('gross', 1000, 15).vat);
+  const b = solve('net', 10000, 16);
+  assert.equal(mxWithholding(b, true, 10).receive, 9533.33);
+  assert.equal(mxWithholding(b, true, 1.25).receive, 10408.33);
+});
