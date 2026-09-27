@@ -61,7 +61,7 @@ const content: ToolContent<VatLabels> = {
 <tr><td>United Arab Emirates</td><td>5%</td><td>1 January 2018</td></tr>
 <tr><td>Bahrain</td><td>10%</td><td>1 January 2022</td></tr>
 <tr><td>Oman</td><td>5%</td><td>16 April 2021</td></tr>
-<tr><td>Egypt</td><td>14%</td><td>2017</td></tr>
+<tr><td>Egypt</td><td>14%</td><td>1 July 2017</td></tr>
 <tr><td>United Kingdom</td><td>20%</td><td>4 January 2011</td></tr></tbody></table>
 <p>Kuwait and Qatar have not introduced VAT yet. Some goods are exempt or zero-rated; check ZATCA, the UAE Federal Tax Authority or HMRC for your case.</p>`,
     },

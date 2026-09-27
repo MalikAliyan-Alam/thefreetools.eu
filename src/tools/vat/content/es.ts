@@ -69,7 +69,7 @@ const content: ToolContent<VatLabels> = {
     {
       heading: 'Tasas de IVA',
       html: `<table><thead><tr><th>País</th><th>Tasa general</th></tr></thead><tbody>
-<tr><td>México</td><td>16% (8% en la región fronteriza norte y sur, con estímulo fiscal)</td></tr>
+<tr><td>México</td><td>16% (8% en la región fronteriza norte y sur, por el decreto de estímulos fiscales vigente hasta el 31 de diciembre de 2026)</td></tr>
 <tr><td>Chile</td><td>19%</td></tr>
 <tr><td>España</td><td>21% (10% y 4% reducidos)</td></tr>
 <tr><td>Perú</td><td>18% (IGV 16% + IPM 2%)</td></tr>

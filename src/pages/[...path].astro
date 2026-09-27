@@ -10,6 +10,7 @@ import { localePath } from '../i18n/locales';
 import { UI } from '../i18n/ui';
 import { TOOLS, toolsFor } from '../tools/registry';
 import { GUIDES, guidePath, guidesHubPath, guidesForTool } from '../guides/registry';
+import { teaser } from '../tools/teasers';
 import { PAGES } from '../pages-content/pages';
 import { SITE } from '../site';
 import { allRoutes, type RouteEntry } from '../lib/routes';
@@ -164,9 +165,10 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
       <div class="tool-grid">
         {toolsFor(locale).map(({ tool: x, content: xc }) => (
           <a class="tool-tile" href={localePath(locale, xc.slug)}>
-            <ToolIcon name={x.icon} />
+            <span class="tile-top"><ToolIcon name={x.icon} /><em>{xc.eyebrow}</em></span>
             <strong>{xc.h1}</strong>
             <span>{xc.metaDescription.split('. ')[0]}.</span>
+            <code class="tile-demo" dir={locale === 'ar' ? 'rtl' : 'ltr'}>{teaser(x.id, locale)}</code>
           </a>
         ))}
       </div>

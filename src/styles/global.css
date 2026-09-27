@@ -823,3 +823,94 @@ label > span {
   width: 16px;
   height: 16px;
 }
+
+/* ---------- Tool cards: category + worked example ---------- */
+.tool-tile .tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.tool-tile .tile-top em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+:lang(ar) .tool-tile .tile-top em {
+  font-family: var(--font-ar);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+.tool-tile .tile-demo {
+  display: block;
+  margin-top: auto;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px dashed var(--line-strong);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: border-color 0.15s;
+}
+:lang(ar) .tool-tile .tile-demo {
+  font-family: var(--font-ar);
+  font-size: 14px;
+}
+.tool-tile:hover .tile-demo {
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+/* Results settle in instead of popping */
+.words-text,
+.vat-legend b,
+.vat-words {
+  animation: result-in 0.25s ease-out;
+}
+@keyframes result-in {
+  from {
+    opacity: 0.4;
+    transform: translateY(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .words-text,
+  .vat-legend b,
+  .vat-words {
+    animation: none;
+  }
+}
+
+/* Very narrow phones: keep the header on one line */
+@media (max-width: 400px) {
+  .wordmark {
+    font-size: 16px;
+  }
+  .brand svg {
+    width: 28px;
+    height: 28px;
+  }
+  .nav {
+    gap: 6px;
+  }
+  .theme-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .lang a {
+    padding: 4px 5px;
+  }
+}
+@media (max-width: 355px) {
+  .wordmark {
+    display: none;
+  }
+}
