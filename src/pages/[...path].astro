@@ -6,9 +6,9 @@
 import Base from '../layouts/Base.astro';
 import ToolIsland from '../components/ToolIsland.astro';
 import ToolIcon from '../components/ToolIcon.astro';
-import { localePath } from '../i18n/locales';
+import { LOCALE_META, localePath, type Locale } from '../i18n/locales';
 import { UI } from '../i18n/ui';
-import { TOOLS, toolsFor } from '../tools/registry';
+import { TOOLS, toolsFor, toolsForListing } from '../tools/registry';
 import { GUIDES, guidePath, guidesHubPath, guidesForTool } from '../guides/registry';
 import { teaser } from '../tools/teasers';
 import { PAGES } from '../pages-content/pages';
@@ -151,7 +151,15 @@ if (guide) {
 const moreGuides = guide ? GUIDES[locale].filter((g) => g !== guide).slice(0, 4) : [];
 const toolGuides = tool ? guidesForTool(locale, tool.id) : [];
 
-const related = tool ? toolsFor(locale).filter((x) => x.tool.id !== tool.id).slice(0, 3) : [];
+// Same-language tools first, then English pages for tools not translated yet.
+const related = tool
+  ? toolsForListing(locale)
+      .filter((x) => x.tool.id !== tool.id)
+      .slice(0, 3)
+  : [];
+const homeLocal = toolsForListing(locale).filter((x) => x.locale === locale);
+const homeOther = toolsForListing(locale).filter((x) => x.locale !== locale);
+const langTag = (l: Locale) => (l === locale ? '' : ` · ${LOCALE_META[l].short}`);
 const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <Base locale={locale} title={title} description={description} alternates={alternates} jsonLd={jsonLd}>
@@ -162,16 +170,29 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
         <h1>{t.homeTitle}</h1>
         <p>{t.homeIntro}</p>
       </section>
-      <div class="tool-grid">
-        {toolsFor(locale).map(({ tool: x, content: xc }) => (
-          <a class="tool-tile" href={localePath(locale, xc.slug)}>
-            <span class="tile-top"><ToolIcon name={x.icon} /><em>{xc.eyebrow}</em></span>
-            <strong>{xc.h1}</strong>
-            <span>{xc.metaDescription.split('. ')[0]}.</span>
-            <code class="tile-demo" dir={locale === 'ar' ? 'rtl' : 'ltr'}>{teaser(x.id, locale)}</code>
-          </a>
-        ))}
-      </div>
+      {[homeLocal, homeOther].map(
+        (list, i) =>
+          list.length > 0 && (
+            <>
+              {i === 1 && (
+                <section class="content">
+                  <h2>{t.moreInEnglish}</h2>
+                  <p>{t.moreInEnglishNote}</p>
+                </section>
+              )}
+              <div class="tool-grid">
+                {list.map(({ tool: x, content: xc, locale: xl }) => (
+                  <a class="tool-tile" href={localePath(xl, xc.slug)} lang={xl === locale ? undefined : xl} hreflang={xl === locale ? undefined : xl} dir={xl === locale ? undefined : LOCALE_META[xl].dir}>
+                    <span class="tile-top"><ToolIcon name={x.icon} /><em>{xc.eyebrow}</em></span>
+                    <strong>{xc.h1}</strong>
+                    <span>{xc.metaDescription.split('. ')[0]}.</span>
+                    <code class="tile-demo" dir={LOCALE_META[xl].dir}>{teaser(x.id, xl)}</code>
+                  </a>
+                ))}
+              </div>
+            </>
+          ),
+      )}
     </>
   )}
 
@@ -238,10 +259,10 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
         <section class="content">
           <h2>{t.related}</h2>
           <div class="tool-grid">
-            {related.map(({ tool: x, content: xc }) => (
-              <a class="tool-tile" href={localePath(locale, xc.slug)}>
+            {related.map(({ tool: x, content: xc, locale: xl }) => (
+              <a class="tool-tile" href={localePath(xl, xc.slug)} lang={xl === locale ? undefined : xl} hreflang={xl === locale ? undefined : xl} dir={xl === locale ? undefined : LOCALE_META[xl].dir}>
                 <ToolIcon name={x.icon} />
-                <strong>{xc.h1}</strong>
+                <strong>{xc.h1}{langTag(xl)}</strong>
               </a>
             ))}
           </div>

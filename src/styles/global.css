@@ -191,14 +191,21 @@ select {
   letter-spacing: 0.08em;
 }
 .lang a {
+  position: relative;
   padding: 4px 10px;
   border-radius: 5px;
   text-decoration: none;
   color: var(--muted);
 }
+/* The pill stays compact; the tap area reaches 44px tall. */
+.lang a::after {
+  content: '';
+  position: absolute;
+  inset: -9px 0;
+}
 .theme-btn {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border: 1px solid var(--line-strong);
@@ -209,6 +216,15 @@ select {
 }
 .theme-btn:hover {
   border-color: var(--muted);
+}
+/* Phones shrink the button to 34–36px; the tap area stays 44px. */
+.theme-btn {
+  position: relative;
+}
+.theme-btn::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
 }
 .theme-btn svg {
   width: 18px;
@@ -275,7 +291,7 @@ select {
 }
 :lang(ar) .hero h1,
 :lang(ar) .content h2,
-:lang(ar) .tool-tile strong,
+.tool-tile strong:lang(ar),
 :lang(ar) .brand {
   font-family: var(--font-ar);
 }
@@ -399,7 +415,7 @@ select.input {
   background: var(--bg);
 }
 .chip {
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 14px;
   border-radius: var(--pill);
   border: 1px solid var(--line-strong);
@@ -544,9 +560,12 @@ label > span {
 }
 .faq details {
   border-bottom: 1px solid var(--line);
-  padding: 14px 0;
+  padding: 4px 0;
 }
 .faq summary {
+  min-height: 44px;
+  padding: 10px 0;
+  align-items: center;
   cursor: pointer;
   font-weight: 650;
   list-style: none;
@@ -839,7 +858,7 @@ label > span {
   text-transform: uppercase;
   color: var(--muted);
 }
-:lang(ar) .tool-tile .tile-top em {
+.tool-tile .tile-top em:lang(ar) {
   font-family: var(--font-ar);
   font-size: 13px;
   letter-spacing: 0;
@@ -860,7 +879,7 @@ label > span {
   text-overflow: ellipsis;
   transition: border-color 0.15s;
 }
-:lang(ar) .tool-tile .tile-demo {
+.tool-tile .tile-demo:lang(ar) {
   font-family: var(--font-ar);
   font-size: 14px;
 }

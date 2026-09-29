@@ -6,14 +6,17 @@ export const wordsLabelsEn: WordsLabels = {
   amountPlaceholder: '1,234.56',
   readAs: 'Read as {n}',
   language: 'Write it in',
-  langNames: { en: 'English', es: 'Spanish (Español)', ar: 'Arabic (العربية)' },
+  langNames: { en: 'English', es: 'Spanish (Español)', fr: 'French (Français)', ar: 'Arabic (العربية)' },
   currency: 'Currency',
   plainNumber: 'No currency, just the number',
   options: 'Options',
   cheque: 'Cheque style (56/100)',
   andOption: 'British "and" (hundred and five)',
   indianOption: 'Lakh and crore',
-  onlyOption: { en: 'Add "only"', es: '', ar: 'Add فقط … لا غير' },
+  onlyOption: { en: 'Add "only"', es: '', fr: '', ar: 'Add فقط … لا غير' },
+  frVariant: 'Country',
+  frVariantNames: { fr: 'France (quatre-vingt-dix)', be: 'Belgium (septante, nonante)', ch: 'Switzerland (huitante)' },
+  reformOption: '1990 spelling (vingt‑et‑un)',
   letterCase: 'Letter case',
   caseNames: { sentence: 'Sentence case', upper: 'UPPERCASE', title: 'Title Case', lower: 'lowercase' },
   resultLabel: 'In words',
@@ -31,7 +34,7 @@ const content: ToolContent<WordsLabels> = {
   slug: 'number-to-words',
   metaTitle: 'Number to Words Converter: Amounts for Cheques and Invoices',
   metaDescription:
-    'Convert any number or amount to words in English, Spanish or Arabic. Cheque format, dollars and cents, lakh and crore, British "and". Free, instant, no sign-up.',
+    'Convert any number or amount to words in English, Spanish, French or Arabic. Cheque format, dollars and cents, lakh and crore. Free, no sign-up.',
   eyebrow: 'Numbers',
   h1: 'Number to words converter',
   intro:
@@ -87,7 +90,7 @@ const content: ToolContent<WordsLabels> = {
       a: 'No. The words are generated in your browser, and your last input is saved only in your browser.',
     },
   ],
-  updated: '2026-09-27',
+  updated: '2026-09-29',
 };
 
 export default content;

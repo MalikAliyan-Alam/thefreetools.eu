@@ -3,7 +3,7 @@ import type { HijriLabels } from '../labels';
 
 const content: ToolContent<HijriLabels> = {
   slug: 'hijri-converter',
-  metaTitle: 'Hijri Date Converter: Hijri to Gregorian and Back (Umm al-Qura)',
+  metaTitle: 'Hijri Date Converter (Umm al-Qura): Hijri to Gregorian',
   metaDescription:
     'Convert Hijri to Gregorian and back with the official Saudi Umm al-Qura calendar. See today’s Hijri date, the weekday and month length. Free.',
   eyebrow: 'Dates',

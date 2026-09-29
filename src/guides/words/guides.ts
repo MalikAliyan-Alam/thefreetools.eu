@@ -13,7 +13,7 @@ export const wordsChequeEn: GuideContent = {
   slug: 'how-to-write-amount-on-cheque',
   metaTitle: 'How to Write an Amount on a Cheque in Words (with Examples)',
   metaDescription:
-    'Write the whole amount in words, the cents as a fraction of 100, then draw a line to the end. Examples for dollars, pounds and rupees, and the mistakes banks reject.',
+    'Write the amount in words, the cents as a fraction of 100, then draw a line to the end. Examples for dollars, pounds and rupees, and the mistakes banks reject.',
   h1: 'How to write an amount on a cheque in words',
   answer:
     'Write the whole amount in words, then "and", then the cents as a fraction of 100, then the currency: $1,250.75 is "One thousand two hundred fifty and 75/100 dollars". Start at the far left of the line and draw a line through the unused space.',

@@ -1,4 +1,4 @@
-import type { Lang, LetterCase } from './engine';
+import type { FrVariant, Lang, LetterCase } from './engine';
 
 export type WordsLabels = {
   amount: string;
@@ -14,6 +14,9 @@ export type WordsLabels = {
   andOption: string;
   indianOption: string;
   onlyOption: Record<Lang, string>;
+  frVariant: string;
+  frVariantNames: Record<FrVariant, string>;
+  reformOption: string;
   letterCase: string;
   caseNames: Record<LetterCase, string>;
   resultLabel: string;

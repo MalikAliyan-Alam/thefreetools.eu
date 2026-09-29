@@ -168,9 +168,9 @@ export const mxRetencionesEs: GuideContent = {
   key: 'mx-retenciones',
   tool: 'vat',
   slug: 'retenciones-iva-isr-honorarios',
-  metaTitle: 'Cómo calcular las retenciones de IVA e ISR en honorarios (2026)',
+  metaTitle: 'Cómo calcular retenciones de IVA e ISR en honorarios (2026)',
   metaDescription:
-    'Si facturas honorarios o renta a una empresa te retienen 2/3 del IVA y 10% de ISR (1.25% en RESICO). Ejemplo con $10,000 y cuánto facturar para recibir una cantidad exacta.',
+    'Si facturas honorarios o renta a una empresa te retienen 2/3 del IVA y 10% de ISR (1.25% en RESICO). Ejemplo con $10,000 y cuánto facturar para cobrar lo justo.',
   h1: 'Cómo calcular las retenciones de IVA e ISR en honorarios',
   answer:
     'Sobre un subtotal de $10,000 se cobra IVA de $1,600, la empresa retiene $1,066.67 de IVA y $1,000 de ISR, y tú recibes $9,533.33. En RESICO la retención de ISR es de 1.25%, así que recibes $10,408.33.',

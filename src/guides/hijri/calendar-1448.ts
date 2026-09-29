@@ -55,7 +55,7 @@ export const hijri1448En: GuideContent = {
   key: 'hijri-1448',
   tool: 'hijri',
   slug: 'hijri-calendar-1448',
-  metaTitle: `Hijri Calendar ${YEAR}: Month Start Dates in Gregorian (${start.y}–${end.y})`,
+  metaTitle: `Hijri Calendar ${YEAR}: Month Start Dates (${start.y}–${end.y})`,
   metaDescription: `Hijri year ${YEAR} runs from ${fmt('en', start, false)} to ${fmt('en', g(12, hijriMonthLength(YEAR, 12)!), false)}. Start date and length of every month, plus Ramadan, Eid and Arafah dates (Umm al-Qura).`,
   h1: `Hijri calendar ${YEAR} with Gregorian dates`,
   answer: `Hijri year ${YEAR} began on ${fmt('en', start)} and has ${lengthOfYear} days under the Umm al-Qura calendar. Ramadan ${YEAR} is expected to begin on ${fmt('en', g(9, 1))}, subject to moon sighting.`,

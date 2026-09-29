@@ -1,10 +1,10 @@
 /**
- * Numbers and money amounts in words: English, Spanish and Arabic (tafqeet).
+ * Numbers and money amounts in words: English, Spanish, French and Arabic (tafqeet).
  * Pure functions, covered by tests/words.test.ts. Integers are handled as
  * BigInt so nothing is lost to floating point.
  */
 
-export type Lang = 'en' | 'es' | 'ar';
+export type Lang = 'en' | 'es' | 'ar' | 'fr';
 export type LetterCase = 'sentence' | 'lower' | 'upper' | 'title';
 export type Amount = { negative: boolean; int: string; frac: string };
 
@@ -18,9 +18,10 @@ const toLatinDigits = (s: string) =>
  * Reads "1234.56", "1,234.56", "1.234,56", "1 234,5" or Arabic-Indic digits.
  * A lone separator followed by exactly three digits is a thousands separator
  * ("1,234" = 1234) unless the currency has three decimals (KWD, JOD);
- * otherwise the last separator is the decimal point.
+ * otherwise the last separator is the decimal point. In French the comma is
+ * always the decimal mark (`commaDecimal`), so "1,234" is 1.234.
  */
-export function parseAmount(input: string, threeDecimals = false): Amount | null | 'too-big' {
+export function parseAmount(input: string, threeDecimals = false, commaDecimal = false): Amount | null | 'too-big' {
   let s = toLatinDigits(input.trim()).replace(/[\s  '’٬]/g, '').replace(/٫/g, '.');
   if (!s) return null;
   let negative = false;
@@ -38,12 +39,13 @@ export function parseAmount(input: string, threeDecimals = false): Amount | null
     const count = s.split(sep).length - 1;
     const after = s.length - s.lastIndexOf(sep) - 1;
     // "0.999" is always a decimal; "1.999" is read as one thousand nine hundred ninety-nine.
-    if (count === 1 && (after !== 3 || threeDecimals || /^0*$/.test(s.slice(0, s.lastIndexOf(sep))))) dec = s.lastIndexOf(sep);
+    if (count === 1 && (after !== 3 || threeDecimals || (commaDecimal && sep === ',') || /^0*$/.test(s.slice(0, s.lastIndexOf(sep))))) dec = s.lastIndexOf(sep);
   }
   const frac = dec >= 0 ? s.slice(dec + 1) : '';
   if (/[.,]/.test(frac)) return null;
   const int = (dec >= 0 ? s.slice(0, dec) : s).replace(/[.,]/g, '').replace(/^0+(?=\d)/, '') || '0';
-  if (int.length > MAX_DIGITS) return 'too-big';
+  // The decimals are read as a second number, so they have the same limit.
+  if (int.length > MAX_DIGITS || frac.length > MAX_DIGITS) return 'too-big';
   return { negative, int, frac };
 }
 
@@ -144,6 +146,77 @@ export function esWords(int: string | bigint, noun = false): string {
 /** "un millón de pesos", but "un millón cien pesos". */
 const esNeedsDe = (n: bigint) => n > 0n && n % 1_000_000n === 0n;
 
+/* ----------------------------------------------------------------- French */
+
+/** fr = France (soixante-dix, quatre-vingts, quatre-vingt-dix); be = Belgium (septante, nonante); ch = Switzerland (septante, huitante, nonante). */
+export type FrVariant = 'fr' | 'be' | 'ch';
+export type FrOptions = { variant?: FrVariant; reform?: boolean };
+
+const FR_UNITS = ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize'];
+const FR_TENS = ['', '', 'vingt', 'trente', 'quarante', 'cinquante', 'soixante', 'septante', 'huitante', 'nonante'];
+
+/** Tens and units. `final`: nothing follows, so quatre-vingt takes its s. */
+function fr99(n: number, v: FrVariant, final: boolean): string {
+  if (n < 17) return FR_UNITS[n];
+  if (n < 20) return 'dix-' + FR_UNITS[n - 10];
+  const t = Math.floor(n / 10);
+  const u = n % 10;
+  // France counts 70–79 and 90–99 on from sixty and eighty: soixante et onze, quatre-vingt-dix-sept.
+  if (t === 7 && v === 'fr') return n === 71 ? 'soixante et onze' : 'soixante-' + fr99(n - 60, v, final);
+  if (t === 8 && v !== 'ch') return u ? 'quatre-vingt-' + FR_UNITS[u] : final ? 'quatre-vingts' : 'quatre-vingt';
+  if (t === 9 && v === 'fr') return 'quatre-vingt-' + fr99(n - 80, v, final);
+  if (!u) return FR_TENS[t];
+  return u === 1 ? `${FR_TENS[t]} et un` : `${FR_TENS[t]}-${FR_UNITS[u]}`;
+}
+
+/** Hundreds. `beforeMille`: mille follows, and it is not a noun, so cent and vingt stay without s. */
+function fr999(n: number, v: FrVariant, beforeMille: boolean): string {
+  const h = Math.floor(n / 100);
+  const r = n % 100;
+  if (!h) return fr99(r, v, !beforeMille);
+  const cent = h === 1 ? 'cent' : `${FR_UNITS[h]} ${!r && !beforeMille ? 'cents' : 'cent'}`;
+  return r ? `${cent} ${fr99(r, v, !beforeMille)}` : cent;
+}
+
+/** Everything below a million, with the 1990 spelling (all hyphens) if asked. */
+function frBelowMillion(n: number, o: FrOptions): string {
+  const v = o.variant ?? 'fr';
+  const th = Math.floor(n / 1000);
+  const r = n % 1000;
+  const parts: string[] = [];
+  if (th === 1) parts.push('mille');
+  else if (th) parts.push(`${fr999(th, v, true)} mille`);
+  if (r) parts.push(fr999(r, v, false));
+  const s = parts.join(' ');
+  return o.reform ? s.replace(/ /g, '-') : s;
+}
+
+const FR_SCALES: [bigint, string][] = [
+  [10n ** 12n, 'billion'],
+  [10n ** 9n, 'milliard'],
+  [10n ** 6n, 'million'],
+];
+
+/**
+ * French number words (Académie française). Million, milliard and billion are
+ * nouns: they take an s and are never joined by hyphens, even with the 1990 spelling.
+ */
+export function frWords(int: string | bigint, o: FrOptions = {}): string {
+  let n = BigInt(int);
+  if (n === 0n) return 'zéro';
+  const parts: string[] = [];
+  for (const [div, noun] of FR_SCALES) {
+    const g = Number(n / div);
+    n %= div;
+    if (g) parts.push(g === 1 ? `un ${noun}` : `${frBelowMillion(g, o)} ${noun}s`);
+  }
+  if (n) parts.push(frBelowMillion(Number(n), o));
+  return parts.join(' ');
+}
+
+/** "un million de dirhams", "deux milliards d’euros" (typographic apostrophe). */
+const frDe = (n: bigint, noun: string) => (n > 0n && n % 1_000_000n === 0n ? (/^[aeiouéh]/i.test(noun) ? 'd’' : 'de ') : '');
+
 /* ----------------------------------------------------------------- Arabic */
 
 /** Noun forms used when counting: after 1 (and 100, 1000…), 2, 3–10, 11–99. */
@@ -230,6 +303,7 @@ export function arCount(n: bigint, noun: ArNoun): string {
 type EnCurrency = { decimals: number; major: [string, string]; minor: [string, string]; prefix?: string; indian?: boolean };
 type EsCurrency = { decimals: number; major: [string, string]; minor: [string, string]; format: 'fraction' | 'words'; suffix?: string; conFraction?: boolean };
 type ArCurrency = { decimals: number; major: ArNoun; minor: ArNoun };
+type FrCurrency = { decimals: number; major: [string, string]; minor: [string, string] };
 
 export const CURRENCIES = {
   en: {
@@ -249,6 +323,15 @@ export const CURRENCIES = {
     USD: { decimals: 2, major: ['dólar', 'dólares'], minor: ['centavo', 'centavos'], format: 'words' },
     ARS: { decimals: 2, major: ['peso', 'pesos'], minor: ['centavo', 'centavos'], format: 'words' },
     CLP: { decimals: 0, major: ['peso', 'pesos'], minor: ['', ''], format: 'words' },
+  },
+  fr: {
+    MAD: { decimals: 2, major: ['dirham', 'dirhams'], minor: ['centime', 'centimes'] },
+    EUR: { decimals: 2, major: ['euro', 'euros'], minor: ['centime', 'centimes'] },
+    CHF: { decimals: 2, major: ['franc', 'francs'], minor: ['centime', 'centimes'] },
+    CAD: { decimals: 2, major: ['dollar', 'dollars'], minor: ['cent', 'cents'] },
+    DZD: { decimals: 2, major: ['dinar', 'dinars'], minor: ['centime', 'centimes'] },
+    TND: { decimals: 3, major: ['dinar', 'dinars'], minor: ['millime', 'millimes'] },
+    XOF: { decimals: 0, major: ['franc CFA', 'francs CFA'], minor: ['', ''] },
   },
   ar: {
     SAR: {
@@ -287,9 +370,13 @@ export const CURRENCIES = {
       minor: { one: 'سنت', two: 'سنتان', few: 'سنتات', many: 'سنتاً' },
     },
   },
-} satisfies { en: Record<string, EnCurrency>; es: Record<string, EsCurrency>; ar: Record<string, ArCurrency> };
+} satisfies { en: Record<string, EnCurrency>; es: Record<string, EsCurrency>; fr: Record<string, FrCurrency>; ar: Record<string, ArCurrency> };
 
-export const DEFAULT_CURRENCY: Record<Lang, string> = { en: 'USD', es: 'MXN', ar: 'SAR' };
+export const DEFAULT_CURRENCY: Record<Lang, string> = { en: 'USD', es: 'MXN', ar: 'SAR', fr: 'MAD' };
+
+/** KWD, JOD and TND have three decimals, which changes how "1,234" is read. */
+export const hasThreeDecimals = (lang: Lang, currency: string) =>
+  (CURRENCIES[lang] as Record<string, { decimals: number }>)[currency]?.decimals === 3;
 
 export type WordsOptions = {
   /** Currency code from CURRENCIES[lang], or '' for a plain number. */
@@ -303,15 +390,28 @@ export type WordsOptions = {
   /** English "… only" / Arabic "فقط … لا غير". */
   only?: boolean;
   letterCase?: LetterCase;
+  /** French only: France, Belgium or Switzerland. */
+  frVariant?: FrVariant;
+  /** French only: 1990 spelling, hyphens between all numerals (vingt-et-un, deux-cent-trois). */
+  reform?: boolean;
 };
 
 const pad = (n: number, decimals: number) => String(n).padStart(decimals, '0');
-const MINUS: Record<Lang, string> = { en: 'minus', es: 'menos', ar: 'سالب' };
-const POINT: Record<Lang, string> = { en: 'point', es: 'coma', ar: 'فاصلة' };
-const ZERO: Record<Lang, string> = { en: 'zero', es: 'cero', ar: 'صفر' };
+const MINUS: Record<Lang, string> = { en: 'minus', es: 'menos', ar: 'سالب', fr: 'moins' };
+const POINT: Record<Lang, string> = { en: 'point', es: 'coma', ar: 'فاصلة', fr: 'virgule' };
+const ZERO: Record<Lang, string> = { en: 'zero', es: 'cero', ar: 'صفر', fr: 'zéro' };
+
+const frOpts = (o: WordsOptions): FrOptions => ({ variant: o.frVariant, reform: o.reform });
+
+/** The integer in words for languages that read decimals as a second number (es, fr, ar). */
+function intWords(lang: Lang, n: string | bigint, o: WordsOptions): string {
+  if (lang === 'es') return esWords(n);
+  if (lang === 'fr') return frWords(n, frOpts(o));
+  return arWords(n);
+}
 
 function plainNumber(lang: Lang, a: Amount, o: WordsOptions): string {
-  const whole = lang === 'en' ? enWords(a.int, o) : lang === 'es' ? esWords(a.int) : arWords(a.int);
+  const whole = lang === 'en' ? enWords(a.int, o) : intWords(lang, a.int, o);
   if (!a.frac) return whole;
   let frac: string;
   if (lang === 'en') frac = [...a.frac].map((d) => EN_ONES[+d]).join(' ');
@@ -319,7 +419,7 @@ function plainNumber(lang: Lang, a: Amount, o: WordsOptions): string {
     // "3,05" is read "tres coma cero cinco": leading zeros, then the rest as a number.
     const zeros = a.frac.match(/^0*/)![0].length;
     const rest = a.frac.slice(zeros);
-    const words = [...Array(zeros).fill(ZERO[lang]), ...(rest ? [lang === 'es' ? esWords(rest) : arWords(rest)] : [])];
+    const words = [...Array(zeros).fill(ZERO[lang]), ...(rest ? [intWords(lang, rest, o)] : [])];
     frac = words.join(' ');
   }
   return `${whole} ${POINT[lang]} ${frac}`;
@@ -350,6 +450,17 @@ function esMoney(c: EsCurrency, major: bigint, minor: number): string {
   return c.suffix ? `${text} ${c.suffix}` : text;
 }
 
+/** "mille deux cent trente-quatre dirhams et cinquante-six centimes"; zéro and un take the singular. */
+function frMoney(c: FrCurrency, major: bigint, minor: number, o: WordsOptions): string {
+  const f = frOpts(o);
+  const noun = (n: bigint, forms: [string, string]) => (n > 1n ? forms[1] : forms[0]);
+  const majorNoun = noun(major, c.major);
+  const whole = `${frWords(major, f)} ${frDe(major, majorNoun)}${majorNoun}`;
+  if (!minor) return whole;
+  const cents = `${frWords(BigInt(minor), f)} ${noun(BigInt(minor), c.minor)}`;
+  return major ? `${whole} et ${cents}` : cents;
+}
+
 function arMoney(c: ArCurrency, major: bigint, minor: number): string {
   const parts: string[] = [];
   if (major) parts.push(arCount(major, c.major));
@@ -363,19 +474,25 @@ export function applyCase(s: string, c: LetterCase, lang: Lang): string {
   if (c === 'upper') return up(s);
   if (c === 'lower') return s;
   if (c === 'sentence') return up(s.charAt(0)) + s.slice(1);
-  const small = new Set(['and', 'y', 'con', 'de']);
-  return s.replace(/[^\s-]+/g, (w, i) => (i > 0 && small.has(w) ? w : up(w.charAt(0)) + w.slice(1)));
+  const small = new Set(['and', 'y', 'con', 'de', 'et']);
+  // French elision keeps the article lowercase: "Deux Millions d’Euros".
+  return s.replace(/[^\s-]+/g, (w, i) => {
+    const elided = w.match(/^([dl]['’])(.+)$/i);
+    if (elided) return elided[1].toLowerCase() + up(elided[2].charAt(0)) + elided[2].slice(1);
+    return i > 0 && small.has(w) ? w : up(w.charAt(0)) + w.slice(1);
+  });
 }
 
 /** The full sentence for a parsed amount. */
 export function toWords(lang: Lang, a: Amount, o: WordsOptions): string {
   let text: string;
-  const cur = o.currency ? (CURRENCIES[lang] as Record<string, EnCurrency | EsCurrency | ArCurrency>)[o.currency] : undefined;
+  const cur = o.currency ? (CURRENCIES[lang] as Record<string, EnCurrency | EsCurrency | FrCurrency | ArCurrency>)[o.currency] : undefined;
   if (!cur) text = plainNumber(lang, a, o);
   else {
     const { major, minor } = splitMoney(a, cur.decimals);
     if (lang === 'en') text = enMoney(cur as EnCurrency, major, minor, o);
     else if (lang === 'es') text = esMoney(cur as EsCurrency, major, minor);
+    else if (lang === 'fr') text = frMoney(cur as FrCurrency, major, minor, o);
     else text = arMoney(cur as ArCurrency, major, minor);
   }
   if (a.negative && /[1-9]/.test(a.int + a.frac)) text = `${MINUS[lang]} ${text}`;

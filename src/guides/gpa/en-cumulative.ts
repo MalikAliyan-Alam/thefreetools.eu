@@ -4,9 +4,9 @@ const guide: GuideContent = {
   key: 'gpa-cumulative',
   tool: 'gpa',
   slug: 'how-to-calculate-cumulative-gpa',
-  metaTitle: 'How to Calculate Cumulative GPA (Retakes, Pass/Fail, Transfers)',
+  metaTitle: 'How to Calculate Cumulative GPA (Retakes and Pass/Fail)',
   metaDescription:
-    'Cumulative GPA is total grade points divided by total graded credits, not the average of your semester GPAs. Worked examples for retakes, pass/fail and transfer credits.',
+    'Cumulative GPA is total grade points divided by total graded credits, not the average of semester GPAs. Worked examples for retakes, pass/fail and transfers.',
   h1: 'How to calculate your cumulative GPA',
   answer:
     'Add up the grade points from every graded course you have taken, then divide by the total graded credits. It is not the average of your semester GPAs unless every semester had the same number of credits.',

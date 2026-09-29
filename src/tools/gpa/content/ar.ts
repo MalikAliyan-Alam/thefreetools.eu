@@ -3,7 +3,7 @@ import type { GpaLabels } from '../labels';
 
 const content: ToolContent<GpaLabels> = {
   slug: 'gpa-calculator',
-  metaTitle: 'حساب المعدل التراكمي والفصلي من 4 ومن 5 (الأردن والسعودية والكويت)',
+  metaTitle: 'حساب المعدل التراكمي والفصلي من 4 ومن 5',
   metaDescription:
     'احسب معدلك الفصلي والتراكمي من 5 أو من 4 أو بالنسبة المئوية. أضف معدلك السابق، واعرف المعدل الذي تحتاجه للوصول إلى هدفك. مجاني وبدون تسجيل.',
   eyebrow: 'للطلاب',

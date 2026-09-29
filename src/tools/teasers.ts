@@ -7,7 +7,7 @@ import type { ToolId } from './registry';
 import { SCALES, summarize, formatAverage } from './gpa/engine';
 import { HIJRI_MONTHS, hijriToGregorian } from './hijri/engine';
 import { gregorianAge, hijriAge } from './age/engine';
-import { enWords, esWords, arWords } from './words/engine';
+import { enWords, esWords, frWords, arWords } from './words/engine';
 import { solve } from './vat/engine';
 
 const arrow = (l: Locale) => (l === 'ar' ? '←' : '→');
@@ -48,6 +48,7 @@ export function teaser(id: ToolId, l: Locale): string {
     case 'words':
       if (l === 'ar') return `1250 ${a} ${arWords('1250')}`;
       if (l === 'es') return `1.250 ${a} ${esWords('1250')}`;
+      if (l === 'fr') return `1 250 ${a} ${frWords('1250')}`;
       return `1,250 ${a} ${enWords('1250')}`;
     case 'vat': {
       const rate = l === 'es' ? 16 : 15;

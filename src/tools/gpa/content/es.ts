@@ -3,9 +3,9 @@ import type { GpaLabels } from '../labels';
 
 const content: ToolContent<GpaLabels> = {
   slug: 'calcular-promedio',
-  metaTitle: 'Calcular promedio de notas (ponderado) de 1 a 7, sobre 100 o GPA',
+  metaTitle: 'Calcular promedio de notas ponderado: 1 a 7, sobre 100 o GPA',
   metaDescription:
-    'Calcula tu promedio de notas con porcentajes o créditos, en escala de 1 a 7, sobre 100 o GPA 4.0. Descubre qué nota necesitas para llegar a tu meta. Gratis y sin registro.',
+    'Calcula tu promedio de notas con porcentajes o créditos, en escala de 1 a 7, sobre 100 o GPA 4.0, y qué nota necesitas para tu meta. Gratis y sin registro.',
   eyebrow: 'Estudiantes',
   h1: 'Calcular promedio de notas',
   intro:

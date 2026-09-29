@@ -35,7 +35,7 @@ export const ageLabelsEn: Omit<AgeLabels, 'primary'> = {
 
 const content: ToolContent<AgeLabels> = {
   slug: 'age-calculator',
-  metaTitle: 'Age Calculator: Exact Age in Years, Months and Days (+ Hijri)',
+  metaTitle: 'Age Calculator: Exact Age in Years, Months, Days (+ Hijri)',
   metaDescription:
     'Work out your exact age in years, months and days, in Gregorian and Hijri years. See days lived, your next birthday and the weekday you were born. Free.',
   eyebrow: 'Dates',

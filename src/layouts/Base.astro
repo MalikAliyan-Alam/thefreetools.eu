@@ -92,7 +92,7 @@ const arabicFontFace =
             {LOCALES.map((l) => (
               <a
                 href={alternates[l] ?? localePath(l)}
-                hreflang={l}
+                hreflang={alternates[l] ? l : undefined}
                 lang={l}
                 aria-current={l === locale ? 'true' : undefined}
                 title={LOCALE_META[l].name}

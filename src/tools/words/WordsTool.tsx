@@ -1,12 +1,26 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
-import { CURRENCIES, DEFAULT_CURRENCY, parseAmount, toWords, type Lang, type LetterCase } from './engine';
+import { CURRENCIES, DEFAULT_CURRENCY, hasThreeDecimals, parseAmount, toWords, type FrVariant, type Lang, type LetterCase } from './engine';
 import type { WordsLabels } from './labels';
 import './words.css';
 
-type State = { lang: Lang; input: string; currency: string; cheque: boolean; and: boolean; indian: boolean; only: boolean; letterCase: LetterCase };
-const LANGS: Lang[] = ['en', 'es', 'ar'];
+type State = {
+  lang: Lang;
+  input: string;
+  currency: string;
+  cheque: boolean;
+  and: boolean;
+  indian: boolean;
+  only: boolean;
+  letterCase: LetterCase;
+  frVariant: FrVariant;
+  reform: boolean;
+};
+const LANGS: Lang[] = ['en', 'es', 'fr', 'ar'];
+const FR_VARIANTS: FrVariant[] = ['fr', 'be', 'ch'];
 const CASES: LetterCase[] = ['sentence', 'upper', 'title', 'lower'];
 const EXAMPLES = ['1234.56', '2000', '1500000', '21'];
+// French writes a space for thousands and a comma for decimals.
+const EXAMPLES_FR = ['1 234,56', '2 000', '1 500 000', '21'];
 const isIndian = (c: string) => c === 'INR' || c === 'PKR';
 
 export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; locale: Lang }) {
@@ -21,6 +35,8 @@ export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; 
     indian: false,
     only: locale === 'ar',
     letterCase: 'sentence',
+    frVariant: 'fr',
+    reform: false,
   });
   const [flash, setFlash] = useState<'' | 'copied' | 'shared'>('');
 
@@ -61,8 +77,7 @@ export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; 
   }, [numLocale]);
 
   const codes = Object.keys(CURRENCIES[state.lang]);
-  const threeDecimals = state.lang === 'ar' && (CURRENCIES.ar as Record<string, { decimals: number }>)[state.currency]?.decimals === 3;
-  const parsed = parseAmount(state.input, threeDecimals);
+  const parsed = parseAmount(state.input, hasThreeDecimals(state.lang, state.currency), locale === 'fr' || state.lang === 'fr');
 
   const result = useMemo(() => {
     if (!state.input.trim()) return { hint: t.empty };
@@ -115,11 +130,33 @@ export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; 
       </label>
       <div class="words-examples">
         <span>{t.examples}</span>
-        {EXAMPLES.map((x) => (
+        {(locale === 'fr' ? EXAMPLES_FR : EXAMPLES).map((x) => (
           <button type="button" class="chip" dir="ltr" onClick={() => set({ input: x })}>
             {x}
           </button>
         ))}
+      </div>
+
+      <div class={`words-result${'hint' in result ? (result.bad ? ' is-bad' : ' is-empty') : ''}`} aria-live="polite">
+        {'hint' in result ? (
+          <p class="words-hint">{result.hint}</p>
+        ) : (
+          <>
+            <p class="words-label">{t.resultLabel}</p>
+            <p class="words-text" lang={state.lang} dir={state.lang === 'ar' ? 'rtl' : 'ltr'}>
+              {result.text}
+            </p>
+            <p class="words-read">{result.readAs}</p>
+            <div class="words-actions">
+              <button type="button" class="btn" onClick={copy}>
+                {flash === 'copied' ? t.copied : t.copy}
+              </button>
+              <button type="button" class="btn btn-ghost" onClick={share}>
+                {flash === 'shared' ? t.shared : t.share}
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       <div class="words-bar">
@@ -168,7 +205,23 @@ export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; 
             </label>
           </>
         )}
-        {state.lang !== 'es' && state.currency && (
+        {state.lang === 'fr' && (
+          <>
+            <label class="words-variant">
+              <span>{t.frVariant}</span>
+              <select class="input" value={state.frVariant} onChange={(e) => set({ frVariant: e.currentTarget.value as FrVariant })}>
+                {FR_VARIANTS.map((v) => (
+                  <option value={v}>{t.frVariantNames[v]}</option>
+                ))}
+              </select>
+            </label>
+            <label class="words-check">
+              <input type="checkbox" checked={state.reform} onChange={(e) => set({ reform: e.currentTarget.checked })} />
+              {t.reformOption}
+            </label>
+          </>
+        )}
+        {(state.lang === 'en' || state.lang === 'ar') && state.currency && (
           <label class="words-check">
             <input type="checkbox" checked={state.only} onChange={(e) => set({ only: e.currentTarget.checked })} />
             {t.onlyOption[state.lang]}
@@ -186,27 +239,6 @@ export default function WordsTool({ labels: t, locale }: { labels: WordsLabels; 
         )}
       </div>
 
-      <div class={`words-result${'hint' in result ? (result.bad ? ' is-bad' : ' is-empty') : ''}`} aria-live="polite">
-        {'hint' in result ? (
-          <p class="words-hint">{result.hint}</p>
-        ) : (
-          <>
-            <p class="words-label">{t.resultLabel}</p>
-            <p class="words-text" lang={state.lang} dir={state.lang === 'ar' ? 'rtl' : 'ltr'}>
-              {result.text}
-            </p>
-            <p class="words-read">{result.readAs}</p>
-            <div class="words-actions">
-              <button type="button" class="btn" onClick={copy}>
-                {flash === 'copied' ? t.copied : t.copy}
-              </button>
-              <button type="button" class="btn btn-ghost" onClick={share}>
-                {flash === 'shared' ? t.shared : t.share}
-              </button>
-            </div>
-          </>
-        )}
-      </div>
     </div>
   );
 }

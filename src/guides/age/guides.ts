@@ -56,7 +56,7 @@ export const ageHijriEn: GuideContent = {
   key: 'age-hijri-vs-gregorian',
   tool: 'age',
   slug: 'age-in-hijri-vs-gregorian-years',
-  metaTitle: 'Age in Hijri vs Gregorian Years: Why Your Hijri Age Is Higher',
+  metaTitle: 'Hijri vs Gregorian Age: Why Your Hijri Age Is Higher',
   metaDescription: `A Hijri year is about 11 days shorter, so your Hijri age runs ahead: multiply your Gregorian age by about ${RATIO}. Worked example with Umm al-Qura dates.`,
   h1: 'Age in Hijri vs Gregorian years',
   answer: `Your Hijri age is higher because a Hijri year (354–355 days) is about 11 days shorter than a Gregorian year. As a rule of thumb, Hijri age ≈ Gregorian age × ${RATIO}, which adds about one year every 33 years.`,

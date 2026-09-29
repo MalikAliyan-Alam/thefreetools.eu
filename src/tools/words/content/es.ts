@@ -6,14 +6,17 @@ const labels: WordsLabels = {
   amountPlaceholder: '1.234,56',
   readAs: 'Leído como {n}',
   language: 'Escribir en',
-  langNames: { en: 'Inglés (English)', es: 'Español', ar: 'Árabe (العربية)' },
+  langNames: { en: 'Inglés (English)', es: 'Español', fr: 'Francés (Français)', ar: 'Árabe (العربية)' },
   currency: 'Moneda',
   plainNumber: 'Sin moneda, solo el número',
   options: 'Opciones',
   cheque: 'Formato cheque (56/100)',
   andOption: '"and" británico (hundred and five)',
   indianOption: 'Lakh y crore',
-  onlyOption: { en: 'Añadir "only"', es: '', ar: 'Añadir فقط … لا غير' },
+  onlyOption: { en: 'Añadir "only"', es: '', fr: '', ar: 'Añadir فقط … لا غير' },
+  frVariant: 'País',
+  frVariantNames: { fr: 'Francia (quatre-vingt-dix)', be: 'Bélgica (septante, nonante)', ch: 'Suiza (huitante)' },
+  reformOption: 'Ortografía de 1990 (vingt‑et‑un)',
   letterCase: 'Mayúsculas',
   caseNames: { sentence: 'Normal', upper: 'MAYÚSCULAS', title: 'Tipo Título', lower: 'minúsculas' },
   resultLabel: 'En letras',
@@ -29,9 +32,9 @@ const labels: WordsLabels = {
 
 const content: ToolContent<WordsLabels> = {
   slug: 'numeros-a-letras',
-  metaTitle: 'Convertir números a letras: cantidad con letra para facturas y cheques',
+  metaTitle: 'Números a letras: cantidad con letra para cheques y facturas',
   metaDescription:
-    'Convierte números y cantidades a letras al instante: pesos 56/100 M.N., M/CTE, soles, euros y dólares. Con las reglas de la RAE (veintiún, un millón de). Gratis.',
+    'Convierte números y cantidades a letras: pesos 56/100 M.N., M/CTE, soles, euros y dólares, con las reglas de la RAE (veintiún, un millón de). Gratis.',
   eyebrow: 'Números',
   h1: 'Convertir números a letras',
   intro:

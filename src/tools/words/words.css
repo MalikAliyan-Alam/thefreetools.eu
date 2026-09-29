@@ -44,6 +44,9 @@
   margin-inline-start: auto;
   min-width: 160px;
 }
+.words-variant {
+  min-width: 160px;
+}
 .words-result {
   margin-top: 16px;
   padding: 18px;
@@ -102,6 +105,9 @@
   }
   .words-case {
     margin-inline-start: 0;
+    width: 100%;
+  }
+  .words-variant {
     width: 100%;
   }
 }

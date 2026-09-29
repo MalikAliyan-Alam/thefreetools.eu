@@ -34,7 +34,7 @@ export function allRoutes(): RouteEntry[] {
       locale,
       path: localePath(locale),
       alternates: homeAlternates,
-      lastmod: [PAGES_UPDATED, ...toolDates].sort().at(-1)!,
+      lastmod: [PAGES_UPDATED[locale], ...toolDates].sort().at(-1)!,
     });
     for (const tool of TOOLS) {
       const c = tool.content[locale];
@@ -78,7 +78,7 @@ export function allRoutes(): RouteEntry[] {
         locale,
         path: localePath(locale, PAGES[page][locale].slug),
         alternates: alternatesFor((l) => localePath(l, PAGES[page][l].slug)),
-        lastmod: PAGES_UPDATED,
+        lastmod: PAGES_UPDATED[locale],
       });
     }
   }

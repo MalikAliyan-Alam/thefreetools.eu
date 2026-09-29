@@ -6,14 +6,17 @@ const labels: WordsLabels = {
   amountPlaceholder: '1234.56',
   readAs: 'قُرئ الرقم هكذا: {n}',
   language: 'الكتابة باللغة',
-  langNames: { en: 'الإنجليزية (English)', es: 'الإسبانية (Español)', ar: 'العربية' },
+  langNames: { en: 'الإنجليزية (English)', es: 'الإسبانية (Español)', fr: 'الفرنسية (Français)', ar: 'العربية' },
   currency: 'العملة',
   plainNumber: 'بدون عملة (رقم فقط)',
   options: 'خيارات',
   cheque: 'صيغة الشيك (56/100)',
   andOption: 'صيغة "and" البريطانية',
   indianOption: 'لاك وكرور (الهند وباكستان)',
-  onlyOption: { en: 'إضافة only', es: '', ar: 'إضافة "فقط … لا غير"' },
+  onlyOption: { en: 'إضافة only', es: '', fr: '', ar: 'إضافة "فقط … لا غير"' },
+  frVariant: 'البلد',
+  frVariantNames: { fr: 'فرنسا (quatre-vingt-dix)', be: 'بلجيكا (septante، nonante)', ch: 'سويسرا (huitante)' },
+  reformOption: 'إملاء 1990 (vingt‑et‑un)',
   letterCase: 'حالة الأحرف',
   caseNames: { sentence: 'عادي', upper: 'أحرف كبيرة', title: 'أول كل كلمة كبير', lower: 'أحرف صغيرة' },
   resultLabel: 'المبلغ كتابةً',
@@ -29,7 +32,7 @@ const labels: WordsLabels = {
 
 const content: ToolContent<WordsLabels> = {
   slug: 'tafqeet',
-  metaTitle: 'تفقيط المبالغ: تحويل الأرقام إلى حروف بالريال والدرهم والدينار',
+  metaTitle: 'تفقيط المبالغ: تحويل الأرقام إلى حروف بالريال والدرهم',
   metaDescription:
     'اكتب المبلغ وسيظهر تفقيطه فوراً: فقط ألف ريال سعودي لا غير. ريال وهللة، درهم وفلس، دينار كويتي وأردني، جنيه وقرش، مع قواعد العدد والمعدود. مجاناً.',
   eyebrow: 'أرقام',

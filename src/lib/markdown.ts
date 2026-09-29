@@ -22,5 +22,8 @@ export function htmlToMarkdown(html: string): string {
     .replace(/<p>([\s\S]*?)<\/p>/g, '\n$1\n')
     .replace(/<a [^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g, '[$2]($1)')
     .replace(/<[^>]+>/g, '');
+  s = s.replace(/&nbsp;/g, '\u00a0').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  s = s.replace(/&nbsp;/g, '\u00a0').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  s = s.replace(/&nbsp;/g, '\u00a0').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
   return s.replace(/\n{3,}/g, '\n\n').trim();
 }

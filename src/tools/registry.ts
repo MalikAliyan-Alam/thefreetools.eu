@@ -13,6 +13,7 @@ import ageEs from './age/content/es';
 import wordsEn from './words/content/en';
 import wordsAr from './words/content/ar';
 import wordsEs from './words/content/es';
+import wordsFr from './words/content/fr';
 import vatEn from './vat/content/en';
 import vatAr from './vat/content/ar';
 import vatEs from './vat/content/es';
@@ -52,7 +53,7 @@ export const TOOLS: ToolEntry[] = [
   {
     id: 'words',
     icon: 'letters',
-    content: { en: wordsEn, ar: wordsAr, es: wordsEs },
+    content: { en: wordsEn, ar: wordsAr, es: wordsEs, fr: wordsFr },
   },
   {
     id: 'vat',
@@ -63,4 +64,19 @@ export const TOOLS: ToolEntry[] = [
 
 export function toolsFor(locale: Locale) {
   return TOOLS.filter((t) => t.content[locale]).map((t) => ({ tool: t, content: t.content[locale]! }));
+}
+
+/**
+ * Every tool for listings: the page in this locale if it exists, otherwise the
+ * English page (browsers offer to translate it). Tools with no English page are
+ * local variants (e.g. the Arabic Hijri-age page) and are left out elsewhere.
+ * Tools in this locale come first.
+ */
+export function toolsForListing(locale: Locale) {
+  const all = TOOLS.flatMap((t) => {
+    const own = t.content[locale];
+    if (own) return [{ tool: t, content: own, locale }];
+    return t.content.en ? [{ tool: t, content: t.content.en, locale: 'en' as Locale }] : [];
+  });
+  return [...all.filter((x) => x.locale === locale), ...all.filter((x) => x.locale !== locale)];
 }
