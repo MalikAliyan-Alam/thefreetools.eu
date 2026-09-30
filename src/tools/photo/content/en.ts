@@ -31,6 +31,7 @@ const labels: PhotoLabels = {
   headSize: 'head {min}–{max} mm (chin to top of head)',
   headGuideOnly: 'no official head size; the oval follows usual studio framing',
   perSheet: '{n} photos per sheet',
+  resolution: 'Your photo: {w} × {h} px · prints at about {dpi} dpi',
   lowRes:
     'This photo is low resolution for that size (about {dpi} dpi; 300 is ideal) and may print blurry. Use the original camera photo, not a screenshot or a WhatsApp copy, or zoom in less.',
   sheetPreview: 'Sheet',

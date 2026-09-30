@@ -31,6 +31,7 @@ const labels: PhotoLabels = {
   headSize: 'cabeza de {min} a {max} mm (de la barbilla a la coronilla)',
   headGuideOnly: 'sin medida oficial de cabeza; el óvalo sigue el encuadre habitual',
   perSheet: '{n} fotos por hoja',
+  resolution: 'Tu foto: {w} × {h} px · al imprimir, unos {dpi} ppp',
   lowRes:
     'Esta foto tiene poca resolución para ese tamaño (unos {dpi} ppp; lo ideal son 300) y puede salir borrosa. Usa la foto original de la cámara, no una captura ni una copia de WhatsApp, o acerca menos.',
   sheetPreview: 'Hoja',

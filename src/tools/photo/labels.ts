@@ -33,6 +33,8 @@ export type PhotoLabels = {
   perSheet: string;
   /** Shown when the framing gives under 200 dpi; {dpi} */
   lowRes: string;
+  /** Always shown once a photo is loaded; {w} {h} {dpi} */
+  resolution: string;
   sheetPreview: string;
   downloadSheet: string;
   downloadSingle: string;

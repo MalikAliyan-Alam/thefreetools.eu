@@ -117,6 +117,19 @@ export function effectiveDpi(img: { w: number; h: number }, spec: PhotoSpec, v: 
   return Math.round(25.4 / scale);
 }
 
+/**
+ * Picks which pre-shrunk copy of the photo to draw from. `widths` runs from the
+ * full image down (each about half the last). Returns the smallest copy that is
+ * still at least as big as the output needs, so the final step shrinks by less
+ * than half and stays sharp. `scale` is output pixels per full-size pixel.
+ */
+export function pickLevel(widths: number[], scale: number): number {
+  const need = widths[0] * scale;
+  let best = 0;
+  for (let i = 1; i < widths.length; i++) if (widths[i] >= need) best = i;
+  return best;
+}
+
 /** Where the head guide sits in the frame, as fractions of the photo height. */
 export function headGuide(spec: PhotoSpec) {
   const [min, max] = headRange(spec);

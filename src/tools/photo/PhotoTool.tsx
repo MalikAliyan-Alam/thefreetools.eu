@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { DEFAULT_VIEW, PAPERS, SPECS, drawTransform, effectiveDpi, headGuide, headRange, layoutSheet, mmToPx, type PaperId, type SpecId, type View } from './engine';
+import { DEFAULT_VIEW, PAPERS, SPECS, drawTransform, effectiveDpi, pickLevel, headGuide, headRange, layoutSheet, mmToPx, type PaperId, type SpecId, type View } from './engine';
 import type { PhotoLabels } from './labels';
 import './photo.css';
 
@@ -9,21 +9,52 @@ const SINGLE_DPI = 600;
 const PAPER_IDS: PaperId[] = ['4x6', 'letter', 'a4'];
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 
+/**
+ * The loaded photo plus copies shrunk by halves. Browsers blur and alias when one
+ * drawImage shrinks a 12-megapixel photo into a 300 px frame; halving step by
+ * step and drawing from the nearest copy keeps the preview as sharp as the export.
+ */
+type Picture = { w: number; h: number; levels: CanvasImageSource[]; widths: number[] };
+
+function makePicture(img: HTMLImageElement): Picture {
+  const levels: CanvasImageSource[] = [img];
+  const widths = [img.naturalWidth];
+  let src: CanvasImageSource = img;
+  let w = img.naturalWidth;
+  let h = img.naturalHeight;
+  while (w > 400 && h > 400) {
+    w = Math.round(w / 2);
+    h = Math.round(h / 2);
+    const c = document.createElement('canvas');
+    c.width = w;
+    c.height = h;
+    const ctx = c.getContext('2d')!;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(src, 0, 0, w, h);
+    levels.push(c);
+    widths.push(w);
+    src = c;
+  }
+  return { w: img.naturalWidth, h: img.naturalHeight, levels, widths };
+}
+
 /** Draws the picture as placed by the user into a canvas of w × h pixels, on white. */
-function paint(ctx: CanvasRenderingContext2D, img: HTMLImageElement, w: number, h: number, v: View) {
+function paint(ctx: CanvasRenderingContext2D, pic: Picture, w: number, h: number, v: View) {
   ctx.save();
   ctx.fillStyle = '#fff';
   ctx.fillRect(0, 0, w, h);
-  const t = drawTransform({ w: img.naturalWidth, h: img.naturalHeight }, { w, h }, v);
+  const t = drawTransform({ w: pic.w, h: pic.h }, { w, h }, v);
+  const i = pickLevel(pic.widths, t.scale);
+  const k = pic.widths[i] / pic.w; // size of that copy relative to the original
   ctx.translate(t.tx, t.ty);
   ctx.rotate(t.rad);
-  ctx.scale(t.scale, t.scale);
+  ctx.scale(t.scale / k, t.scale / k);
   ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
+  ctx.drawImage(pic.levels[i], (-pic.w * k) / 2, (-pic.h * k) / 2, pic.w * k, pic.h * k);
   ctx.restore();
 }
 
-function photoCanvas(img: HTMLImageElement, w: number, h: number, v: View) {
+function photoCanvas(img: Picture, w: number, h: number, v: View) {
   const c = document.createElement('canvas');
   c.width = w;
   c.height = h;
@@ -49,7 +80,7 @@ function download(canvas: HTMLCanvasElement, name: string) {
 export default function PhotoTool({ labels: t, locale }: { labels: PhotoLabels; locale: 'en' | 'es' }) {
   const storageKey = `tft:photo:v1:${locale}`;
   const [saved, setSaved] = useState<Saved>({ spec: t.specOrder[0], paper: t.defaultPaper });
-  const [img, setImg] = useState<HTMLImageElement | null>(null);
+  const [img, setImg] = useState<Picture | null>(null);
   const [error, setError] = useState(false);
   const [view, setView] = useState<View>(DEFAULT_VIEW);
   const frameRef = useRef<HTMLDivElement>(null);
@@ -91,7 +122,7 @@ export default function PhotoTool({ labels: t, locale }: { labels: PhotoLabels; 
       if (urlRef.current) URL.revokeObjectURL(urlRef.current);
       urlRef.current = url;
       setError(false);
-      setImg(next);
+      setImg(makePicture(next));
       setView(DEFAULT_VIEW);
     };
     next.onerror = () => {
@@ -204,7 +235,7 @@ export default function PhotoTool({ labels: t, locale }: { labels: PhotoLabels; 
     }
   };
 
-  const dpi = img ? effectiveDpi({ w: img.naturalWidth, h: img.naturalHeight }, spec, view) : 0;
+  const dpi = img ? effectiveDpi({ w: img.w, h: img.h }, spec, view) : 0;
   const mm = (n: number) => nf.format(n);
   const sizeText = t.size.replace('{w}', mm(spec.w)).replace('{h}', mm(spec.h));
   const fileBase = `${t.fileStem}-${mm(spec.w).replace(/[.,]/g, '_')}x${mm(spec.h).replace(/[.,]/g, '_')}mm`;
@@ -344,6 +375,11 @@ export default function PhotoTool({ labels: t, locale }: { labels: PhotoLabels; 
                 {t.reset}
               </button>
             </div>
+          )}
+          {img && (
+            <p class="photo-hint">
+              {t.resolution.replace('{w}', String(img.w)).replace('{h}', String(img.h)).replace('{dpi}', String(dpi))}
+            </p>
           )}
           {img && dpi < 200 && (
             <p class="photo-warn" role="status">

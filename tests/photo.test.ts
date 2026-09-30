@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SPECS, PAPERS, mmToPx, layoutSheet, coverScale, drawTransform, minZoom, effectiveDpi, headRange, headGuide, DEFAULT_VIEW } from '../src/tools/photo/engine.ts';
+import { SPECS, PAPERS, mmToPx, layoutSheet, coverScale, drawTransform, minZoom, effectiveDpi, pickLevel, headRange, headGuide, DEFAULT_VIEW } from '../src/tools/photo/engine.ts';
 
 const count = (spec: keyof typeof SPECS, paper: keyof typeof PAPERS) => layoutSheet(PAPERS[paper], SPECS[spec]).cells.length;
 
@@ -89,6 +89,15 @@ test('effective print resolution', () => {
   assert.equal(effectiveDpi({ w: 2000, h: 3000 }, SPECS['intl-35x45'], DEFAULT_VIEW), 1451);
   // A 600 × 800 image zoomed 4× into 25 × 30 mm: 150 px across 25 mm ≈ 152 dpi
   assert.equal(effectiveDpi({ w: 600, h: 800 }, SPECS['mx-infantil'], { zoom: 4, dx: 0, dy: 0, rotate: 0 }), 152);
+});
+
+test('sharp previews: draw from the right pre-shrunk copy', () => {
+  const widths = [4000, 2000, 1000, 500, 250];
+  assert.equal(pickLevel(widths, 1), 0); // export at full size or bigger
+  assert.equal(pickLevel(widths, 2), 0); // upscaling: nothing smaller helps
+  assert.equal(pickLevel(widths, 0.3), 1); // need 1200 px: 2000 is the smallest that covers it
+  assert.equal(pickLevel(widths, 0.075), 3); // need 300 px: 250 is too small, so 500
+  assert.equal(pickLevel(widths, 0.0625), 4); // need exactly 250
 });
 
 test('head guide', () => {
