@@ -16,6 +16,10 @@
   --logo-a: #2b1d14;
   --logo-b: #c8471f;
   --logo-wrench: #d9a273;
+  /* Printed paper: stays white in dark mode (photo tool previews). */
+  --paper: #ffffff;
+  /* Crop guide drawn over photos: same in both themes, dashed on a white halo. */
+  --guide: #c8471f;
 
   --font: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-display: 'Bricolage Grotesque Variable', 'Instrument Sans Variable', system-ui, sans-serif;
