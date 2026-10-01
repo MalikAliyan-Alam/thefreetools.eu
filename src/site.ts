@@ -7,7 +7,7 @@ export const SITE = {
   author: { name: 'Malik Aliyan Alam', url: 'https://www.linkedin.com/in/malik-aliyan-alam-674b46324/' },
   /** Official profiles, listed as sameAs in the Organization JSON-LD. */
   social: [
-    'https://www.youtube.com/@thefreetools_eu',
+    'https://www.youtube.com/@TheFreetools_eu',
     'https://www.instagram.com/thefreetools.eu/',
     'https://x.com/thefreetools_eu',
     'https://www.reddit.com/user/thefreetools_eu/',
