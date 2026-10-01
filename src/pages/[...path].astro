@@ -148,7 +148,14 @@ if (guide) {
     },
   ];
 }
-const moreGuides = guide ? GUIDES[locale].filter((g) => g !== guide).slice(0, 4) : [];
+// Guides on the same tool first, then the rest.
+const moreGuides = guide
+  ? [...GUIDES[locale].filter((g) => g !== guide && g.tool === guide.tool), ...GUIDES[locale].filter((g) => g.tool !== guide.tool)].slice(0, 4)
+  : [];
+// The home page is the strongest page on the site; listing guides there helps them get crawled.
+// One guide per tool first, so every topic gets a link, then the rest.
+const firstPerTool = GUIDES[locale].filter((g, i, all) => all.findIndex((x) => x.tool === g.tool) === i);
+const homeGuides = props.kind === 'home' ? [...firstPerTool, ...GUIDES[locale].filter((g) => !firstPerTool.includes(g))].slice(0, 6) : [];
 const toolGuides = tool ? guidesForTool(locale, tool.id) : [];
 
 // Same-language tools first, then English pages for tools not translated yet.
@@ -192,6 +199,26 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
               </div>
             </>
           ),
+      )}
+      {homeGuides.length > 0 && (
+        <section class="content">
+          <h2>{t.guidesTitle}</h2>
+          <ul class="guide-list">
+            {homeGuides.map((g) => (
+              <li>
+                <a href={guidePath(locale, g)}>
+                  <strong>{g.h1}</strong>
+                  <span>{g.answer}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {GUIDES[locale].length > homeGuides.length && (
+            <p>
+              <a href={guidesHubPath(locale)}>{t.allGuides} →</a>
+            </p>
+          )}
+        </section>
       )}
     </>
   )}

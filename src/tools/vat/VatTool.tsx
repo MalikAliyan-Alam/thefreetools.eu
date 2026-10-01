@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { COUNTRIES, mxWithholding, solve, type Field } from './engine';
 import { CURRENCIES, parseAmount, toWords, type Lang } from '../words/engine';
 import type { VatLabels } from './labels';
-import './vat.css';
+// Styles: vat.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type State = { country: string; rate: string; from: Field; value: string; ivaRet: boolean; isr: string };
 const FIELDS: Field[] = ['net', 'vat', 'gross'];

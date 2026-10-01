@@ -12,7 +12,7 @@ import {
   summarize,
 } from './engine';
 import type { GpaLabels } from './labels';
-import './gpa.css';
+// Styles: gpa.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type State = {
   scaleId: ScaleId;

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { DEFAULT_VIEW, PAPERS, SPECS, drawTransform, effectiveDpi, pickLevel, headGuide, headRange, layoutSheet, mmToPx, type PaperId, type SpecId, type View } from './engine';
 import type { PhotoLabels } from './labels';
-import './photo.css';
+// Styles: photo.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type Saved = { spec: SpecId; paper: PaperId };
 const SHEET_DPI = 300;

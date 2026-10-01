@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import { HIJRI_MONTHS, gregorianToHijri, hijriToGregorian, isValidGregorian, todayGregorian, weekday, type YMD } from '../hijri/engine';
 import { compare, gregorianAge, hijriAge, nextBirthday, totalDays, type Span } from './engine';
 import type { AgeLabels } from './labels';
-import './age.css';
+// Styles: age.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type Cal = 'gregorian' | 'hijri';
 type State = { cal: Cal; d: number; m: number; y: string; on: string };

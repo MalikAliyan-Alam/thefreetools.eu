@@ -9,7 +9,7 @@ Free, multilingual browser tools monetized only by Google AdSense. Speed, accura
 
 ## Layout
 - `src/tools/<id>/engine.ts`: pure calculation logic, no DOM. Every engine gets tests in `tests/<id>.test.ts`.
-- `src/tools/<id>/<Name>Tool.tsx` + `<id>.css`: the interactive island. Import the CSS from the component so it only loads on that tool's pages.
+- `src/tools/<id>/<Name>Tool.tsx` + `<id>.css`: the interactive island. Don't import the CSS in the component (every page comes from one route, so it would ship everywhere); add it to the `?inline` `CSS` map in `src/components/ToolIsland.astro`, which inlines it only on that tool's pages.
 - `src/tools/<id>/content/<locale>.ts`: slug, meta, H1, intro, long-form sections, FAQ and UI labels for one language.
 - `src/tools/registry.ts`: lists tools and which locales exist. `src/components/ToolIsland.astro` maps a tool id to its component.
 - `src/lib/routes.ts`: single list of every page (path, alternates, lastmod). `src/pages/[...path].astro` renders them; `src/pages/sitemap-*.xml.ts` build the sitemap (lastmod + hreflang) from the same list.

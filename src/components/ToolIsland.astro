@@ -10,10 +10,22 @@ import WordsTool from '../tools/words/WordsTool';
 import VatTool from '../tools/vat/VatTool';
 import PhotoTool from '../tools/photo/PhotoTool';
 import type { ToolId } from '../tools/registry';
+// Each tool's CSS is inlined only on that tool's pages. Importing it from the
+// component instead would put every tool's CSS on every page, because all pages
+// come from the same [...path].astro route.
+import gpaCss from '../tools/gpa/gpa.css?inline';
+import hijriCss from '../tools/hijri/hijri.css?inline';
+import ageCss from '../tools/age/age.css?inline';
+import wordsCss from '../tools/words/words.css?inline';
+import vatCss from '../tools/vat/vat.css?inline';
+import photoCss from '../tools/photo/photo.css?inline';
+
+const CSS: Record<ToolId, string> = { gpa: gpaCss, hijri: hijriCss, age: ageCss, 'hijri-age': ageCss, words: wordsCss, vat: vatCss, photo: photoCss };
 
 type Props = { id: ToolId; labels: any; locale: string };
 const { id, labels, locale } = Astro.props;
 ---
+<style is:inline set:html={CSS[id]}></style>
 {id === 'gpa' && <GpaTool client:load labels={labels} locale={locale} />}
 {id === 'hijri' && <HijriTool client:load labels={labels} locale={locale as 'en' | 'ar'} />}
 {(id === 'age' || id === 'hijri-age') && <AgeTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}

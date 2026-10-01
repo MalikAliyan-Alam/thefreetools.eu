@@ -2,7 +2,7 @@
 
 1. **Pick it from research.** Check `docs/research/keyword-research-master.csv` for the target keyword per language, volume and KD.
 2. **Engine** — `src/tools/<id>/engine.ts`. Pure functions only. Write `tests/<id>.test.ts` with worked examples you verified by hand, including rounding edge cases. Run `pnpm test`.
-3. **Component** — `src/tools/<id>/<Name>Tool.tsx` and `<id>.css` (import the CSS inside the component). Reuse the shared classes in `global.css`: `.input`, `.btn`, `.btn-ghost`, `.chip`, `.segmented`, `.fold`, `.two`.
+3. **Component** — `src/tools/<id>/<Name>Tool.tsx` and `<id>.css` (do not import the CSS in the component; add a `?inline` import and an entry in the `CSS` map in `src/components/ToolIsland.astro`, so it only ships on that tool's pages). Reuse the shared classes in `global.css`: `.input`, `.btn`, `.btn-ghost`, `.chip`, `.segmented`, `.fold`, `.two`.
    - Results update as the user types; no "Calculate" button.
    - Offer "Try an example", "Clear", copy and share-link where it makes sense.
    - Save state to `localStorage` under `tft:<id>:v1:<locale>` inside try/catch.

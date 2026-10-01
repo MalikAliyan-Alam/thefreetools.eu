@@ -13,7 +13,7 @@ import {
   weekday,
 } from './engine';
 import type { HijriLabels } from './labels';
-import './hijri.css';
+// Styles: hijri.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type Dir = 'toGregorian' | 'toHijri';
 type State = { dir: Dir; cal: HijriCalendar; input: YMD };

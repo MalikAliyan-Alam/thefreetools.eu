@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { CURRENCIES, DEFAULT_CURRENCY, hasThreeDecimals, parseAmount, toWords, type FrVariant, type Lang, type LetterCase } from './engine';
 import type { WordsLabels } from './labels';
-import './words.css';
+// Styles: words.css, inlined on this tool's pages by components/ToolIsland.astro.
 
 type State = {
   lang: Lang;
