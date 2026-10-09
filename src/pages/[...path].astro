@@ -77,6 +77,7 @@ if (tool && c) {
       inLanguage: locale,
       isAccessibleForFree: true,
       dateModified: c.updated,
+      author: { '@type': 'Person', name: SITE.author.name, url: SITE.author.url },
       publisher: { '@id': ORG_ID },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },

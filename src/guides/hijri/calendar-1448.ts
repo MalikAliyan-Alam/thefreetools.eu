@@ -55,8 +55,8 @@ export const hijri1448En: GuideContent = {
   key: 'hijri-1448',
   tool: 'hijri',
   slug: 'hijri-calendar-1448',
-  metaTitle: `Hijri Calendar ${YEAR}: Month Start Dates (${start.y}–${end.y})`,
-  metaDescription: `Hijri year ${YEAR} runs from ${fmt('en', start, false)} to ${fmt('en', g(12, hijriMonthLength(YEAR, 12)!), false)}. Start date and length of every month, plus Ramadan, Eid and Arafah dates (Umm al-Qura).`,
+  metaTitle: `Hijri Year ${YEAR} Starts ${fmt('en', start, false)}: Full Calendar`,
+  metaDescription: `${YEAR} AH is ${start.y}–${end.y} in the Gregorian calendar. Hijri year ${YEAR} runs from ${fmt('en', start, false)} to ${fmt('en', g(12, hijriMonthLength(YEAR, 12)!), false)}. Start date and length of every month, plus Ramadan, Eid and Arafah dates (Umm al-Qura).`,
   h1: `Hijri calendar ${YEAR} with Gregorian dates`,
   answer: `Hijri year ${YEAR} began on ${fmt('en', start)} and has ${lengthOfYear} days under the Umm al-Qura calendar. Ramadan ${YEAR} is expected to begin on ${fmt('en', g(9, 1))}, subject to moon sighting.`,
   sections: [
@@ -89,8 +89,8 @@ export const hijri1448Ar: GuideContent = {
   key: 'hijri-1448',
   tool: 'hijri',
   slug: 'hijri-calendar-1448',
-  metaTitle: `التقويم الهجري ${YEAR} بالميلادي: بداية كل شهر وعدد أيامه`,
-  metaDescription: `تبدأ السنة الهجرية ${YEAR} في ${fmt('ar', start, false)} وتنتهي في ${fmt('ar', g(12, hijriMonthLength(YEAR, 12)!), false)}. بداية كل شهر وعدد أيامه، ومواعيد رمضان والعيدين ويوم عرفة حسب تقويم أم القرى.`,
+  metaTitle: `السنة الهجرية ${YEAR} تبدأ ${fmt('ar', start, false)}: التقويم الكامل بالميلادي`,
+  metaDescription: `${YEAR} هـ يوافق ${start.y}–${end.y} م. تبدأ السنة الهجرية ${YEAR} في ${fmt('ar', start, false)} وتنتهي في ${fmt('ar', g(12, hijriMonthLength(YEAR, 12)!), false)}. بداية كل شهر وعدد أيامه، ومواعيد رمضان والعيدين ويوم عرفة حسب تقويم أم القرى.`,
   h1: `التقويم الهجري ${YEAR} بالميلادي`,
   answer: `بدأت السنة الهجرية ${YEAR} يوم ${fmt('ar', start)}، وعدد أيامها ${lengthOfYear} يوماً حسب تقويم أم القرى. ويُتوقع أن يبدأ رمضان ${YEAR} يوم ${fmt('ar', g(9, 1))}، والموعد النهائي يتحدد برؤية الهلال.`,
   sections: [

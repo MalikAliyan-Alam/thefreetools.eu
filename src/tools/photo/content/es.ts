@@ -43,21 +43,23 @@ const labels: PhotoLabels = {
 
 const content: ToolContent<PhotoLabels> = {
   slug: 'foto-tamano-infantil',
-  metaTitle: 'Foto tamaño infantil y pasaporte para imprimir, gratis',
+  metaTitle: 'Tamaño de foto infantil: 2,5 × 3 cm, medidas y hoja para imprimir',
   metaDescription:
-    'Haz tu foto tamaño infantil (2,5 × 3 cm), credencial, pasaporte o DNI desde el celular y descarga una hoja lista para imprimir. Tu foto no se sube a internet.',
+    'La foto tamaño infantil mide 2,5 × 3 cm (0,98 × 1,18 pulgadas). Haz la tuya, también credencial o pasaporte, y descarga la hoja lista para imprimir. Gratis y sin subir tu foto.',
   eyebrow: 'Fotos',
   h1: 'Foto tamaño infantil y pasaporte',
   intro:
-    'Elige una foto de frente con fondo claro, colócala en el recuadro y descarga una hoja con varias copias del tamaño exacto. Todo ocurre en tu navegador: la foto no sale de tu dispositivo.',
+    'Una foto tamaño infantil mide 2,5 × 3 cm; la de credencial o pasaporte, 3,5 × 4,5 cm. Sube una foto de frente, acomódala en el recuadro y descarga una hoja con las copias ya al tamaño exacto, lista para llevar a revelar. La foto no sale de tu celular ni de tu computadora.',
   labels,
   sections: [
     {
       heading: 'Medidas de fotos en México',
-      html: `<table><thead><tr><th>Tamaño</th><th>Medida</th><th>Fotos en una hoja 10 × 15</th></tr></thead><tbody>
-<tr><td>Infantil</td><td>2,5 × 3 cm</td><td>12</td></tr>
-<tr><td>Credencial (rectangular) o pasaporte</td><td>3,5 × 4,5 cm</td><td>6</td></tr></tbody></table>
-<p>No encontramos una norma oficial para la foto infantil ni para la de credencial: son las medidas con que trabajan los estudios fotográficos, y así las piden escuelas y oficinas. Si tu trámite indica otra medida o un fondo distinto, sigue lo que diga el trámite.</p>
+      html: `<p>La foto tamaño infantil mide <strong>2,5 × 3 cm</strong> (0,98 × 1,18 pulgadas).</p>
+<table><thead><tr><th>Tamaño</th><th>Medida en cm</th><th>Medida en pulgadas</th><th>Fotos en una hoja 10 × 15</th></tr></thead><tbody>
+<tr><td>Infantil</td><td>2,5 × 3 cm</td><td>0,98 × 1,18</td><td>12</td></tr>
+<tr><td>Credencial (rectangular) o pasaporte</td><td>3,5 × 4,5 cm</td><td>1,38 × 1,77</td><td>6</td></tr></tbody></table>
+<p>Ninguna de las dos medidas viene de una norma oficial: son las que usan los estudios fotográficos y las que suelen pedir escuelas y oficinas. Por eso, si tu trámite indica otra medida o un fondo distinto, manda lo que diga el trámite, no esta tabla.</p>
+<p><strong>Un ejemplo con números.</strong> Para imprimir a 300 puntos por pulgada, una foto infantil necesita 295 × 354 píxeles (2,5 cm ÷ 2,54 × 300 y 3 cm ÷ 2,54 × 300), y una de credencial, 413 × 531 píxeles. Una foto normal de celular tiene miles de píxeles de ancho, así que sobra. El problema aparece si recortas solo la cara de una foto tomada de lejos: si el rostro ocupa un cuadro de 250 píxeles de ancho y lo estiras a 3,5 cm, quedas en unos 181 puntos por pulgada y se verá borroso. La herramienta te avisa cuando baja de 200.</p>
 <p>Para el <strong>pasaporte mexicano</strong> normalmente no hace falta llevar fotos: la SRE toma la fotografía durante la cita, junto con las huellas y la firma. Revisa las indicaciones de tu cita por si en tu caso piden fotos impresas.</p>`,
     },
     {
@@ -82,8 +84,8 @@ const content: ToolContent<PhotoLabels> = {
     },
     {
       heading: 'Cómo imprimir sin que cambie el tamaño',
-      html: `<p>La hoja se descarga a 300 puntos por pulgada, con líneas grises finas para recortar. La opción más barata es mandar la hoja 10 × 15 a revelar como una foto normal: en ella caben 12 fotos infantiles o 6 de 3,5 × 4,5 cm. En carta caben 60 infantiles y en A4, 63.</p>
-<p>Si la imprimes en casa, elige «tamaño real» o escala al 100 %, nunca «ajustar a la página», y mide una foto con una regla antes de recortar.</p>`,
+      html: `<p>La hoja se descarga a 300 puntos por pulgada, con líneas grises finas para recortar. Lo más práctico es llevar la hoja 10 × 15 a un laboratorio y pedirla como una foto normal: en ella caben 12 fotos infantiles o 6 de 3,5 × 4,5 cm. Si prefieres imprimir en casa, en una hoja carta caben 60 infantiles y en una A4, 63.</p>
+<p>El error más común al imprimir en casa es dejar activada la opción «ajustar a la página». Si la impresora reduce la hoja apenas un 5 %, una foto infantil de 3 cm de alto sale de 2,85 cm, y ya no sirve para un trámite que pide la medida exacta. Elige «tamaño real» o escala al 100 %, y mide una foto con una regla antes de recortar todas.</p>`,
     },
   ],
   faq: [
@@ -100,6 +102,10 @@ const content: ToolContent<PhotoLabels> = {
       a: 'Por lo general no: la SRE toma la foto durante la cita. Revisa las indicaciones de tu cita por si en tu caso piden fotos impresas.',
     },
     {
+      q: '¿Cuántas pulgadas mide una foto tamaño infantil?',
+      a: '0,98 × 1,18 pulgadas (2,5 × 3 cm), es decir, casi 1 pulgada de ancho por poco más de 1 de alto. La de credencial mide 1,38 × 1,77 pulgadas.',
+    },
+    {
       q: '¿Puedo sacar la foto con el celular?',
       a: 'Sí, si otra persona la toma de frente a 1 o 1,5 m, contra una pared clara y con buena luz. Después la colocas en el recuadro y descargas la hoja.',
     },
@@ -108,7 +114,7 @@ const content: ToolContent<PhotoLabels> = {
       a: 'No. La imagen se procesa en tu navegador y la hoja se genera en tu dispositivo. Tampoco la guardamos: al cerrar la página desaparece.',
     },
   ],
-  updated: '2026-10-01',
+  updated: '2026-10-08',
 };
 
 export default content;
