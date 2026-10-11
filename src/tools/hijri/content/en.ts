@@ -70,7 +70,7 @@ const content: ToolContent<HijriLabels> = {
       a: 'Yes. Choose Gregorian → Hijri and enter your birth date. For your age in Hijri years, use the difference between the Hijri years, adjusted for the month and day.',
     },
   ],
-  updated: '2026-09-26',
+  updated: '2026-10-11',
 };
 
 export default content;

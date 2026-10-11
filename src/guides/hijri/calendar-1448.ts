@@ -82,7 +82,7 @@ export const hijri1448En: GuideContent = {
     },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-11',
 };
 
 export const hijri1448Ar: GuideContent = {
@@ -116,5 +116,5 @@ export const hijri1448Ar: GuideContent = {
     },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-11',
 };

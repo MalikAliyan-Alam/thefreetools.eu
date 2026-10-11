@@ -166,6 +166,13 @@ if (guide) {
       ],
     },
   ];
+  if (guide.faq && guide.faq.length > 0) {
+    jsonLd.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: guide.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    });
+  }
 }
 // Guides on the same tool first, then the rest.
 const moreGuides = guide
