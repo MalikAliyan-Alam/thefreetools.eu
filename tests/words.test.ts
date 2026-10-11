@@ -188,3 +188,18 @@ test('every example printed on the content pages', () => {
     assert.equal(frWords(n, { variant: 'ch' }), ch);
   }
 });
+
+test('French page examples stay correct', () => {
+  const cases: [string, string][] = [
+    ['13000', 'treize mille'], ['25000', 'vingt-cinq mille'], ['80000', 'quatre-vingt mille'],
+    ['130000', 'cent trente mille'], ['170000', 'cent soixante-dix mille'], ['200000', 'deux cent mille'],
+    ['3000000', 'trois millions'], ['4500000', 'quatre millions cinq cent mille'], ['1000000000', 'un milliard'],
+  ];
+  for (const [n, words] of cases) assert.equal(frWords(n), words);
+  const money = (s: string, c: string) => toWords('fr', parseAmount(s, false, true) as Amount, { currency: c, letterCase: 'lower' });
+  assert.equal(money('10000', 'EUR'), 'dix mille euros');
+  assert.equal(money('1000000', 'EUR'), 'un million d’euros');
+  assert.equal(money('25000', 'XOF'), 'vingt-cinq mille francs CFA');
+  assert.equal(money('3000000', 'XOF'), 'trois millions de francs CFA');
+  assert.equal(money('200000', 'DZD'), 'deux cent mille dinars');
+});

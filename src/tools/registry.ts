@@ -14,13 +14,14 @@ import wordsEn from './words/content/en';
 import wordsAr from './words/content/ar';
 import wordsEs from './words/content/es';
 import wordsFr from './words/content/fr';
+import unwordsFr from './unwords/content/fr';
 import vatEn from './vat/content/en';
 import vatAr from './vat/content/ar';
 import vatEs from './vat/content/es';
 import photoEn from './photo/content/en';
 import photoEs from './photo/content/es';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords';
 
 export type ToolEntry = {
   id: ToolId;
@@ -56,6 +57,12 @@ export const TOOLS: ToolEntry[] = [
     id: 'words',
     icon: 'letters',
     content: { en: wordsEn, ar: wordsAr, es: wordsEs, fr: wordsFr },
+  },
+  {
+    // French only: "quatre millions cinq cent mille en chiffre" is searched on its own.
+    id: 'unwords',
+    icon: 'letters',
+    content: { fr: unwordsFr },
   },
   {
     id: 'vat',

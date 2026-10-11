@@ -6,6 +6,7 @@
 import Base from '../layouts/Base.astro';
 import ToolIsland from '../components/ToolIsland.astro';
 import ToolIcon from '../components/ToolIcon.astro';
+import VideoFacade from '../components/VideoFacade.astro';
 import { LOCALE_META, localePath, type Locale } from '../i18n/locales';
 import { UI } from '../i18n/ui';
 import { TOOLS, toolsFor, toolsForListing } from '../tools/registry';
@@ -56,6 +57,22 @@ if (props.kind === 'home') {
       itemListElement: toolsFor(locale).map(({ content: xc }, i) => ({ '@type': 'ListItem', position: i + 1, name: xc.h1, url: abs(localePath(locale, xc.slug)) })),
     },
   ];
+  if (locale === 'en') {
+    const v = SITE.video;
+    jsonLd.push({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: v.name,
+      description: v.description,
+      thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
+      uploadDate: v.uploadDate,
+      duration: v.duration,
+      inLanguage: 'en',
+      embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+      contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+      publisher: { '@id': ORG_ID },
+    });
+  }
 }
 
 const tool = props.kind === 'tool' ? props.tool : null;
@@ -201,6 +218,12 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
               </div>
             </>
           ),
+      )}
+      {locale === 'en' && (
+        <section class="content">
+          <h2>See the tools in two minutes</h2>
+          <VideoFacade id={SITE.video.id} title={SITE.video.name} playLabel="Play video" watchLabel="Watch the overview video on YouTube" />
+        </section>
       )}
       {homeGuides.length > 0 && (
         <section class="content">

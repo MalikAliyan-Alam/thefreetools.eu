@@ -51,6 +51,8 @@ export function teaser(id: ToolId, l: Locale): string {
       if (l === 'es') return `1.250 ${a} ${esWords('1250')}`;
       if (l === 'fr') return `1 250 ${a} ${frWords('1250')}`;
       return `1,250 ${a} ${enWords('1250')}`;
+    case 'unwords':
+      return `${frWords('4500000')} ${a} 4 500 000`;
     case 'photo': {
       if (l === 'es') return `2,5 × 3 cm ${a} ${layoutSheet(PAPERS['4x6'], SPECS['mx-infantil']).cells.length} en una foto 10 × 15`;
       return `2 × 2 in ${a} ${layoutSheet(PAPERS['4x6'], SPECS['us-passport']).cells.length} per 4 × 6 print`;

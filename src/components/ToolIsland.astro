@@ -9,6 +9,7 @@ import AgeTool from '../tools/age/AgeTool';
 import WordsTool from '../tools/words/WordsTool';
 import VatTool from '../tools/vat/VatTool';
 import PhotoTool from '../tools/photo/PhotoTool';
+import UnwordsTool from '../tools/unwords/UnwordsTool';
 import type { ToolId } from '../tools/registry';
 // Each tool's CSS is inlined only on that tool's pages. Importing it from the
 // component instead would put every tool's CSS on every page, because all pages
@@ -20,7 +21,7 @@ import wordsCss from '../tools/words/words.css?inline';
 import vatCss from '../tools/vat/vat.css?inline';
 import photoCss from '../tools/photo/photo.css?inline';
 
-const CSS: Record<ToolId, string> = { gpa: gpaCss, hijri: hijriCss, age: ageCss, 'hijri-age': ageCss, words: wordsCss, vat: vatCss, photo: photoCss };
+const CSS: Record<ToolId, string> = { gpa: gpaCss, hijri: hijriCss, age: ageCss, 'hijri-age': ageCss, words: wordsCss, unwords: wordsCss, vat: vatCss, photo: photoCss };
 
 type Props = { id: ToolId; labels: any; locale: string };
 const { id, labels, locale } = Astro.props;
@@ -30,5 +31,6 @@ const { id, labels, locale } = Astro.props;
 {id === 'hijri' && <HijriTool client:load labels={labels} locale={locale as 'en' | 'ar'} />}
 {(id === 'age' || id === 'hijri-age') && <AgeTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}
 {id === 'words' && <WordsTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es' | 'fr'} />}
+{id === 'unwords' && <UnwordsTool client:load labels={labels} />}
 {id === 'vat' && <VatTool client:load labels={labels} locale={locale as 'en' | 'ar' | 'es'} />}
 {id === 'photo' && <PhotoTool client:load labels={labels} locale={locale as 'en' | 'es'} />}

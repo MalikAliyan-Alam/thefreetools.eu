@@ -70,6 +70,28 @@ const content: ToolContent<WordsLabels> = {
 <p><em>Huitante</em> s’emploie surtout dans les cantons de Vaud, du Valais et de Fribourg. À Genève, on dit plutôt <em>quatre-vingts</em>&nbsp;: choisissez alors <em>Belgique</em>, qui donne les mêmes mots.</p>`,
     },
     {
+      heading: 'Exemples de nombres souvent cherchés',
+      html: `<table><thead><tr><th>En chiffres</th><th>En lettres</th></tr></thead><tbody>
+<tr><td>13 000</td><td>treize mille</td></tr>
+<tr><td>25 000</td><td>vingt-cinq mille</td></tr>
+<tr><td>80 000</td><td>quatre-vingt mille</td></tr>
+<tr><td>130 000</td><td>cent trente mille</td></tr>
+<tr><td>170 000</td><td>cent soixante-dix mille</td></tr>
+<tr><td>200 000</td><td>deux cent mille</td></tr>
+<tr><td>3 000 000</td><td>trois millions</td></tr>
+<tr><td>4 500 000</td><td>quatre millions cinq cent mille</td></tr>
+<tr><td>1 000 000 000</td><td>un milliard</td></tr></tbody></table>
+<p>Pour l’opération inverse, par exemple <em>quatre millions cinq cent mille</em> en chiffres, utilisez le <a href="/fr/lettres-en-chiffres/">convertisseur de lettres en chiffres</a>.</p>
+<p>Dans <em>quatre-vingt mille</em>, <em>vingt</em> ne prend pas de <em>s</em>, car il n’est pas le dernier mot du nombre&nbsp;: <em>mille</em> reste invariable. Pour lire dans l’autre sens, par exemple <em>quatre millions cinq cent mille</em>, additionnez les groupes&nbsp;: 4 000 000 + 500 000 = 4 500 000.</p>
+<table><thead><tr><th>Montant</th><th>En lettres</th></tr></thead><tbody>
+<tr><td>10 000 €</td><td>dix mille euros</td></tr>
+<tr><td>1 000 000 €</td><td>un million d’euros</td></tr>
+<tr><td>25 000 FCFA</td><td>vingt-cinq mille francs CFA</td></tr>
+<tr><td>3 000 000 FCFA</td><td>trois millions de francs CFA</td></tr>
+<tr><td>200 000 DZD</td><td>deux cent mille dinars</td></tr></tbody></table>
+<p>Après <em>million</em> et <em>milliard</em>, on met <em>de</em> devant le nom de la monnaie&nbsp;: <em>un million d’euros</em>, <em>trois millions de francs CFA</em>.</p>`,
+    },
+    {
       heading: 'Montants : dirhams, euros, francs, dinars',
       html: `<table><thead><tr><th>Pays</th><th>1 234,56 en lettres</th></tr></thead><tbody>
 <tr><td>Maroc (MAD)</td><td>mille deux cent trente-quatre dirhams et cinquante-six centimes</td></tr>
@@ -111,7 +133,7 @@ const content: ToolContent<WordsLabels> = {
       a: 'Non. Le texte est calculé dans votre navigateur et n’est envoyé à aucun serveur.',
     },
   ],
-  updated: '2026-09-29',
+  updated: '2026-10-10',
 };
 
 export default content;

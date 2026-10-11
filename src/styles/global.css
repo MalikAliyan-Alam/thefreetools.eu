@@ -123,10 +123,13 @@ select {
 }
 .skip {
   position: absolute;
-  inset-inline-start: -9999px;
+  /* Off-canvas via transform: a huge negative inline offset makes RTL pages scroll sideways. */
+  inset-inline-start: 16px;
+  top: 0;
+  transform: translateY(-200%);
 }
 .skip:focus {
-  inset-inline-start: 16px;
+  transform: none;
   top: 16px;
   background: var(--surface);
   padding: 8px 12px;
@@ -929,7 +932,7 @@ label > span {
     height: 34px;
   }
   .lang a {
-    padding: 4px 5px;
+    padding: 4px 3px;
   }
 }
 @media (max-width: 355px) {
