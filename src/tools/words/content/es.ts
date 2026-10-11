@@ -55,6 +55,18 @@ const content: ToolContent<WordsLabels> = {
 <p>Estas reglas son las del <em>Diccionario panhispánico de dudas</em> de la RAE.</p>`,
     },
     {
+      heading: 'Cómo escribir la cantidad en un cheque en México',
+      html: `<p>En México la cantidad con letra termina con los centavos como fracción de 100 y con <em>M.N.</em> (moneda nacional). Cuando no hay centavos se escribe <em>00/100</em>, es decir, cero centavos de cien.</p>
+<table><thead><tr><th>En número</th><th>Con letra</th></tr></thead><tbody>
+<tr><td>$56</td><td>cincuenta y seis pesos 00/100 M.N.</td></tr>
+<tr><td>$2,000</td><td>dos mil pesos 00/100 M.N.</td></tr>
+<tr><td>$5,500</td><td>cinco mil quinientos pesos 00/100 M.N.</td></tr>
+<tr><td>$1,235.50</td><td>mil doscientos treinta y cinco pesos 50/100 M.N.</td></tr>
+<tr><td>$12,500,000</td><td>doce millones quinientos mil pesos 00/100 M.N.</td></tr>
+<tr><td>$27,500,000</td><td>veintisiete millones quinientos mil pesos 00/100 M.N.</td></tr></tbody></table>
+<p>Para números sin moneda, como <em>1 500 000</em>, se lee <em>un millón quinientos mil</em>. Si tu banco o tu trámite pide otro formato, sigue el que te indiquen.</p>`,
+    },
+    {
       heading: 'Formatos por país',
       html: `<table><thead><tr><th>País</th><th>1234,56 en letras</th></tr></thead><tbody>
 <tr><td>México (facturas, cheques)</td><td>mil doscientos treinta y cuatro pesos 56/100 M.N.</td></tr>
@@ -91,7 +103,7 @@ const content: ToolContent<WordsLabels> = {
       a: 'Solo en tu navegador. El texto se genera en tu dispositivo y no se envía a ningún servidor.',
     },
   ],
-  updated: '2026-09-27',
+  updated: '2026-10-11',
 };
 
 export default content;

@@ -68,3 +68,124 @@ test('VAT guides: hand-written numbers match the engine', async () => {
   assert.equal(mxWithholding(b, true, 10).receive, 9533.33);
   assert.equal(mxWithholding(b, true, 1.25).receive, 10408.33);
 });
+
+test('French words guides: spelling rules match the engine, written out by hand', async () => {
+  const { frWords, parseAmount, toWords } = await import('../src/tools/words/engine.ts');
+  const fr = (n: string) => frWords(n);
+  const eur = (n: string, c: string) => toWords('fr', parseAmount(n, false, true) as any, { currency: c, letterCase: 'lower' });
+  // quatre-vingt
+  assert.equal(fr('80'), 'quatre-vingts');
+  assert.equal(fr('81'), 'quatre-vingt-un');
+  assert.equal(fr('90'), 'quatre-vingt-dix');
+  assert.equal(fr('180'), 'cent quatre-vingts');
+  assert.equal(fr('280'), 'deux cent quatre-vingts');
+  assert.equal(fr('80000'), 'quatre-vingt mille');
+  assert.equal(fr('80080'), 'quatre-vingt mille quatre-vingts');
+  assert.equal(fr('80000000'), 'quatre-vingts millions');
+  // cent
+  assert.equal(fr('100'), 'cent');
+  assert.equal(fr('200'), 'deux cents');
+  assert.equal(fr('201'), 'deux cent un');
+  assert.equal(fr('700'), 'sept cents');
+  assert.equal(fr('200000'), 'deux cent mille');
+  assert.equal(fr('200000000'), 'deux cents millions');
+  assert.equal(fr('2000300'), 'deux millions trois cents');
+  assert.equal(eur('300', 'EUR'), 'trois cents euros');
+  assert.equal(eur('350', 'EUR'), 'trois cent cinquante euros');
+  // cheque
+  assert.equal(eur('85', 'EUR'), 'quatre-vingt-cinq euros');
+  assert.equal(eur('1234,56', 'EUR'), 'mille deux cent trente-quatre euros et cinquante-six centimes');
+  assert.equal(eur('2000,05', 'EUR'), 'deux mille euros et cinq centimes');
+  assert.equal(eur('10000', 'EUR'), 'dix mille euros');
+  assert.equal(eur('1000000', 'EUR'), 'un million d’euros');
+  assert.equal(eur('1234,56', 'CHF'), 'mille deux cent trente-quatre francs et cinquante-six centimes');
+  assert.equal(eur('1234,56', 'MAD'), 'mille deux cent trente-quatre dirhams et cinquante-six centimes');
+  // francs CFA
+  assert.equal(eur('25000', 'XOF'), 'vingt-cinq mille francs CFA');
+  assert.equal(eur('150000', 'XOF'), 'cent cinquante mille francs CFA');
+  assert.equal(eur('1000000', 'XOF'), 'un million de francs CFA');
+  assert.equal(eur('2500000', 'XOF'), 'deux millions cinq cent mille francs CFA');
+  assert.equal(eur('3000000', 'XOF'), 'trois millions de francs CFA');
+});
+
+test('new guides keep a human voice: no em or en dashes, no filler words', async () => {
+  const { FR_WORDS_GUIDES } = await import('../src/guides/words/fr-guides.ts');
+  for (const g of FR_WORDS_GUIDES) {
+    const text = JSON.stringify(g);
+    assert.ok(!/[\u2014\u2013]/.test(text), `${g.slug} has a dash`);
+    assert.ok(!/(unlock|seamless|powerful|débloquez|puissant)/i.test(text), `${g.slug} has filler`);
+    assert.ok(g.metaTitle.length <= 70, `${g.slug} title too long`);
+    assert.ok(g.metaDescription.length <= 175, `${g.slug} description too long`);
+  }
+});
+
+test('Spanish number rules guide: hand-written answers match the engine', async () => {
+  const { esWords, parseAmount, toWords } = await import('../src/tools/words/engine.ts');
+  assert.equal(esWords('16'), 'dieciséis');
+  assert.equal(esWords('22'), 'veintidós');
+  assert.equal(esWords('31'), 'treinta y uno');
+  assert.equal(esWords('100'), 'cien');
+  assert.equal(esWords('101'), 'ciento uno');
+  assert.equal(esWords('1001'), 'mil uno');
+  assert.equal(esWords('185000'), 'ciento ochenta y cinco mil');
+  assert.equal(esWords('600000'), 'seiscientos mil');
+  assert.equal(esWords('1500000'), 'un millón quinientos mil');
+  assert.equal(esWords('1000000000'), 'mil millones');
+  assert.equal(esWords('21'), 'veintiuno');
+  assert.equal(esWords('21', true), 'veintiún');
+  assert.equal(esWords('21000'), 'veintiún mil');
+  assert.equal(esWords('21000000'), 'veintiún millones');
+  assert.equal(esWords('31000'), 'treinta y un mil');
+  assert.equal(esWords('5500'), 'cinco mil quinientos');
+  assert.equal(toWords('es', parseAmount('1000000') as any, { currency: 'MXN', letterCase: 'lower' }), 'un millón de pesos 00/100 M.N.');
+});
+
+test('photo guides: pixel sizes and sheet counts match the engine', async () => {
+  const { SPECS, PAPERS, layoutSheet, mmToPx } = await import('../src/tools/photo/engine.ts');
+  assert.equal(mmToPx(50.8, 300), 600);
+  assert.equal(mmToPx(35, 300), 413);
+  assert.equal(mmToPx(45, 300), 531);
+  assert.equal(mmToPx(50, 300), 591);
+  assert.equal(mmToPx(70, 300), 827);
+  assert.equal(mmToPx(25, 300), 295);
+  assert.equal(mmToPx(30, 300), 354);
+  const n = (p: keyof typeof PAPERS, s: keyof typeof SPECS) => layoutSheet(PAPERS[p], SPECS[s]).cells.length;
+  assert.equal(n('4x6', 'mx-infantil'), 12);
+  assert.equal(n('letter', 'mx-infantil'), 60);
+  assert.equal(n('a4', 'mx-infantil'), 63);
+  assert.equal(n('4x6', 'mx-credencial'), 6);
+  assert.ok(n('4x6', 'us-passport') >= 1 && n('4x6', 'uk-passport') >= 1);
+  // 2 x 2 in = 50.8 mm; 35 mm = 1.378 in; 50 x 70 mm = 1.97 x 2.76 in
+  assert.equal((35 / 25.4).toFixed(2), '1.38');
+  assert.equal((45 / 25.4).toFixed(2), '1.77');
+  assert.equal((50 / 25.4).toFixed(2), '1.97');
+  assert.equal((70 / 25.4).toFixed(2), '2.76');
+  assert.equal((2.5 / 2.54).toFixed(2), '0.98');
+  assert.equal((3 / 2.54).toFixed(2), '1.18');
+});
+
+test('Arabic Hijri examples: dates match the Umm al-Qura engine', async () => {
+  const { hijriToGregorian, weekday } = await import('../src/tools/hijri/engine.ts');
+  const d = (m: number, day: number) => hijriToGregorian({ y: 1448, m, d: day })!;
+  assert.deepEqual(d(5, 1), { y: 2026, m: 10, d: 12 });
+  assert.deepEqual(d(5, 3), { y: 2026, m: 10, d: 14 });
+  assert.deepEqual(d(5, 8), { y: 2026, m: 10, d: 19 });
+  assert.equal(weekday(d(5, 8)), 1);
+  assert.deepEqual(d(5, 15), { y: 2026, m: 10, d: 26 });
+  assert.deepEqual(d(9, 1), { y: 2027, m: 2, d: 8 });
+  assert.deepEqual(d(10, 1), { y: 2027, m: 3, d: 9 });
+  assert.deepEqual(d(12, 10), { y: 2027, m: 5, d: 16 });
+});
+
+test('new guides: no em or en dashes, no filler, sane meta lengths', async () => {
+  const { esReglas } = await import('../src/guides/words/es-reglas.ts');
+  const { photoPixelsEn, photoPrintEs } = await import('../src/guides/photo/guides.ts');
+  const { hijriExamplesAr } = await import('../src/guides/hijri/ar-examples.ts');
+  for (const g of [esReglas, photoPixelsEn, photoPrintEs, hijriExamplesAr]) {
+    const text = JSON.stringify(g);
+    assert.ok(!/[\u2014\u2013]/.test(text), `${g.slug} has a dash`);
+    assert.ok(!/(unlock|seamless|powerful|desbloquea|potente)/i.test(text), `${g.slug} has filler`);
+    assert.ok(g.metaTitle.length <= 75, `${g.slug} title ${g.metaTitle.length}`);
+    assert.ok(g.metaDescription.length <= 180, `${g.slug} description ${g.metaDescription.length}`);
+  }
+});

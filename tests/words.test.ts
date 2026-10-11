@@ -203,3 +203,14 @@ test('French page examples stay correct', () => {
   assert.equal(money('3000000', 'XOF'), 'trois millions de francs CFA');
   assert.equal(money('200000', 'DZD'), 'deux cent mille dinars');
 });
+
+test('Spanish cheque examples stay correct', () => {
+  const mx = (s: string) => toWords('es', parseAmount(s, false, false) as Amount, { currency: 'MXN', letterCase: 'lower' });
+  assert.equal(mx('56'), 'cincuenta y seis pesos 00/100 M.N.');
+  assert.equal(mx('2000'), 'dos mil pesos 00/100 M.N.');
+  assert.equal(mx('5500'), 'cinco mil quinientos pesos 00/100 M.N.');
+  assert.equal(mx('1235.50'), 'mil doscientos treinta y cinco pesos 50/100 M.N.');
+  assert.equal(mx('12500000'), 'doce millones quinientos mil pesos 00/100 M.N.');
+  assert.equal(mx('27500000'), 'veintisiete millones quinientos mil pesos 00/100 M.N.');
+  assert.equal(esWords('1500000'), 'un millón quinientos mil');
+});
