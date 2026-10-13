@@ -8,3 +8,6 @@ dist/
 .DS_Store
 Thumbs.db
 .claude/settings.local.json
+
+# Raw recordings are large
+*.mp4
