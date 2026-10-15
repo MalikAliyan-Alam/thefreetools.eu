@@ -15,6 +15,15 @@ export const SITE = {
     uploadDate: '2026-10-09T10:06:43-07:00',
     duration: 'PT2M15S',
   },
+  /** Spanish walkthrough of the child/passport photo tool (YouTube). */
+  photoVideoEs: {
+    id: 'M8cyZwkSgbs',
+    name: 'Foto tamaño infantil en casa: 12 fotos en una hoja 10x15 (gratis)',
+    description:
+      'Cómo hacer una foto tamaño infantil o pasaporte (2,5 x 3 cm) desde el celular y descargar una hoja 10 x 15 lista para imprimir, gratis y sin subir la foto a ningún servidor.',
+    uploadDate: '2026-10-14',
+    duration: 'PT2M14S',
+  },
   social: [
     'https://www.youtube.com/@TheFreetools_eu',
     'https://www.instagram.com/thefreetools.eu/',

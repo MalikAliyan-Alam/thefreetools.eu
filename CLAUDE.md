@@ -34,4 +34,5 @@ See `docs/adding-a-tool.md`. Short version: engine + tests, component, one conte
 - Mobile first: 16px inputs, 44px touch targets, test at 375px wide and in RTL.
 - Arabic pages show Latin digits (`ar-u-nu-latn`); Spanish shows a decimal comma.
 - Dates (`updated`, `published`) are real edit dates: never future-dated and never bumped without a real content change.
+- New pages are rare. Add a page only if the query has real demand (Semrush or GSC), its intent is different from every existing page, and it can carry 600+ words of original content with a worked example and FAQ. Otherwise add an H2 and an example to the page that already owns the topic. No per-number, per-city or per-keyword variants. The site is aiming at AdSense approval: thin, near-duplicate or unfinished pages are the main rejection risk.
 - Don't commit or push unless asked; batch small changes, push finished features.

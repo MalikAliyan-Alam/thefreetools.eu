@@ -1,6 +1,19 @@
 import type { ToolContent } from '../../types';
 import type { AgeLabels } from '../labels';
-import { ageLabelsAr } from './ar';
+import { ageLabelsAr } from './ar.ts';
+import { HIJRI_MONTHS, gregorianToHijri } from '../../hijri/engine.ts';
+import { gregorianAge, hijriAge } from '../engine.ts';
+
+// Examples are computed on a fixed date (15 October 2026); tests/guides.test.ts pins them.
+const ON = { y: 2026, m: 10, d: 15 };
+const gregFmt = new Intl.DateTimeFormat('ar-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const span = (a: { years: number; months: number; days: number }) => `${a.years} سنة و${a.months} أشهر و${a.days} يوماً`;
+const row = (y: number, m: number, d: number) => {
+  const b = { y, m, d };
+  const h = gregorianToHijri(b);
+  return `<tr><td>${gregFmt.format(Date.UTC(y, m - 1, d))}</td><td>${h.d} ${HIJRI_MONTHS.ar[h.m - 1]} ${h.y}هـ</td><td>${span(hijriAge(b, ON))}</td><td>${span(gregorianAge(b, ON))}</td></tr>`;
+};
+
 
 const content: ToolContent<AgeLabels> = {
   slug: 'hijri-age-calculator',
@@ -25,6 +38,24 @@ const content: ToolContent<AgeLabels> = {
 <p>الفرق سنة كاملة تقريباً، لأن السنة الهجرية أقصر بنحو 11 يوماً.</p>`,
     },
     {
+      heading: 'أمثلة: العمر بالهجري والميلادي في 15 أكتوبر 2026',
+      html: `<table><thead><tr><th>تاريخ الميلاد</th><th>يوافق بالهجري</th><th>العمر بالهجري</th><th>العمر بالميلادي</th></tr></thead><tbody>
+${row(2000, 1, 1)}
+${row(1995, 6, 15)}
+${row(2005, 3, 20)}</tbody></table>
+<p>في كل مثال يزيد العمر الهجري عن الميلادي بنحو سنة، لأن السنة الهجرية أقصر.</p>`,
+    },
+    {
+      heading: 'قاعدة تقريبية: كم عمري بالهجري؟',
+      html: `<p>اضرب عمرك بالميلادي في 1.03 للحصول على عمرك بالهجري تقريباً. هذا تقدير سريع وليس حساباً دقيقاً، فالدقيق يحتاج تاريخ الميلاد.</p>
+<table><thead><tr><th>العمر بالميلادي</th><th>العمر بالهجري تقريباً</th></tr></thead><tbody>
+${[20, 30, 40, 50, 60].map((n) => `<tr><td>${n} سنة</td><td>${((n * 365.2425) / 354.367).toFixed(1)} سنة</td></tr>`).join('\n')}</tbody></table>`,
+    },
+    {
+      heading: 'متى تحتاج إلى العمر بالهجري؟',
+      html: `<p>بعض الجهات والشروط في السعودية تحسب العمر بالهجري، مثل شروط بعض الوظائف والبرامج. إذا كانت الجهة تطلب العمر بالهجري، فاحسبه بتاريخ ميلادك الهجري المسجل في هويتك أو وثائقك، وراجع شروط الجهة لمعرفة التاريخ الذي يُحسب عليه العمر.</p>`,
+    },
+    {
       heading: 'متى يختلف العمر الهجري بين المواقع؟',
       html: `<p>إذا وُلدت قبل عام 1420هـ تقريباً فقد تختلف بعض الأدوات بيوم واحد، لأنها تستخدم جداول مختلفة لتقويم أم القرى في السنوات القديمة. وللتواريخ الرسمية اعتمد ما في وثائقك.</p>`,
     },
@@ -35,11 +66,19 @@ const content: ToolContent<AgeLabels> = {
       a: 'نعم، اختر "الميلادي" في أعلى الأداة وأدخل تاريخك، وسيظهر عمرك بالهجري مباشرة.',
     },
     {
+      q: 'كم عمري بالهجري إذا وُلدت عام 2000؟',
+      a: `من وُلد في 1 يناير 2000م، عمره في 15 أكتوبر 2026م هو ${span(hijriAge({ y: 2000, m: 1, d: 1 }, ON))} بالهجري و${span(gregorianAge({ y: 2000, m: 1, d: 1 }, ON))} بالميلادي.`,
+    },
+    {
+      q: 'كيف أحسب عمري بالهجري بالتاريخ الميلادي؟',
+      a: 'اختر "الميلادي" في أعلى الأداة وأدخل تاريخ ميلادك، فتُحوّل الأداة التاريخين إلى أم القرى وتحسب السنوات والأشهر والأيام الهجرية.',
+    },
+    {
       q: 'لماذا عمري بالهجري أكبر من عمري بالميلادي؟',
       a: 'لأن السنة الهجرية أقصر من الميلادية بنحو 11 يوماً، فتتراكم الفروق لتصبح سنة إضافية كل 33 سنة تقريباً.',
     },
   ],
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default content;

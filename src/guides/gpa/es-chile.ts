@@ -44,6 +44,24 @@ const guide: GuideContent = {
       heading: 'Hazlo con la calculadora',
       html: `<p>En la <a href="/es/calcular-promedio/">calculadora de promedio</a> elige "De 1 a 7", escribe cada nota con su porcentaje y el promedio aparece al instante. Puedes escribir las notas con coma o con punto.</p>`,
     },
+    {
+      heading: 'Ejemplo con cuatro evaluaciones',
+      html: `<table><thead><tr><th>Evaluación</th><th>Nota</th><th>Peso</th><th>Nota × peso</th></tr></thead><tbody>
+<tr><td>Prueba 1</td><td>5,5</td><td>20 %</td><td>1,10</td></tr>
+<tr><td>Prueba 2</td><td>4,2</td><td>30 %</td><td>1,26</td></tr>
+<tr><td>Trabajo</td><td>6,0</td><td>20 %</td><td>1,20</td></tr>
+<tr><td>Examen</td><td>4,8</td><td>30 %</td><td>1,44</td></tr>
+<tr><td><strong>Promedio</strong></td><td></td><td><strong>100 %</strong></td><td><strong>5,00</strong></td></tr></tbody></table>
+<p>La suma de los pesos tiene que dar 100 %. Si da menos porque faltan evaluaciones, divide entre lo que llevas (peso evaluado) para saber en qué promedio vas hasta ahora.</p>`,
+    },
+    {
+      heading: 'Promedio general entre ramos',
+      html: `<p>Para el promedio de todos los ramos, suma las notas finales y divide entre la cantidad. Con 5,2, 4,8, 6,1, 5,5 y 4,0, la suma es 25,6 y el promedio es 5,12, que se aproxima a <strong>5,1</strong>. Algunas instituciones ponderan los ramos por créditos, y en ese caso cada nota se multiplica por sus créditos antes de dividir.</p>`,
+    },
+    {
+      heading: 'Si la nota viene de un puntaje',
+      html: `<p>Muchas pruebas se corrigen en puntos, no en notas. Antes de promediar, pasa cada puntaje a nota con la exigencia de tu colegio o universidad usando la <a href="/es/escala-de-notas/">escala de notas</a>.</p>`,
+    },
   ],
   faq: [
     {
@@ -51,12 +69,20 @@ const guide: GuideContent = {
       a: 'Sí. Usa el promedio de cada asignatura como una nota y dales el mismo peso, salvo que tu colegio o carrera indique otra ponderación.',
     },
     {
+      q: '¿Cómo se suman las notas del colegio para sacar el promedio?',
+      a: 'Se suman todas las notas y se divide por cuántas son: (5,0 + 6,2 + 4,5 + 5,8) ÷ 4 = 5,375, que se aproxima a 5,4.',
+    },
+    {
+      q: 'Si tengo un 7 en todas las notas, ¿mi promedio es 7?',
+      a: 'Sí. Cuando todas las notas son iguales, el promedio es esa misma nota: (7 + 7 + 7) ÷ 3 = 7,0. El promedio solo cambia si alguna nota es distinta.',
+    },
+    {
       q: '¿Con 3,95 apruebo?',
       a: 'Si tu institución aproxima a un decimal, 3,95 sube a 4,0 y apruebas. Hay reglamentos que truncan en vez de aproximar, así que revísalo.',
     },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default guide;

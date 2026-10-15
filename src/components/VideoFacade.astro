@@ -4,10 +4,10 @@
  * thumbnail is loaded; the player (youtube-nocookie.com) is added on click.
  */
 import { Image } from 'astro:assets';
-import thumb from '../assets/overview-video.jpg';
+import overview from '../assets/overview-video.jpg';
 
-type Props = { id: string; title: string; playLabel: string; watchLabel: string };
-const { id, title, playLabel, watchLabel } = Astro.props;
+type Props = { id: string; title: string; playLabel: string; watchLabel: string; thumb?: ImageMetadata };
+const { id, title, playLabel, watchLabel, thumb = overview } = Astro.props;
 ---
 <div class="video" data-video={id} data-title={title}>
   <button type="button" class="video-play" aria-label={`${playLabel}: ${title}`}>

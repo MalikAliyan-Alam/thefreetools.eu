@@ -32,7 +32,7 @@ const labels: WordsLabels = {
 
 const content: ToolContent<WordsLabels> = {
   slug: 'chiffres-en-lettres',
-  metaTitle: 'Chiffres en lettres : convertir un nombre ou un montant',
+  metaTitle: 'Chiffre en lettre : convertir un nombre ou un montant en lettres',
   metaDescription:
     'Convertissez des chiffres en lettres pour un chèque ou une facture\u00a0: dirhams, euros, francs, dinars. Règles de l’Académie, variantes belge et suisse.',
   eyebrow: 'Nombres',
@@ -92,6 +92,14 @@ const content: ToolContent<WordsLabels> = {
 <p>Après <em>million</em> et <em>milliard</em>, on met <em>de</em> devant le nom de la monnaie&nbsp;: <em>un million d’euros</em>, <em>trois millions de francs CFA</em>.</p>`,
     },
     {
+      heading: 'Petits nombres et montants en euros les plus demandés',
+      html: `<table><thead><tr><th>En chiffres</th><th>En lettres</th></tr></thead><tbody>
+<tr><td>1</td><td>un</td></tr><tr><td>2</td><td>deux</td></tr><tr><td>3</td><td>trois</td></tr><tr><td>4</td><td>quatre</td></tr><tr><td>5</td><td>cinq</td></tr><tr><td>6</td><td>six</td></tr><tr><td>7</td><td>sept</td></tr><tr><td>8</td><td>huit</td></tr><tr><td>9</td><td>neuf</td></tr><tr><td>10</td><td>dix</td></tr><tr><td>11</td><td>onze</td></tr><tr><td>12</td><td>douze</td></tr><tr><td>13</td><td>treize</td></tr><tr><td>14</td><td>quatorze</td></tr><tr><td>15</td><td>quinze</td></tr><tr><td>16</td><td>seize</td></tr><tr><td>17</td><td>dix-sept</td></tr><tr><td>18</td><td>dix-huit</td></tr><tr><td>19</td><td>dix-neuf</td></tr><tr><td>20</td><td>vingt</td></tr><tr><td>30</td><td>trente</td></tr><tr><td>40</td><td>quarante</td></tr><tr><td>50</td><td>cinquante</td></tr><tr><td>60</td><td>soixante</td></tr><tr><td>70</td><td>soixante-dix</td></tr><tr><td>76</td><td>soixante-seize</td></tr><tr><td>80</td><td>quatre-vingts</td></tr><tr><td>90</td><td>quatre-vingt-dix</td></tr><tr><td>100</td><td>cent</td></tr><tr><td>200</td><td>deux cents</td></tr><tr><td>350</td><td>trois cent cinquante</td></tr><tr><td>1000</td><td>mille</td></tr></tbody></table>
+<table><thead><tr><th>Montant</th><th>En lettres</th></tr></thead><tbody>
+<tr><td>15 €</td><td>quinze euros</td></tr><tr><td>65 €</td><td>soixante-cinq euros</td></tr><tr><td>90 €</td><td>quatre-vingt-dix euros</td></tr><tr><td>100 €</td><td>cent euros</td></tr><tr><td>350 €</td><td>trois cent cinquante euros</td></tr><tr><td>1 000 €</td><td>mille euros</td></tr><tr><td>100 000 €</td><td>cent mille euros</td></tr></tbody></table>
+<p>Sur un chèque, ajoutez la devise et un trait après le montant : <em>trois cent cinquante euros</em>.</p>`,
+    },
+    {
       heading: 'Montants : dirhams, euros, francs, dinars',
       html: `<table><thead><tr><th>Pays</th><th>1 234,56 en lettres</th></tr></thead><tbody>
 <tr><td>Maroc (MAD)</td><td>mille deux cent trente-quatre dirhams et cinquante-six centimes</td></tr>
@@ -133,7 +141,7 @@ const content: ToolContent<WordsLabels> = {
       a: 'Non. Le texte est calculé dans votre navigateur et n’est envoyé à aucun serveur.',
     },
   ],
-  updated: '2026-10-10',
+  updated: '2026-10-15',
 };
 
 export default content;

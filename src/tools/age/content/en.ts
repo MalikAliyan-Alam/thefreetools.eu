@@ -64,7 +64,7 @@ const content: ToolContent<AgeLabels> = {
   faq: [
     {
       q: 'What if I was born on 29 February?',
-      a: 'In years without 29 February, the calculator counts your birthday as 1 March. Some countries use 28 February for legal purposes, so check if it matters.',
+      a: 'In years without 29 February, the calculator counts your birthday as 28 February, the last day of the month. Some countries treat 1 March as the legal birthday instead, so check the rule that applies to you.',
     },
     {
       q: 'Can I calculate my age on a past or future date?',

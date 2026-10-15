@@ -14,6 +14,7 @@ import { ageManualEn, ageHijriEn, ageHijriAr, ageExcelEn, ageExcelEs } from './a
 import { wordsChequeEn, wordsChequeEs, wordsChequeAr } from './words/guides';
 import { FR_WORDS_GUIDES } from './words/fr-guides';
 import { esReglas } from './words/es-reglas';
+import { frNombres } from './words/fr-nombres';
 import { photoPixelsEn, photoPrintEs } from './photo/guides';
 import { hijriExamplesAr } from './hijri/ar-examples';
 import { vatRemoveEn, vatRemoveAr, vatRemoveEs, mxRetencionesEs } from './vat/guides';
@@ -25,7 +26,7 @@ export const GUIDES: Record<Locale, GuideContent[]> = {
   en: [gpaCumulativeEn, gpaTargetEn, hijri1448En, ummAlQuraEn, ageManualEn, ageHijriEn, ageExcelEn, wordsChequeEn, vatRemoveEn, photoPixelsEn],
   ar: [gpaSaudiAr, gpaTargetAr, hijri1448Ar, ummAlQuraAr, ageHijriAr, wordsChequeAr, vatRemoveAr, hijriExamplesAr],
   es: [promedioChileEs, notaNecesariaEs, ageExcelEs, wordsChequeEs, vatRemoveEs, mxRetencionesEs, esReglas, photoPrintEs],
-  fr: [...FR_WORDS_GUIDES],
+  fr: [...FR_WORDS_GUIDES, frNombres],
 };
 
 export const guidesHubPath = (locale: Locale) => localePath(locale, GUIDES_DIR[locale]);

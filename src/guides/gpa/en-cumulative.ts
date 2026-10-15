@@ -47,6 +47,26 @@ const guide: GuideContent = {
       heading: 'Doing it with the calculator',
       html: `<p>In the <a href="/gpa-calculator/">GPA calculator</a>, open <em>Include previous semesters</em> and enter the cumulative GPA and credits from your transcript. Then add this term's courses. The result ring switches to your cumulative GPA, and the term GPA is shown below it.</p>`,
     },
+    {
+      heading: 'The usual US 4.0 scale',
+      html: `<table><thead><tr><th>Letter</th><th>Points</th></tr></thead><tbody>
+<tr><td>A+, A</td><td>4.0</td></tr><tr><td>A-</td><td>3.7</td></tr><tr><td>B+</td><td>3.3</td></tr><tr><td>B</td><td>3.0</td></tr><tr><td>B-</td><td>2.7</td></tr>
+<tr><td>C+</td><td>2.3</td></tr><tr><td>C</td><td>2.0</td></tr><tr><td>C-</td><td>1.7</td></tr><tr><td>D+</td><td>1.3</td></tr><tr><td>D</td><td>1.0</td></tr><tr><td>D-</td><td>0.7</td></tr><tr><td>F</td><td>0</td></tr></tbody></table>
+<p>This is the plus/minus scale most US colleges use. Some schools give an A+ extra points or have no minus grades at all, so your registrar's table always wins over a general one.</p>`,
+    },
+    {
+      heading: 'How much one term can move your GPA',
+      html: `<p>The more credits you already have, the less a single term changes your cumulative GPA. Starting from a 3.5 and adding a 15-credit term:</p>
+<table><thead><tr><th>Credits so far</th><th>Term GPA 4.0</th><th>Term GPA 3.0</th><th>Term GPA 2.0</th></tr></thead><tbody>
+<tr><td>30</td><td>3.67</td><td>3.33</td><td>3.00</td></tr>
+<tr><td>60</td><td>3.60</td><td>3.40</td><td>3.20</td></tr>
+<tr><td>90</td><td>3.57</td><td>3.43</td><td>3.29</td></tr></tbody></table>
+<p>Straight A's lift a 3.5 to 3.67 after 30 credits, but only to 3.57 after 90. A bad term hurts early and is easier to recover from late, in absolute terms, because the credits behind you dilute it.</p>`,
+    },
+    {
+      heading: 'Weighted and unweighted GPA',
+      html: `<p>College GPAs are normally unweighted: an A is 4.0 in any course. Many US high schools also publish a weighted GPA, where honors, AP or IB courses add a point (so an A is worth 5.0 on a 5.0 scale). Which one an application asks for is written in its instructions, and the two are not interchangeable.</p>`,
+    },
   ],
   faq: [
     {
@@ -57,9 +77,13 @@ const guide: GuideContent = {
       q: 'Does a withdrawal (W) lower my GPA?',
       a: 'Usually not. A W normally carries no grade points and no graded credits, so it doesn’t enter the calculation, though it stays on your transcript.',
     },
+    {
+      q: 'Does a 4.0 term GPA give me a 4.0 cumulative GPA?',
+      a: 'Only if all your earlier terms were also 4.0. Otherwise a 4.0 term pulls the cumulative GPA up toward 4.0 without reaching it, and the effect shrinks as your total credits grow.',
+    },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default guide;

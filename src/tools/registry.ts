@@ -20,8 +20,11 @@ import vatAr from './vat/content/ar';
 import vatEs from './vat/content/es';
 import photoEn from './photo/content/en';
 import photoEs from './photo/content/es';
+import weightedAr from './weighted/content/ar';
+import gradescaleEs from './gradescale/content/es';
+import aguinaldoEs from './aguinaldo/content/es';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords' | 'weighted' | 'gradescale' | 'aguinaldo';
 
 export type ToolEntry = {
   id: ToolId;
@@ -73,6 +76,24 @@ export const TOOLS: ToolEntry[] = [
     id: 'photo',
     icon: 'camera',
     content: { en: photoEn, es: photoEs },
+  },
+  {
+    // Arabic only: Saudi university admission (النسبة الموزونة).
+    id: 'weighted',
+    icon: 'school',
+    content: { ar: weightedAr },
+  },
+  {
+    // Spanish only: Chilean grading scale with exigency (escala de notas).
+    id: 'gradescale',
+    icon: 'school',
+    content: { es: gradescaleEs },
+  },
+  {
+    // Spanish only: Mexican year-end bonus (aguinaldo).
+    id: 'aguinaldo',
+    icon: 'receipt',
+    content: { es: aguinaldoEs },
   },
 ];
 

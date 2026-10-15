@@ -45,6 +45,15 @@ export const esReglas: GuideContent = {
       heading: 'Para comprobar una cantidad larga',
       html: `<p>Si vas a llenar un cheque o una factura, escribe la cifra en el <a href="/es/numeros-a-letras/">convertidor de números a letras</a> y compara con lo que tienes. Con pesos mexicanos añade «00/100 M.N.» al final, y con otras monedas el convertidor sigue el formato de cada país.</p>`,
     },
+    {
+      heading: 'Doscientas libras, doscientos pesos: el género',
+      html: `<p>Los cientos de 200 a 900 concuerdan en género con lo que cuentan: <em>doscientos pesos</em>, pero <em>doscientas libras</em>; <em>quinientos hombres</em>, <em>quinientas mujeres</em>. La concordancia salta por encima de <em>mil</em>: <em>doscientas mil libras</em>. Con <em>millones</em>, en cambio, se queda en masculino: <em>doscientos millones de libras</em>.</p>
+<p>Con uno ocurre algo parecido. Delante de <em>mil</em> se admiten las dos formas, <em>veintiún mil pesos</em> y <em>veintiuna mil libras</em>.</p>`,
+    },
+    {
+      heading: 'Cómo escribir las cifras con separadores',
+      html: `<p>La RAE recomienda separar los grupos de tres cifras con un espacio fino (10 000, 1 500 000). En la práctica cada región tiene su costumbre: en México se usa la coma para los miles (1,500,000) y el punto para los decimales, mientras que en España y buena parte de Sudamérica se usa el punto para los miles y la coma para los decimales (1.500.000,50). Al escribir con letra no importa el separador, pero sí conviene copiar bien la cifra: un punto mal puesto cambia el importe de mil a uno.</p>`,
+    },
   ],
   faq: [
     {
@@ -63,7 +72,11 @@ export const esReglas: GuideContent = {
       q: '¿Cuánto es mil millones?',
       a: `Es 1,000,000,000, o ${w('1000000000')}. El billón en español son un millón de millones.`,
     },
+    {
+      q: '¿Se dice doscientos libras o doscientas libras?',
+      a: 'Doscientas libras. Los cientos concuerdan en género con el sustantivo, y libra es femenino. Con pesos, que es masculino, es doscientos pesos.',
+    },
   ],
   published: D,
-  updated: D,
+  updated: '2026-10-15',
 };

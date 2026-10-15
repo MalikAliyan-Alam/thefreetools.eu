@@ -77,6 +77,14 @@ const content: ToolContent<VatLabels> = {
 <tr><td>Argentina</td><td>21%</td></tr></tbody></table>
 <p>En Chile los montos se redondean a pesos enteros.</p>`,
     },
+    {
+      heading: 'El IVA después de un descuento',
+      html: `<p>El IVA se calcula sobre el precio ya con descuento. Un artículo de $1,000 antes de IVA con 10% de descuento queda en $900, el IVA al 16% es $144, y el total es $1,044. Si el descuento se aplica al precio con IVA incluido, el total es el mismo, porque un descuento porcentual atraviesa el impuesto.</p>`,
+    },
+    {
+      heading: 'Qué muestra una factura con IVA',
+      html: `<p>Una factura suele detallar el nombre y el RFC (en México) o el identificador fiscal del vendedor, la fecha, la descripción de los bienes o servicios, el subtotal, el IVA trasladado y el total. Los requisitos cambian por país, así que revisa lo que pide tu autoridad fiscal antes de emitir facturas.</p>`,
+    },
   ],
   faq: [
     {
@@ -95,8 +103,12 @@ const content: ToolContent<VatLabels> = {
       q: '¿Se guardan mis datos?',
       a: 'Solo en tu navegador. Todo se calcula en tu dispositivo y no se envía a ningún servidor.',
     },
+    {
+      q: '¿El IVA se calcula antes o después del descuento?',
+      a: 'Después. Un artículo de $1,000 antes de IVA con 10% de descuento queda en $900, el IVA al 16% es $144, y el total es $1,044.',
+    },
   ],
-  updated: '2026-09-28',
+  updated: '2026-10-15',
 };
 
 export default content;

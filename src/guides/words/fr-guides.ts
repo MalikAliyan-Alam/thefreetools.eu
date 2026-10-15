@@ -11,6 +11,7 @@ const money = (n: string, currency: string) =>
 const nb = (s: string) => s.replace(/ ([?!:;»])/g, ' $1').replace(/« /g, '« ');
 
 const D = '2026-10-11';
+const r = (n: string) => frWords(n, { reform: true });
 
 export const fr80: GuideContent = {
   key: 'fr-quatre-vingt',
@@ -57,6 +58,14 @@ export const fr80: GuideContent = {
       html: nb(`<p>Les Belges disent <em>septante</em> et <em>nonante</em>, mais gardent <em>quatre-vingts</em> pour 80. Les Suisses romands disent aussi <em>septante</em> et <em>nonante</em>, et <em>huitante</em> dans les cantons de Vaud, du Valais et de Fribourg (à Genève, on dit <em>quatre-vingts</em>). <em>Huitante</em> ne prend jamais de s. Ces mots sont plus simples à écrire que <em>soixante-dix</em> et <em>quatre-vingt-dix</em>.</p>
 <p>Le convertisseur de chiffres en lettres propose ces variantes dans le choix du pays. Pour vérifier un nombre, tapez-le et lisez le résultat&nbsp;: <a href="/fr/chiffres-en-lettres/">convertir des chiffres en lettres</a>.</p>`),
     },
+    {
+      heading: nb('Quand « quatre-vingt » reste invariable'),
+      html: nb(`<p>Les adjectifs numéraux <em>vingt</em> et <em>cent</em> ne prennent pas de s quand ils servent à numéroter (adjectifs ordinaux) : <em>page quatre-vingt</em>, <em>l'article deux cent</em>, <em>l'an quatre-vingt</em>. Même chose pour une adresse ou une date : <em>le numéro quatre-vingt</em>. En revanche, pour compter des objets, des personnes ou des euros, le s est de retour : <em>quatre-vingts pages</em>, <em>quatre-vingts euros</em>.</p>`),
+    },
+    {
+      heading: nb('Pourquoi dit-on quatre-vingts ?'),
+      html: nb(`<p>Le français a gardé une trace d'un ancien comptage par vingt : quatre-vingts, c'est quatre fois vingt. Au Moyen Âge, d'autres formes existaient aussi (<em>octante</em>, <em>huitante</em>), et certaines régions les ont conservées. C'est pour cela qu'en Belgique et en Suisse romande vous entendrez <em>septante</em> et <em>nonante</em>, et en Suisse parfois <em>huitante</em>. Le Québec, comme la France, dit quatre-vingts et quatre-vingt-dix.</p>`),
+    },
   ],
   faq: [
     {
@@ -77,7 +86,7 @@ export const fr80: GuideContent = {
     },
   ],
   published: D,
-  updated: D,
+  updated: '2026-10-15',
 };
 
 export const fr100: GuideContent = {
@@ -115,6 +124,18 @@ export const fr100: GuideContent = {
       html: nb(`<p>Sur un chèque, <em>${money('300', 'EUR')}</em> prend un s, parce que le mot suivant est <em>euros</em>, un nom, et non un nombre. En revanche <em>${money('350', 'EUR')}</em> n'en prend pas, puisque <em>cinquante</em> suit <em>cent</em>.</p>
 <p>Pour contrôler vos montants sans réfléchir à la règle, essayez le <a href="/fr/chiffres-en-lettres/">convertisseur de chiffres en lettres</a>, qui applique ces accords et les vérifie à chaque saisie.</p>`),
     },
+    {
+      heading: nb('Cent ordinal : pas de s'),
+      html: nb(`<p>Comme <em>vingt</em>, <em>cent</em> reste sans s quand il numérote : <em>page deux cent</em>, <em>le numéro trois cent</em>, <em>l'an sept cent</em>. Si vous parlez de quantités, le s revient : <em>deux cents pages</em>, <em>trois cents euros</em>.</p>`),
+    },
+    {
+      heading: nb('Ne pas confondre avec « cent » comme nom'),
+      html: nb(`<p>Dans <em>pour cent</em> (<em>dix pour cent</em>), <em>cent</em> désigne la centaine et reste invariable. Au sens de la monnaie (les <em>cents</em> américains ou canadiens), c'est au contraire un nom qui prend la marque du pluriel : <em>cinq cents</em> peut donc dire 5 cents ou 500, et c'est le contexte qui tranche.</p>`),
+    },
+    {
+      heading: nb('Avec l’orthographe de 1990'),
+      html: nb(`<p>La rectification de 1990 relie tous les éléments d'un nombre par un trait d'union. La règle du s ne change pas : <em>${r('200')}</em>, <em>${r('201')}</em>, <em>${r('200000')}</em>. Les deux graphies sont admises.</p>`),
+    },
   ],
   faq: [
     {
@@ -135,7 +156,7 @@ export const fr100: GuideContent = {
     },
   ],
   published: D,
-  updated: D,
+  updated: '2026-10-15',
 };
 
 export const frCheque: GuideContent = {
@@ -177,6 +198,22 @@ export const frCheque: GuideContent = {
 <p>En Suisse, la logique est la même avec des francs et des centimes&nbsp;: ${money('1234,56', 'CHF')}. Au Maroc, la monnaie est le dirham&nbsp;: ${money('1234,56', 'MAD')}.</p>
 <p>Pour écrire un montant précis sans vous tromper sur les accords, utilisez le <a href="/fr/chiffres-en-lettres/">convertisseur de chiffres en lettres</a>, avec la devise de votre chèque.</p>`),
     },
+    {
+      heading: nb('Combien de temps un chèque est-il valable ?'),
+      html: nb(`<p>En France métropolitaine, le chèque doit être présenté dans les 8 jours qui suivent la date d'émission, mais la banque l'accepte ensuite jusqu'à un an après ce délai : il est donc valable <strong>un an et huit jours</strong> à partir de la date inscrite. Si le chèque est émis depuis un autre pays d'Europe, les délais de présentation sont plus longs, et plus encore hors d'Europe. Au-delà, le chèque est prescrit et la banque peut refuser de le payer. La date que vous écrivez fait donc partir le délai.</p>`),
+    },
+    {
+      heading: nb('Si vous vous trompez'),
+      html: nb(`<p>Évitez de rayer ou de surcharger. Une rature fait souvent refuser le chèque, parce que la banque ne peut pas savoir si elle vient de vous ou d'un tiers. Écrivez « annulé » en travers, conservez le chèque, et rédigez-en un nouveau. Si le chèque est déjà parti, prévenez votre banque : elle peut faire opposition dans les cas prévus par la loi (perte, vol, utilisation frauduleuse).</p>`),
+    },
+    {
+      heading: nb('Les erreurs qui reviennent le plus'),
+      html: nb(`<ul>
+<li>Laisser un blanc après le montant en lettres : tracez un trait jusqu'au bout de la ligne.</li>
+<li>Oublier la devise (« euros ») ou écrire « euro » au singulier pour un montant supérieur à un.</li>
+<li>Oublier le lieu de l'émission ou la signature.</li>
+</ul>`),
+    },
   ],
   faq: [
     {
@@ -197,7 +234,7 @@ export const frCheque: GuideContent = {
     },
   ],
   published: D,
-  updated: D,
+  updated: '2026-10-15',
 };
 
 export const frCfa: GuideContent = {
@@ -231,6 +268,14 @@ export const frCfa: GuideContent = {
       heading: 'Pour un reçu, un contrat ou un virement',
       html: nb(`<p>Le montant en lettres sert à éviter les ajouts. Écrivez-le sans laisser d'espace, tracez un trait jusqu'à la fin de la ligne, et vérifiez qu'il correspond au montant en chiffres. Pour d'autres devises (dirham, dinar, euro, franc suisse), voir le <a href="/fr/chiffres-en-lettres/">convertisseur de chiffres en lettres</a>.</p>`),
     },
+    {
+      heading: nb('Deux francs CFA, pas un seul'),
+      html: nb(`<p>Le franc CFA désigne en réalité deux monnaies distinctes. Le franc de la <strong>BCEAO</strong> (code XOF) circule dans les ${8} pays de l'Union économique et monétaire ouest-africaine : Bénin, Burkina Faso, Côte d'Ivoire, Guinée-Bissau, Mali, Niger, Sénégal et Togo. Le franc de la <strong>BEAC</strong> (code XAF) circule dans les ${6} pays de la Communauté économique et monétaire de l'Afrique centrale : Cameroun, Centrafrique, Congo, Gabon, Guinée équatoriale et Tchad. Les deux ont la même parité avec l'euro, mais ne sont pas interchangeables : un billet de la zone ouest-africaine ne s'utilise pas en zone centrale.</p>`),
+    },
+    {
+      heading: nb('Le taux fixe avec l’euro'),
+      html: nb(`<p>Un euro vaut 655,957 francs CFA, une parité fixe. Quelques repères : 100 euros font environ ${Math.round(100 * 655.957).toLocaleString('fr-FR')} francs CFA, et 1 000 euros environ ${Math.round(1000 * 655.957).toLocaleString('fr-FR')}. Comme le franc CFA n'a pas de subdivision utilisée au quotidien, les montants s'écrivent sans centimes.</p>`),
+    },
   ],
   faq: [
     {
@@ -247,7 +292,7 @@ export const frCfa: GuideContent = {
     },
   ],
   published: D,
-  updated: D,
+  updated: '2026-10-15',
 };
 
 export const FR_WORDS_GUIDES = [fr80, fr100, frCheque, frCfa];

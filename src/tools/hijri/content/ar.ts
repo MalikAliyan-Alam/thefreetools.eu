@@ -1,5 +1,20 @@
 import type { ToolContent } from '../../types';
 import type { HijriLabels } from '../labels';
+import { HIJRI_MONTHS, gregorianToHijri, hijriToGregorian } from '../engine.ts';
+
+// Dates below are computed from the Umm al-Qura engine; tests/guides.test.ts pins them.
+const months = HIJRI_MONTHS.ar;
+const gregFmt = new Intl.DateTimeFormat('ar-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const gStr = (y: number, m: number, d: number) => gregFmt.format(Date.UTC(y, m - 1, d));
+const toH = (y: number, m: number, d: number) => {
+  const h = gregorianToHijri({ y, m, d });
+  return `${h.d} ${months[h.m - 1]} ${h.y}هـ`;
+};
+const monthStart = (m: number) => {
+  const g = hijriToGregorian({ y: 1448, m, d: 1 })!;
+  return gStr(g.y, g.m, g.d);
+};
+
 
 const content: ToolContent<HijriLabels> = {
   slug: 'hijri-converter',
@@ -46,6 +61,29 @@ const content: ToolContent<HijriLabels> = {
       html: `<p>أُعلن في السعودية أن رمضان 1446 بدأ يوم <strong>السبت 1 مارس 2025م</strong>، وأن عيد الفطر (1 شوال 1446) كان يوم <strong>الأحد 30 مارس 2025م</strong>. أدخل 1 رمضان 1446 أو 1 شوال 1446 في الأداة وستحصل على التاريخين نفسيهما، وستلاحظ أن رمضان 1446 كان 29 يوماً.</p>`,
     },
     {
+      heading: 'تحويل من ميلادي إلى هجري: أمثلة محلولة',
+      html: `<table><thead><tr><th>التاريخ الميلادي</th><th>يوافق بالهجري</th></tr></thead><tbody>
+<tr><td>${gStr(2000, 1, 1)}</td><td>${toH(2000, 1, 1)}</td></tr>
+<tr><td>${gStr(1995, 6, 15)}</td><td>${toH(1995, 6, 15)}</td></tr>
+<tr><td>${gStr(2005, 3, 20)}</td><td>${toH(2005, 3, 20)}</td></tr>
+<tr><td>${gStr(2027, 1, 1)}</td><td>${toH(2027, 1, 1)}</td></tr></tbody></table>
+<p>لتحويل تاريخ ميلادك، اختر "ميلادي ← هجري" وأدخل اليوم والشهر والسنة. ولمعرفة عمرك بالهجري مباشرة استخدم <a href="/ar/hijri-age-calculator/">حساب العمر بالهجري</a>.</p>`,
+    },
+    {
+      heading: 'التاريخ الهجري اليوم',
+      html: `<p>اضغط زر <strong>تاريخ اليوم</strong> في الأداة فيظهر التاريخ الهجري لليوم مع اسم اليوم، ويتغير تلقائياً كل يوم. ولأن التقويم الهجري قمري، قد يختلف يوم الشهر بين السعودية ودول أخرى بيوم واحد بحسب رؤية الهلال.</p>`,
+    },
+    {
+      heading: 'أول يوم في كل شهر هجري 1448 بالميلادي',
+      html: `<table><thead><tr><th>الشهر</th><th>أول يوم يوافق</th></tr></thead><tbody>
+${Array.from({ length: 12 }, (_, i) => `<tr><td>${i + 1}. ${months[i]} 1448</td><td>${monthStart(i + 1)}</td></tr>`).join('\n')}</tbody></table>
+<p>هذه بدايات الأشهر بحسب تقويم أم القرى. لتحويل أي يوم داخل الشهر أضف إلى بداية الشهر عدد الأيام ناقص واحد، أو أدخله في الأداة. أمثلة كاملة في <a href="/ar/guides/hijri-to-gregorian-1448-examples/">تحويل التاريخ الهجري 1448 بأمثلة</a>.</p>`,
+    },
+    {
+      heading: 'الفرق بين السنة الهجرية والميلادية',
+      html: `<p>السنة الهجرية 354 أو 355 يوماً، والميلادية 365 أو 366 يوماً. الفرق نحو 11 يوماً في السنة، فكل 33 سنة هجرية تقريباً تساوي 32 سنة ميلادية. لذلك تتحرك مناسبات مثل رمضان وعيد الأضحى بين الفصول عاماً بعد عام.</p>`,
+    },
+    {
       heading: 'الأشهر الهجرية',
       html: `<table><thead><tr><th>الرقم</th><th>الشهر</th></tr></thead><tbody>
 <tr><td>1</td><td>محرم</td></tr><tr><td>2</td><td>صفر</td></tr><tr><td>3</td><td>ربيع الأول</td></tr>
@@ -64,11 +102,19 @@ const content: ToolContent<HijriLabels> = {
       a: '29 أو 30 يوماً. تعرض الأداة عدد أيام الشهر الذي تختاره، وتنبهك إذا كان اليوم 30 غير موجود في ذلك الشهر.',
     },
     {
+      q: 'كم التاريخ الهجري اليوم؟',
+      a: 'اضغط "تاريخ اليوم" في الأداة وسيظهر التاريخ الهجري لليوم مع اسم اليوم بحسب تقويم أم القرى.',
+    },
+    {
+      q: 'كيف أحول التاريخ من هجري إلى ميلادي؟',
+      a: 'اختر "هجري ← ميلادي"، ثم أدخل اليوم والشهر والسنة الهجرية، فيظهر التاريخ الميلادي واسم اليوم مباشرة.',
+    },
+    {
       q: 'هل يمكنني تحويل تاريخ ميلادي إلى هجري؟',
       a: 'نعم. اختر "ميلادي ← هجري" وأدخل التاريخ، مثل تاريخ ميلادك، وستظهر النتيجة بالهجري مع اسم اليوم.',
     },
   ],
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default content;

@@ -54,12 +54,10 @@ export function hijriAge(birth: YMD, on: YMD): Span {
 
 export const totalDays = (birth: YMD, on: YMD) => Math.round((toUtc(on) - toUtc(birth)) / 864e5);
 
-/** Next Gregorian birthday on or after `on` (29 Feb falls on 1 Mar in common years). */
+/** Next Gregorian birthday on or after `on`. A 29 February birthday falls on 28 February in common years, as in `gregorianAge`. */
 export function nextBirthday(birth: YMD, on: YMD): { date: YMD; inDays: number } {
   for (const y of [on.y, on.y + 1]) {
-    const t = new Date(0);
-    t.setUTCFullYear(y, birth.m - 1, birth.d);
-    const date = { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() };
+    const date = { y, m: birth.m, d: Math.min(birth.d, daysInGregorianMonth(y, birth.m)) };
     const inDays = totalDays(on, date);
     if (inDays >= 0) return { date, inDays };
   }

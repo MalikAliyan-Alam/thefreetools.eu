@@ -73,6 +73,26 @@ const content: ToolContent<PhotoLabels> = {
 <p>Fuentes: Real Decreto 1553/2005 (DNI: «fondo uniforme blanco y liso»), Código de Visados de la UE, que remite a la norma ICAO 9303 (Schengen), travel.state.gov, gov.uk y canada.ca. Canadá exige además que la foto la haga un fotógrafo profesional, que anota sus datos al reverso, así que para ese pasaporte esta herramienta solo sirve de prueba.</p>`,
     },
     {
+      heading: 'Tamaño de foto infantil en píxeles y en pulgadas',
+      html: `<table><thead><tr><th>Foto</th><th>Centímetros</th><th>Pulgadas</th><th>Píxeles a 300 ppp</th></tr></thead><tbody>
+<tr><td>Infantil</td><td>2,5 × 3</td><td>0,98 × 1,18</td><td>295 × 354</td></tr>
+<tr><td>Credencial</td><td>3,5 × 4,5</td><td>1,38 × 1,77</td><td>413 × 531</td></tr></tbody></table>
+<p>Los píxeles salen de multiplicar las pulgadas por 300 (la resolución habitual para imprimir): 2,5 cm son 0,98 pulgadas, y 0,98 × 300 son unos 295 píxeles. Si tu foto original tiene bastante más que eso, se imprimirá nítida; si recortas solo el rostro de una foto tomada de lejos y queda con menos de 295 × 354 píxeles, saldrá borrosa.</p>`,
+    },
+    {
+      heading: 'Cómo dejar una foto en 2,5 × 3 cm en Word',
+      html: `<ol>
+<li>Inserta la foto en Word (Insertar, Imágenes).</li>
+<li>Recórtala primero con la herramienta Recortar, hasta que el rostro quede centrado y la proporción sea la de 2,5 por 3 (un poco más alta que ancha).</li>
+<li>En Formato de imagen, Tamaño, escribe 3 cm de alto y 2,5 cm de ancho.</li>
+</ol>
+<p>Si cambias solo el ancho o el alto con la proporción desbloqueada, la cara se estira. Por eso se recorta antes. Para 12 copias en una hoja 10 × 15 es más rápido usar la herramienta de arriba, que ya las acomoda con líneas de corte.</p>`,
+    },
+    {
+      heading: 'Cómo hacerlo en Canva',
+      html: `<p>En Canva, crea un diseño con tamaño personalizado, cambia la unidad a centímetros y escribe 2,5 de ancho por 3 de alto. Coloca la foto, ajústala con el rostro al centro y descarga el archivo. Para imprimir varias en una hoja tendrías que duplicar la foto a mano; la herramienta de esta página lo hace de una vez.</p>`,
+    },
+    {
       heading: 'Cómo tomar la foto con el celular',
       html: `<ul>
 <li><strong>Fondo:</strong> una pared blanca o muy clara, sin objetos ni sombras.</li>
@@ -81,6 +101,14 @@ const content: ToolContent<PhotoLabels> = {
 <li><strong>Postura:</strong> de frente, hombros rectos, expresión neutra y boca cerrada, sin lentes y con la cara y las orejas despejadas.</li>
 </ul>
 <p>Esta herramienta no borra el fondo: si la pared no es clara, la foto no servirá para trámites que piden fondo blanco.</p>`,
+    },
+    {
+      heading: 'Plantilla para imprimir fotos tamaño infantil',
+      html: `<p>No necesitas una plantilla en Word o PDF: la herramienta de esta página genera la hoja completa como una imagen JPG a 300 ppp, con las fotos ya acomodadas y líneas finas para recortar. Descárgala y mándala a imprimir tal cual, o ábrela en tu computadora y usa «tamaño real» al imprimir.</p>`,
+    },
+    {
+      heading: 'Dónde sacar fotos tamaño infantil',
+      html: `<p>Muchas papelerías, farmacias y estudios fotográficos las toman en el momento, y los laboratorios de fotos las imprimen aparte. Si prefieres no salir a buscar un estudio, haz la hoja aquí con una foto tuya o de tu hijo y llévala a imprimir como una foto 10 × 15 en cualquier lugar que imprima fotografías. Los precios cambian según la ciudad, así que pregunta antes.</p>`,
     },
     {
       heading: 'Cómo imprimir sin que cambie el tamaño',
@@ -110,11 +138,27 @@ const content: ToolContent<PhotoLabels> = {
       a: 'Sí, si otra persona la toma de frente a 1 o 1,5 m, contra una pared clara y con buena luz. Después la colocas en el recuadro y descargas la hoja.',
     },
     {
+      q: '¿Cuánto mide en píxeles una foto tamaño infantil?',
+      a: '295 × 354 píxeles a 300 ppp (2,5 × 3 cm). La de credencial, 413 × 531 píxeles.',
+    },
+    {
+      q: '¿Cómo cambio una foto a 2,5 × 3 cm en Word o en Canva?',
+      a: 'En Word, recorta primero y luego fija 3 cm de alto y 2,5 cm de ancho en Formato de imagen. En Canva, crea un diseño personalizado en centímetros con 2,5 × 3.',
+    },
+    {
+      q: '¿Dónde puedo sacar fotos tamaño infantil?',
+      a: 'En papelerías, farmacias y estudios fotográficos. También puedes hacer la hoja con esta herramienta y llevarla a imprimir como una foto 10 × 15.',
+    },
+    {
+      q: '¿Hay una plantilla en PDF o Word para fotos tamaño infantil?',
+      a: 'No hace falta: la herramienta descarga la hoja ya armada como imagen JPG a 300 ppp, lista para imprimir.',
+    },
+    {
       q: '¿Se sube mi foto a algún servidor?',
       a: 'No. La imagen se procesa en tu navegador y la hoja se genera en tu dispositivo. Tampoco la guardamos: al cerrar la página desaparece.',
     },
   ],
-  updated: '2026-10-08',
+  updated: '2026-10-14',
 };
 
 export default content;

@@ -32,9 +32,9 @@ const labels: WordsLabels = {
 
 const content: ToolContent<WordsLabels> = {
   slug: 'numeros-a-letras',
-  metaTitle: 'Números a letras: cantidad con letra para cheques y facturas',
+  metaTitle: 'Números a letras: cantidad con letra 00/100 M.N. para cheques',
   metaDescription:
-    'Convierte números y cantidades a letras: pesos 56/100 M.N., M/CTE, soles, euros y dólares, con las reglas de la RAE (veintiún, un millón de). Gratis.',
+    'Escribe 10,000 y obtén "diez mil pesos 00/100 M.N.". Convierte cifras a letras para cheques y facturas: pesos, M/CTE, soles, euros y dólares, con las reglas de la RAE. Gratis.',
   eyebrow: 'Números',
   h1: 'Convertir números a letras',
   intro:
@@ -53,6 +53,48 @@ const content: ToolContent<WordsLabels> = {
 <li><strong>Escala larga:</strong> mil millones = 1.000.000.000 y un billón = 1.000.000.000.000. El <em>billion</em> inglés equivale a mil millones.</li>
 </ul>
 <p>Estas reglas son las del <em>Diccionario panhispánico de dudas</em> de la RAE.</p>`,
+    },
+    {
+      heading: 'Montos redondos con 00/100 M.N.: tabla de consulta',
+      html: `<p>Cantidades que se piden a diario, ya escritas como van en un cheque, un recibo o una factura en México. Para cualquier otra cifra, usa el convertidor de arriba.</p>
+<table><thead><tr><th>En número</th><th>Con letra</th></tr></thead><tbody>
+<tr><td>$100.00</td><td>cien pesos 00/100 M.N.</td></tr>
+<tr><td>$150.00</td><td>ciento cincuenta pesos 00/100 M.N.</td></tr>
+<tr><td>$200.00</td><td>doscientos pesos 00/100 M.N.</td></tr>
+<tr><td>$250.00</td><td>doscientos cincuenta pesos 00/100 M.N.</td></tr>
+<tr><td>$300.00</td><td>trescientos pesos 00/100 M.N.</td></tr>
+<tr><td>$400.00</td><td>cuatrocientos pesos 00/100 M.N.</td></tr>
+<tr><td>$450.00</td><td>cuatrocientos cincuenta pesos 00/100 M.N.</td></tr>
+<tr><td>$500.00</td><td>quinientos pesos 00/100 M.N.</td></tr>
+<tr><td>$600.00</td><td>seiscientos pesos 00/100 M.N.</td></tr>
+<tr><td>$700.00</td><td>setecientos pesos 00/100 M.N.</td></tr>
+<tr><td>$800.00</td><td>ochocientos pesos 00/100 M.N.</td></tr>
+<tr><td>$900.00</td><td>novecientos pesos 00/100 M.N.</td></tr>
+<tr><td>$1,000.00</td><td>mil pesos 00/100 M.N.</td></tr>
+<tr><td>$1,500.00</td><td>mil quinientos pesos 00/100 M.N.</td></tr>
+<tr><td>$2,000.00</td><td>dos mil pesos 00/100 M.N.</td></tr>
+<tr><td>$2,500.00</td><td>dos mil quinientos pesos 00/100 M.N.</td></tr>
+<tr><td>$3,000.00</td><td>tres mil pesos 00/100 M.N.</td></tr>
+<tr><td>$4,000.00</td><td>cuatro mil pesos 00/100 M.N.</td></tr>
+<tr><td>$5,000.00</td><td>cinco mil pesos 00/100 M.N.</td></tr>
+<tr><td>$6,000.00</td><td>seis mil pesos 00/100 M.N.</td></tr>
+<tr><td>$7,000.00</td><td>siete mil pesos 00/100 M.N.</td></tr>
+<tr><td>$8,000.00</td><td>ocho mil pesos 00/100 M.N.</td></tr>
+<tr><td>$9,000.00</td><td>nueve mil pesos 00/100 M.N.</td></tr>
+<tr><td>$10,000.00</td><td>diez mil pesos 00/100 M.N.</td></tr>
+<tr><td>$15,000.00</td><td>quince mil pesos 00/100 M.N.</td></tr>
+<tr><td>$20,000.00</td><td>veinte mil pesos 00/100 M.N.</td></tr>
+<tr><td>$25,000.00</td><td>veinticinco mil pesos 00/100 M.N.</td></tr>
+<tr><td>$30,000.00</td><td>treinta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$40,000.00</td><td>cuarenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$50,000.00</td><td>cincuenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$60,000.00</td><td>sesenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$80,000.00</td><td>ochenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$100,000.00</td><td>cien mil pesos 00/100 M.N.</td></tr>
+<tr><td>$150,000.00</td><td>ciento cincuenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$200,000.00</td><td>doscientos mil pesos 00/100 M.N.</td></tr>
+<tr><td>$250,000.00</td><td>doscientos cincuenta mil pesos 00/100 M.N.</td></tr>
+<tr><td>$500,000.00</td><td>quinientos mil pesos 00/100 M.N.</td></tr></tbody></table>`,
     },
     {
       heading: 'Cómo escribir la cantidad en un cheque en México',
@@ -103,7 +145,7 @@ const content: ToolContent<WordsLabels> = {
       a: 'Solo en tu navegador. El texto se genera en tu dispositivo y no se envía a ningún servidor.',
     },
   ],
-  updated: '2026-10-11',
+  updated: '2026-10-15',
 };
 
 export default content;

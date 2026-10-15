@@ -69,6 +69,14 @@ const content: ToolContent<VatLabels> = {
       heading: 'Rounding on an invoice',
       html: `<p>The VAT is rounded to two decimals first, and the total is net plus that rounded VAT, so the three numbers always add up. Example: SAR 99.99 including 15% VAT is 86.95 net plus 13.04 VAT.</p>`,
     },
+    {
+      heading: 'VAT after a discount',
+      html: `<p>VAT is charged on the price after the discount. An item priced at 1,000 before VAT with a 10% discount becomes 900, VAT at 15% is 135, and the total is 1,035. A discount taken off the VAT-inclusive price gives the same total, because a percentage discount passes straight through the tax.</p>`,
+    },
+    {
+      heading: 'What a VAT invoice shows',
+      html: `<p>A VAT invoice usually lists the seller's name and VAT registration number, the invoice date, a description of the goods or services, the amount before VAT, the VAT charged and the total. Requirements differ by country: Saudi Arabia, for example, has its own e-invoicing system run by ZATCA, so check the authority's current rules before you issue invoices.</p>`,
+    },
   ],
   faq: [
     {
@@ -83,8 +91,12 @@ const content: ToolContent<VatLabels> = {
       q: 'Is anything sent to a server?',
       a: 'No. Everything is calculated in your browser, and your last input is saved only in your browser.',
     },
+    {
+      q: 'Is VAT charged before or after a discount?',
+      a: 'After. An item at 1,000 before VAT with a 10% discount is 900, the 15% VAT on it is 135, and the total is 1,035.',
+    },
   ],
-  updated: '2026-09-28',
+  updated: '2026-10-15',
 };
 
 export default content;

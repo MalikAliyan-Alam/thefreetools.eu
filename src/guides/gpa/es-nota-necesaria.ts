@@ -36,6 +36,20 @@ const guide: GuideContent = {
       heading: 'Calcúlalo con la herramienta',
       html: `<p>En la <a href="/es/calcular-promedio/">calculadora de promedio</a> escribe las notas que ya tienes con su porcentaje. En <em>¿Qué nota necesito?</em> pon el promedio que quieres y el peso que falta (30 en el ejemplo) y verás la nota exacta.</p>`,
     },
+    {
+      heading: 'Tabla rápida: qué nota necesitas en el examen para un 4,0',
+      html: `<p>Según tu promedio en lo ya evaluado y lo que pesa el examen (la nota se redondea hacia arriba a un decimal):</p>
+<table><thead><tr><th>Tu promedio hasta ahora</th><th>Examen vale 30 %</th><th>Examen vale 40 %</th></tr></thead><tbody>
+<tr><td>3,0</td><td>6,4</td><td>5,5</td></tr>
+<tr><td>3,5</td><td>5,2</td><td>4,8</td></tr>
+<tr><td>4,0</td><td>4,0</td><td>4,0</td></tr>
+<tr><td>4,5</td><td>2,9</td><td>3,3</td></tr></tbody></table>
+<p>Mientras más pese el examen, menos importa lo que hiciste antes: con un promedio de 3,0 necesitas un 6,4 si el examen vale 30 %, pero un 5,5 si vale 40 %.</p>`,
+    },
+    {
+      heading: 'Si la nota viene de un puntaje',
+      html: `<p>Si el examen se corrige en puntos, convierte primero el puntaje que necesitas a nota con la <a href="/es/escala-de-notas/">escala de notas</a>, usando la exigencia de tu curso, y así sabes cuántos puntos te faltan.</p>`,
+    },
   ],
   faq: [
     {
@@ -48,7 +62,7 @@ const guide: GuideContent = {
     },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default guide;

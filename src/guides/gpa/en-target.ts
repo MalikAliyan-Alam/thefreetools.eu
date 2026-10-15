@@ -38,6 +38,17 @@ const guide: GuideContent = {
       heading: 'Check your own numbers',
       html: `<p>The <a href="/gpa-calculator/">GPA calculator</a> has a <em>What do I need next term?</em> box. Enter your cumulative GPA and credits under <em>Include previous semesters</em>, then type a target and next term's credits. It tells you the average you need, or says the target is out of reach.</p>`,
     },
+    {
+      heading: 'How far one perfect term goes',
+      html: `<p>Starting from a 2.8 over 60 credits, a term of straight A's (4.0) gives:</p>
+<table><thead><tr><th>Credits in the term</th><th>New cumulative GPA</th></tr></thead><tbody>
+<tr><td>15</td><td>3.04</td></tr><tr><td>18</td><td>3.08</td></tr><tr><td>30 (two terms of 15)</td><td>3.20</td></tr></tbody></table>
+<p>So even a flawless term only takes you from 2.8 to about 3.0. If you need a 3.5, plan for several terms or for a recovery plan that includes retaking low grades where your school allows replacement.</p>`,
+    },
+    {
+      heading: 'Check your school’s rules before relying on a retake',
+      html: `<p>Some schools replace the old grade with the new one, others average the two, and some leave both on the transcript but count only one. The effect on your GPA is very different, so read your registrar's policy before you plan around it. The retake limit, the deadline and whether the old grade stays visible are also set by the school.</p>`,
+    },
   ],
   faq: [
     {
@@ -50,7 +61,7 @@ const guide: GuideContent = {
     },
   ],
   published: '2026-09-26',
-  updated: '2026-09-26',
+  updated: '2026-10-15',
 };
 
 export default guide;

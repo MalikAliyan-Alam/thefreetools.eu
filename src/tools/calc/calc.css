@@ -1,0 +1,130 @@
+/* Shared by the weighted, gradescale and aguinaldo tools. */
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.calc-field span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.calc-field .input {
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.calc-hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.calc-result {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.calc-big {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.calc-big span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.calc-big b {
+  font-family: var(--font-display, inherit);
+  font-size: 40px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.calc-list {
+  display: grid;
+  gap: 4px;
+  margin: 12px 0 0;
+}
+.calc-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.calc-list dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.calc-list .is-total {
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+}
+.calc-bar {
+  display: flex;
+  height: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.calc-bar i {
+  display: block;
+  height: 100%;
+}
+.calc-bar .b1 {
+  background: var(--ink);
+}
+.calc-bar .b2 {
+  background: var(--accent);
+}
+.calc-bar .b3 {
+  background: var(--muted);
+}
+.calc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.calc-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.calc-table th,
+.calc-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: start;
+}
+.calc-table tr.is-hit td {
+  background: var(--surface);
+  font-weight: 700;
+}
+.calc-scroll {
+  max-height: 360px;
+  overflow: auto;
+}
+.calc-error {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.calc-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.calc-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent);
+}

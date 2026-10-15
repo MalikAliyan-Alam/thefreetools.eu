@@ -7,6 +7,7 @@ import Base from '../layouts/Base.astro';
 import ToolIsland from '../components/ToolIsland.astro';
 import ToolIcon from '../components/ToolIcon.astro';
 import VideoFacade from '../components/VideoFacade.astro';
+import photoEsThumb from '../assets/video-foto-es.jpg';
 import { LOCALE_META, localePath, type Locale } from '../i18n/locales';
 import { UI } from '../i18n/ui';
 import { TOOLS, toolsFor, toolsForListing } from '../tools/registry';
@@ -98,6 +99,23 @@ if (tool && c) {
       publisher: { '@id': ORG_ID },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    ...(tool.id === 'photo' && locale === 'es'
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            name: SITE.photoVideoEs.name,
+            description: SITE.photoVideoEs.description,
+            thumbnailUrl: `${SITE.url}/video-foto-es.jpg`,
+            uploadDate: SITE.photoVideoEs.uploadDate,
+            duration: SITE.photoVideoEs.duration,
+            inLanguage: 'es',
+            embedUrl: `https://www.youtube-nocookie.com/embed/${SITE.photoVideoEs.id}`,
+            contentUrl: `https://www.youtube.com/watch?v=${SITE.photoVideoEs.id}`,
+            publisher: { '@id': ORG_ID },
+          },
+        ]
+      : []),
     organization,
     {
       '@context': 'https://schema.org',
@@ -278,6 +296,12 @@ const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long'
       </p>
 
       <article class="content">
+        {tool.id === 'photo' && locale === 'es' && (
+          <section>
+            <h2>Mira cómo se hace, paso a paso (2 min)</h2>
+            <VideoFacade id={SITE.photoVideoEs.id} title={SITE.photoVideoEs.name} playLabel="Reproducir video" watchLabel="Ver el video en YouTube" thumb={photoEsThumb} />
+          </section>
+        )}
         {c.sections.map((s) => (
           <section>
             <h2>{s.heading}</h2>

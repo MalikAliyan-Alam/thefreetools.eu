@@ -2,7 +2,8 @@ import type { GuideContent } from '../types';
 import { HIJRI_MONTHS, hijriToGregorian } from '../../tools/hijri/engine.ts';
 
 // Every date below is computed from the Umm al-Qura engine at build time.
-const D = '2026-10-11';
+const P = '2026-10-11';
+const D = '2026-10-14';
 const Y = 1448;
 const ar = HIJRI_MONTHS.ar;
 
@@ -36,6 +37,7 @@ export const hijriExamplesAr: GuideContent = {
       heading: 'أمثلة محلولة',
       html: `<table><thead><tr><th>بالأرقام</th><th>بالأسماء</th><th>يوافق بالميلادي</th></tr></thead><tbody>
 ${row(5, 1)}
+${row(5, 2)}
 ${row(5, 3)}
 ${row(5, 8)}
 ${row(5, 15)}
@@ -43,6 +45,12 @@ ${row(9, 1)}
 ${row(10, 1)}
 ${row(12, 10)}</tbody></table>
 <p>لاحظ أن 8/5/${Y} تعني اليوم الثامن من الشهر الخامس، وليس الخامس من الشهر الثامن. في الكتابة بالأرقام يأتي اليوم أولاً ثم الشهر ثم السنة.</p>`,
+    },
+    {
+      heading: `أول يوم في كل شهر هجري ${Y} بالميلادي`,
+      html: `<table><thead><tr><th>الشهر</th><th>أول يوم بالهجري</th><th>يوافق بالميلادي</th></tr></thead><tbody>
+${Array.from({ length: 12 }, (_, i) => `<tr><td>${i + 1}. ${ar[i]}</td><td>1/${i + 1}/${Y}</td><td>${greg(i + 1, 1)}</td></tr>`).join('\n')}</tbody></table>
+<p>اجمع الرقم الذي تبحث عنه مع هذا التاريخ. مثلاً 3/5/${Y} هو أول ${ar[4]} (${greg(5, 1, false)}) مضافاً إليه يومان، أي ${greg(5, 3)}. وهكذا يمكنك حل أي تاريخ في السنة دون محول.</p>`,
     },
     {
       heading: 'لماذا قد يختلف يوم عن موقع آخر',
@@ -56,6 +64,14 @@ ${row(12, 10)}</tbody></table>
       a: `${greg(5, 8)}، بحسب تقويم أم القرى.`,
     },
     {
+      q: `كم يوافق 3/5/${Y} بالميلادي؟`,
+      a: `${greg(5, 3)}، بحسب تقويم أم القرى.`,
+    },
+    {
+      q: `كم يوافق 2/5/${Y} بالميلادي؟`,
+      a: `${greg(5, 2)}، بحسب تقويم أم القرى.`,
+    },
+    {
       q: `متى يبدأ رمضان ${Y}؟`,
       a: `بحسب أم القرى، أول رمضان ${Y} هو ${greg(9, 1)}.`,
     },
@@ -64,6 +80,6 @@ ${row(12, 10)}</tbody></table>
       a: `10 ذو الحجة ${Y} يوافق ${greg(12, 10)} بحسب أم القرى.`,
     },
   ],
-  published: D,
+  published: P,
   updated: D,
 };
