@@ -23,8 +23,9 @@ import photoEs from './photo/content/es';
 import weightedAr from './weighted/content/ar';
 import gradescaleEs from './gradescale/content/es';
 import aguinaldoEs from './aguinaldo/content/es';
+import dniEs from './dni/content/es';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords' | 'weighted' | 'gradescale' | 'aguinaldo';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords' | 'weighted' | 'gradescale' | 'aguinaldo' | 'dni';
 
 export type ToolEntry = {
   id: ToolId;
@@ -94,6 +95,11 @@ export const TOOLS: ToolEntry[] = [
     id: 'aguinaldo',
     icon: 'receipt',
     content: { es: aguinaldoEs },
+  },  {
+    // Spanish only: Spanish DNI / NIE control letter (calcular letra dni).
+    id: 'dni',
+    icon: 'letters',
+    content: { es: dniEs },
   },
 ];
 

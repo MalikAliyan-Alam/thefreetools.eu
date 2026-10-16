@@ -432,3 +432,23 @@ test('tool page additions: discount, weighted reverse and age units', async () =
   assert.equal(13283 % 7, 4);
   assert.equal(36 * 12 + 4, 436);
 });
+
+test('DNI tool page: letters printed on the page match the engine', async () => {
+  const { checkId, dniLetter } = await import('../src/tools/dni/engine.ts');
+  const { default: dni } = await import('../src/tools/dni/content/es.ts');
+  const letter = (s: string) => {
+    const r = checkId(s);
+    return r.ok ? r.expected : '?';
+  };
+  assert.equal(letter('X1234567'), 'L');
+  assert.equal(letter('Y1234567'), 'X');
+  assert.equal(letter('Z1234567'), 'R');
+  assert.equal(dniLetter('12345687'), 'T');
+  assert.equal(11234567 % 23, 10);
+  assert.equal(21234567 % 23, 1);
+  assert.equal(12345687 % 23, 0);
+  const text = JSON.stringify(dni);
+  assert.ok(!/\u2014/.test(text), 'em dash in DNI page');
+  assert.ok(dni.metaTitle.length <= 70 && dni.metaDescription.length <= 175);
+  assert.ok(text.includes('X1234567L') && text.includes('12345678Z'));
+});

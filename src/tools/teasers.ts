@@ -13,6 +13,7 @@ import { SPECS, PAPERS, layoutSheet } from './photo/engine';
 import { weighted, DEFAULT_WEIGHTS } from './weighted/engine';
 import { gradeFor } from './gradescale/engine';
 import { aguinaldo } from './aguinaldo/engine';
+import { dniLetter } from './dni/engine';
 
 const arrow = (l: Locale) => (l === 'ar' ? '←' : '→');
 const num = (l: Locale, n: number, opts: Intl.NumberFormatOptions = {}) =>
@@ -64,6 +65,8 @@ export function teaser(id: ToolId, l: Locale): string {
       return `95 · 88 · 82 ${a} ${num(l, weighted({ school: 95, qudrat: 88, tahsili: 82 }, DEFAULT_WEIGHTS) ?? 0, { maximumFractionDigits: 2 })}%`;
     case 'gradescale':
       return `25 / 38 ${a} ${num(l, gradeFor(25, 38, 0.6), { minimumFractionDigits: 1 })}`;
+    case 'dni':
+      return `12345678 ${a} 12345678${dniLetter('12345678')}`;
     case 'aguinaldo':
       return `$500 × 15 ${a} ${num(l, aguinaldo({ daily: 500 }).gross, { style: 'currency', currency: 'MXN' })}`;
     case 'vat': {
