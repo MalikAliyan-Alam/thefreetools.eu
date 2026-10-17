@@ -65,6 +65,8 @@ export function teaser(id: ToolId, l: Locale): string {
       return `95 · 88 · 82 ${a} ${num(l, weighted({ school: 95, qudrat: 88, tahsili: 82 }, DEFAULT_WEIGHTS) ?? 0, { maximumFractionDigits: 2 })}%`;
     case 'gradescale':
       return `25 / 38 ${a} ${num(l, gradeFor(25, 38, 0.6), { minimumFractionDigits: 1 })}`;
+    case 'secretsanta':
+      return l === 'es' ? `Ana, Luis, Marta ${a} sorteo sin email` : `Ana, Luis, Marta ${a} draw, no email`;
     case 'dni':
       return `12345678 ${a} 12345678${dniLetter('12345678')}`;
     case 'aguinaldo':

@@ -24,8 +24,10 @@ import weightedAr from './weighted/content/ar';
 import gradescaleEs from './gradescale/content/es';
 import aguinaldoEs from './aguinaldo/content/es';
 import dniEs from './dni/content/es';
+import santaEs from './secretsanta/content/es';
+import santaEn from './secretsanta/content/en';
 
-export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords' | 'weighted' | 'gradescale' | 'aguinaldo' | 'dni';
+export type ToolId = 'gpa' | 'hijri' | 'age' | 'hijri-age' | 'words' | 'vat' | 'photo' | 'unwords' | 'weighted' | 'gradescale' | 'aguinaldo' | 'dni' | 'secretsanta';
 
 export type ToolEntry = {
   id: ToolId;
@@ -100,6 +102,11 @@ export const TOOLS: ToolEntry[] = [
     id: 'dni',
     icon: 'letters',
     content: { es: dniEs },
+  },  {
+    // Spanish and English: Secret Santa / amigo invisible draw, no email.
+    id: 'secretsanta',
+    icon: 'cake',
+    content: { es: santaEs, en: santaEn },
   },
 ];
 
