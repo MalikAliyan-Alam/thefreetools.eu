@@ -34,7 +34,7 @@ const content: ToolContent<WordsLabels> = {
   slug: 'numeros-a-letras',
   metaTitle: 'Números a letras: cantidad con letra 00/100 M.N. para cheques',
   metaDescription:
-    'Escribe 10,000 y obtén "diez mil pesos 00/100 M.N.". Convierte cifras a letras para cheques y facturas: pesos, M/CTE, soles, euros y dólares, con las reglas de la RAE. Gratis.',
+    'Escribe 10,000 y obtén "diez mil pesos 00/100 M.N.". Cifras a letras para cheques y facturas en pesos, M/CTE, soles, euros y dólares, según la RAE.',
   eyebrow: 'Números',
   h1: 'Convertir números a letras',
   intro:

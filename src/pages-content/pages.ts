@@ -5,11 +5,12 @@ export type StaticPage = { slug: string; title: string; description: string; htm
 export type StaticPageId = 'about' | 'privacy' | 'contact';
 
 /** Bump a locale's date when its About/Privacy/Contact text changes (used for sitemap lastmod). */
-export const PAGES_UPDATED: Record<Locale, string> = { en: '2026-09-30', ar: '2026-09-30', es: '2026-09-30', fr: '2026-09-30' };
+export const PAGES_UPDATED: Record<Locale, string> = { en: '2026-11-26', ar: '2026-11-26', es: '2026-11-26', fr: '2026-11-26' };
 
 const mail = `<a href="mailto:${SITE.email}">${SITE.email}</a>`;
 const suggest = `<a href="mailto:${SITE.suggestEmail}">${SITE.suggestEmail}</a>`;
-const author = `<a href="${SITE.author.url}" rel="me noopener">${SITE.author.name}</a>`;
+const author = `<a href="${SITE.author.portfolio}" rel="me noopener">${SITE.author.name}</a>`;
+const links = `<a href="${SITE.author.portfolio}" rel="me noopener">portfolio</a> · <a href="${SITE.author.url}" rel="me noopener">LinkedIn</a> · <a href="${SITE.author.github}" rel="me noopener">GitHub</a>`;
 
 export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
   about: {
@@ -19,9 +20,11 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'Who builds thefreetools, how every calculator is checked against the official rule it applies, and how to report a mistake.',
       html: `<p>thefreetools is a small, independent collection of calculators and converters for everyday paperwork: grades, dates, invoices and forms.</p>
 <p>Every tool runs in your browser. We don't ask you to sign up, and what you type stays on your device.</p>
-<p>thefreetools is built and maintained by ${author}, an AI automation engineer.</p>
+<h2>Who builds it</h2>
+<p>thefreetools is built and maintained by ${author}, an AI automation engineer based in Karachi, Pakistan. He works remotely for GenAiTech, a company in Belgium, building chatbots and automations, and is studying for a BS in Computer Science at Virtual University. He started thefreetools to put the small calculations people repeat on paperwork in one place, without sign-ups. More about his work: ${links}.</p>
 <h2>How we check the results</h2>
 <p>Each tool is built from the official rule or formula it applies, and the page explains that formula so you can check it yourself. Where rules differ between countries or institutions, the tool lets you pick or edit them.</p>
+<p>The calculation behind every tool is kept separate from the page and covered by automated tests, including the edge cases (leap years, rounding, end-of-month dates). Every number in our guides is checked by the same tests, so a worked example on a page can't drift from what the tool returns.</p>
 <p>Found a mistake or a missing option? Write to ${mail}. We read every message.</p>`,
     },
     ar: {
@@ -30,9 +33,11 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'من يطوّر thefreetools، وكيف نتحقق من كل حاسبة وفق القاعدة الرسمية التي تطبقها، وكيف تبلغنا عن أي خطأ.',
       html: `<p>thefreetools مجموعة صغيرة ومستقلة من الحاسبات والمحولات للمعاملات اليومية: الدرجات والتواريخ والفواتير والنماذج.</p>
 <p>كل أداة تعمل داخل متصفحك. لا نطلب منك التسجيل، وما تكتبه يبقى على جهازك.</p>
-<p>يطوّر الموقع ويديره <span dir="ltr">${author}</span>، مهندس أتمتة بالذكاء الاصطناعي.</p>
+<h2>من يطوّر الموقع</h2>
+<p>يطوّر الموقع ويديره <span dir="ltr">${author}</span>، مهندس أتمتة بالذكاء الاصطناعي مقيم في كراتشي، باكستان. يعمل عن بُعد لدى شركة GenAiTech في بلجيكا على بناء روبوتات المحادثة والأتمتة، ويدرس بكالوريوس علوم الحاسوب في الجامعة الافتراضية (Virtual University). أنشأ thefreetools ليجمع الحسابات الصغيرة التي تتكرر في المعاملات اليومية في مكان واحد، دون تسجيل. المزيد عن عمله: <span dir="ltr">${links}</span>.</p>
 <h2>كيف نتحقق من النتائج</h2>
 <p>نبني كل أداة على القاعدة أو المعادلة الرسمية التي تطبقها، ونشرح المعادلة في الصفحة لتتمكن من التحقق بنفسك. وعندما تختلف القواعد بين الدول أو الجهات، تتيح لك الأداة اختيارها أو تعديلها.</p>
+<p>الحساب الذي تقوم عليه كل أداة منفصل عن الصفحة وتغطيه اختبارات آلية، بما فيها الحالات الخاصة مثل السنوات الكبيسة والتقريب ونهايات الشهور. وكل رقم في أدلتنا تتحقق منه الاختبارات نفسها، فلا يختلف المثال المشروح في الصفحة عن نتيجة الأداة.</p>
 <p>وجدت خطأً أو خياراً ناقصاً؟ راسلنا على ${mail}.</p>`,
     },
     es: {
@@ -41,9 +46,11 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'Quién hace thefreetools, cómo comprobamos cada calculadora con la regla oficial que aplica y cómo avisarnos de un error.',
       html: `<p>thefreetools es una colección pequeña e independiente de calculadoras y conversores para el papeleo de todos los días: notas, fechas, facturas y formularios.</p>
 <p>Todas las herramientas funcionan en tu navegador. No pedimos registro y lo que escribes se queda en tu dispositivo.</p>
-<p>thefreetools lo crea y mantiene ${author}, ingeniero de automatización con IA.</p>
+<h2>Quién lo hace</h2>
+<p>thefreetools lo crea y mantiene ${author}, ingeniero de automatización con IA que vive en Karachi (Pakistán). Trabaja en remoto para GenAiTech, una empresa de Bélgica, creando chatbots y automatizaciones, y estudia el grado en Informática en la Virtual University. Empezó thefreetools para reunir en un solo sitio, y sin registro, los cálculos pequeños que se repiten en el papeleo. Más sobre su trabajo: ${links}.</p>
 <h2>Cómo revisamos los resultados</h2>
 <p>Cada herramienta se basa en la regla o fórmula oficial que aplica, y la página la explica para que puedas comprobarla. Cuando las reglas cambian según el país o la institución, puedes elegirlas o editarlas.</p>
+<p>El cálculo de cada herramienta está separado de la página y lo cubren pruebas automáticas, incluidos los casos límite (años bisiestos, redondeos, fin de mes). Cada número de nuestras guías pasa por esas mismas pruebas, así que un ejemplo resuelto no puede dar algo distinto de lo que devuelve la herramienta.</p>
 <p>¿Encontraste un error o falta una opción? Escríbenos a ${mail}.</p>`,
     },
     fr: {
@@ -52,9 +59,11 @@ export const PAGES: Record<StaticPageId, Record<Locale, StaticPage>> = {
       description: 'Qui crée thefreetools, comment chaque outil est vérifié d’après la règle officielle qu’il applique et comment nous signaler une erreur.',
       html: `<p>thefreetools est une petite collection indépendante de calculatrices et de convertisseurs pour les démarches du quotidien : notes, dates, factures et formulaires.</p>
 <p>Tous les outils fonctionnent dans votre navigateur. Aucune inscription n’est demandée et ce que vous saisissez reste sur votre appareil.</p>
-<p>thefreetools est créé et maintenu par ${author}, ingénieur en automatisation par l’IA.</p>
+<h2>Qui le fait</h2>
+<p>thefreetools est créé et maintenu par ${author}, ingénieur en automatisation par l’IA basé à Karachi (Pakistan). Il travaille à distance pour GenAiTech, une entreprise belge, où il conçoit des chatbots et des automatisations, et prépare une licence d’informatique à la Virtual University. Il a lancé thefreetools pour réunir au même endroit, sans inscription, les petits calculs que l’on refait sans cesse dans les démarches. En savoir plus sur son travail : ${links}.</p>
 <h2>Comment nous vérifions les résultats</h2>
 <p>Chaque outil repose sur la règle ou la formule officielle qu’il applique, et la page l’explique pour que vous puissiez la vérifier vous-même. Quand les règles changent d’un pays ou d’un établissement à l’autre, l’outil vous permet de les choisir ou de les modifier.</p>
+<p>Le calcul de chaque outil est séparé de la page et couvert par des tests automatiques, y compris les cas limites (années bissextiles, arrondis, fins de mois). Chaque nombre de nos guides passe par ces mêmes tests : un exemple détaillé ne peut donc pas différer du résultat de l’outil.</p>
 <p>Une erreur ou une option manquante ? Écrivez-nous à ${mail}. Nous lisons tous les messages.</p>`,
     },
   },

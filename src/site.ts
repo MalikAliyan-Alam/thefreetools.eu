@@ -4,7 +4,12 @@ export const SITE = {
   // TODO before launch: set up this mailbox (e.g. Cloudflare Email Routing) or change it.
   email: 'querysolver@thefreetools.eu',
   suggestEmail: 'suggestme@thefreetools.eu',
-  author: { name: 'Malik Aliyan Alam', url: 'https://www.linkedin.com/in/malik-aliyan-alam-674b46324/' },
+  author: {
+    name: 'Malik Aliyan Alam',
+    url: 'https://www.linkedin.com/in/malik-aliyan-alam-674b46324/',
+    portfolio: 'https://malik-aliyan-alam-portfolio.vercel.app/',
+    github: 'https://github.com/MalikAliyan-Alam',
+  },
   /** Official profiles, listed as sameAs in the Organization JSON-LD. */
   /** Overview video on the English home page (YouTube, English). */
   video: {

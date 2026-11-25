@@ -43,7 +43,13 @@ const organization = {
   logo: `${SITE.url}/logo.svg`,
   email: SITE.email,
   sameAs: SITE.social,
-  founder: { '@type': 'Person', name: SITE.author.name, sameAs: [SITE.author.url] },
+  founder: {
+    '@type': 'Person',
+    name: SITE.author.name,
+    jobTitle: 'AI Automation Engineer',
+    url: SITE.author.portfolio,
+    sameAs: [SITE.author.url, SITE.author.portfolio, SITE.author.github],
+  },
 };
 
 if (props.kind === 'home') {
